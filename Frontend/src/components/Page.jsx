@@ -122,7 +122,6 @@ function Page() {
 	];
 	return (
 		<MDEditor
-			height={800}
 			toolbars={toolbar}
 			value={value}
 			onChange={setValue}

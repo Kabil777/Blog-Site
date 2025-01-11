@@ -9,12 +9,11 @@
 
 #root {
 	height: 100vh;
-
 	min-width: 100%;
 }
 
 .w-md-editor {
-	margin: 0;
+	margin: 5px;
 	padding: 0;
 	width: 100%;
 	height: 100%;

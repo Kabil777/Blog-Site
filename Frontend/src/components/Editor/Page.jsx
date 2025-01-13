@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 import MDEditor, { commands, executeCommand } from "@uiw/react-md-editor";
 import "@uiw/react-md-editor/markdown-editor.css"; // Required styles
 import "@uiw/react-markdown-preview/markdown.css"; // Required preview styles
 import "./Page.css";
 import { BsStars, BsTable } from "react-icons/bs";
-import { RiArrowDropDownLine } from "react-icons/ri";
 import { RxDividerVertical } from "react-icons/rx";
 import { MdOutlineTextFields } from "react-icons/md";
 import { FaBold, FaItalic, FaLink } from "react-icons/fa";
@@ -15,31 +14,56 @@ import { IoIosImages } from "react-icons/io";
 import { MdModeEditOutline } from "react-icons/md";
 import { HiViewfinderCircle } from "react-icons/hi2";
 import { MdOutlineViewCarousel } from "react-icons/md";
-function Page() {
-	const [value, setValue] = useState("*Welcome !*");
 
-	const iconSize = 20; // Icon size
+import { setData } from "../../store/reducers/editorReducer";
+import { useDispatch, useSelector } from "react-redux";
+import { Button } from "@mui/material";
+import Form from "../Form/Form";
+
+function Page() {
+	const blog = useSelector((state) => state.post.blog);
+	const [data, set] = useState(blog);
+	const [open, changeOpenState] = useState(true);
+	const closeReq = () => {
+		changeOpenState(false);
+	};
+	const openReq = () => {
+		changeOpenState(true);
+		console.log(open);
+	};
+	const dispatch = useDispatch();
+	const iconSize = 20;
 	const iconSizeHigh = 26;
-	const iconStyle = { cursor: "pointer", padding: "2px" }; // Padding for each icon
+	const iconStyle = { cursor: "pointer", padding: "2px" };
 	const dividerStyle = {
 		color: "#e4e4e7",
 		padding: "0",
 		margin: "0",
 		cursor: "initial",
 	};
-	// Custom commands with icons in specified order
+	useEffect(() => {
+		openReq;
+	});
 	const customCommands = [
 		{
 			...commands.hr,
 			name: "Stars",
-			icon: <BsStars size={28} style={{ paddingLeft: "15px", margin: "0" }} />,
-			execute: () => console.log("Stars clicked!"), // Example action
+			icon: (
+				<BsStars
+					size={28}
+					style={{ paddingLeft: "15px", margin: "0" }}
+					className="last"
+				/>
+			),
+			execute: () => console.log("Stars clicked!"),
 		},
 		{
 			...commands.hr,
 			name: "Divider1",
-			icon: <RxDividerVertical size={35} style={dividerStyle} />,
-			execute: () => null, // No action for dividers
+			icon: (
+				<RxDividerVertical size={35} style={dividerStyle} className="last" />
+			),
+			execute: () => null,
 		},
 		{
 			...commands.title,
@@ -56,7 +80,9 @@ function Page() {
 		{
 			...commands.hr,
 			name: "Divider2",
-			icon: <RxDividerVertical size={35} style={dividerStyle} />,
+			icon: (
+				<RxDividerVertical size={35} style={dividerStyle} className="last" />
+			),
 			execute: () => null,
 		},
 		{
@@ -70,7 +96,9 @@ function Page() {
 		{
 			...commands.hr,
 			name: "Divider3",
-			icon: <RxDividerVertical size={35} style={dividerStyle} />,
+			icon: (
+				<RxDividerVertical size={35} style={dividerStyle} className="last" />
+			),
 			execute: () => null,
 		},
 
@@ -119,15 +147,44 @@ function Page() {
 			...commands.codePreview,
 			icon: <HiViewfinderCircle size={24} style={iconStyle} />,
 		},
+		{
+			...commands.bold,
+			icon: (
+				<Button
+					sx={{
+						fontFamily: "Inter",
+						fontSize: "1.1em",
+						fontWeight: "600",
+						height: "40px",
+						width: "75px",
+						color: "#ffffff",
+						backgroundColor: "#2155CD",
+						margin: " 0 15px 35px 15px",
+						"&:hover": {
+							backgroundColor: "#2155CD",
+						},
+					}}
+				>
+					SUBMIT
+				</Button>
+			),
+			execute: () => {
+				dispatch(setData(data));
+			},
+		},
 	];
 	return (
-		<MDEditor
-			toolbars={toolbar}
-			value={value}
-			onChange={setValue}
-			commands={customCommands}
-			extraCommands={extraCommands}
-		/>
+		<>
+			<MDEditor
+				height={800}
+				toolbars={toolbar}
+				value={data}
+				onChange={(e) => set(e)}
+				commands={customCommands}
+				extraCommands={extraCommands}
+			></MDEditor>
+			<Form open={open} closeReq={closeReq} />
+		</>
 	);
 }
 

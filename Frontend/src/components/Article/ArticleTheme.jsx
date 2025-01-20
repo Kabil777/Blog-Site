@@ -29,7 +29,7 @@ const ArticleTheme = createTheme({
 					fontSize: "1.5rem",
 					width: "70%",
 					justifySelf: "flex-start",
-					fontWeight: "900",
+					fontWeight: "800",
 					textAlign: "start",
 				},
 			},

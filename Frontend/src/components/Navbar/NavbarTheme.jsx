@@ -28,7 +28,7 @@ const AppBarTheme = createTheme({
 				root: {
 					textAlign: "center",
 					fontFamily: "Teko",
-					fontSize: "2.05em",
+					fontSize: "2.05rem",
 					fontWeight: "550",
 				},
 			},

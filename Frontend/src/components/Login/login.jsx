@@ -56,6 +56,9 @@ function Login() {
 						alignItems="center"
 						justifyContent="space-evenly"
 						mt="30%"
+						onClick={() => {
+							window.open("http://localhost:7000/auth/google");
+						}}
 					>
 						<Box component="img" height="80%" width="12%" src={google}></Box>
 						<Typography variant="h6" fontFamily="Inter" color="#6e6e67">

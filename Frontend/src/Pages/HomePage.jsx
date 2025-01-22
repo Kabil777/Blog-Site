@@ -2,7 +2,14 @@ import { Grid2, Box } from "@mui/material";
 import ArticleCard from "../components/Article/ArticleCard";
 import Navbar from "../components/Navbar/Navbar";
 import { Container } from "@mui/material";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { getInitialCredits } from "../store/reducers/authReducer";
 function HomePage() {
+	const dispatch = useDispatch();
+	useEffect(() => {
+		dispatch(getInitialCredits());
+	}, [dispatch]);
 	return (
 		<>
 			<Navbar />

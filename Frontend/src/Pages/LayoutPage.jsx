@@ -1,14 +1,14 @@
 import { BrowserRouter as Router } from "react-router-dom";
 import Routes from "../Router/Routes";
 import store from "../store/store";
-import { Provider } from "react-redux";
+import { Provider, useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { getInitialCredits } from "../store/reducers/authReducer";
 function LayoutPage() {
 	return (
-		<Provider store={store}>
-			<Router>
-				<Routes />
-			</Router>
-		</Provider>
+		<Router>
+			<Routes />
+		</Router>
 	);
 }
 

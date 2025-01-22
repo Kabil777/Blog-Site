@@ -44,7 +44,6 @@ function Navbar() {
 			<ThemeProvider theme={AppBarTheme}>
 				<AppBar color="inherit">
 					<Toolbar>
-						{/* Left Section */}
 						<Stack
 							direction="row"
 							spacing={2}

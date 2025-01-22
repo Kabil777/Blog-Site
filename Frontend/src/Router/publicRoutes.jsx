@@ -1,8 +1,13 @@
-import Page from "../components/Editor/Page";
+import Login from "../components/Login/login";
+import EditorPage from "../Pages/EditorPage";
 const publicRoutes = [
 	{
 		path: "/editor",
-		element: <Page />,
+		element: <EditorPage />,
+	},
+	{
+		path: "/login",
+		element: <Login />,
 	},
 ];
 

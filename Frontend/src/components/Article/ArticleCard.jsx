@@ -33,7 +33,7 @@ function ArticleCard() {
 							alignItems="flex-start"
 							sx={{ flexGrow: "1" }}
 						>
-							<Typography variant="h1" component="h4">
+							<Typography variant="h1" component="h4" fontFamily="Inter">
 								Announcement on Networking Documentation
 							</Typography>
 							<Typography variant="h6">

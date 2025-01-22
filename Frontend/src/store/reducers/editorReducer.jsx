@@ -15,7 +15,7 @@ export const postCreate = createSlice({
 			(state.id = nanoid()),
 				(state.title = action.payload.title),
 				(state.description = action.payload.Desc),
-				state.tags.push(action.payload.Tags);
+				(state.tags = action.payload.tags);
 		},
 		setData: (state, action) => {
 			state.blog = action.payload;

@@ -17,7 +17,6 @@ const generateToken = async (user) => {
 };
 
 const AuthenticateToken = (req, res, next) => {
-	console.log(req.cookies);
 	const accessToken = req.cookies.accessToken;
 	if (!accessToken) return res.sendStatus(401);
 	jwt.verify(accessToken, process.env.ACCESS_TOKEN_KEY, (error, decoded) => {

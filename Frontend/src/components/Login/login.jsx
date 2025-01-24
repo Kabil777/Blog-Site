@@ -1,7 +1,6 @@
 import { Box, Container, Stack, Typography } from "@mui/material";
 import loginBg from "../../assets/vecteezy_cloud-computing-modern-flat-concept-for-web-banner-design_5879539.jpg";
 import google from "../../assets/g.jpg";
-
 function Login() {
 	return (
 		<Container
@@ -57,7 +56,7 @@ function Login() {
 						justifyContent="space-evenly"
 						mt="30%"
 						onClick={() => {
-							window.open("http://localhost:7000/auth/google");
+							window.location.href = "http://localhost:7000/auth/google";
 						}}
 					>
 						<Box component="img" height="80%" width="12%" src={google}></Box>

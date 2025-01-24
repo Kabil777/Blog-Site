@@ -26,44 +26,84 @@ function ArticleCard() {
 				}}
 			>
 				<Profile action={true} />
-				<CardContent>
-					<Stack direction="row" sx={{ flexGrow: 1, width: "100%" }}>
-						<Stack
-							direction="column"
-							alignItems="flex-start"
-							sx={{ flexGrow: "1" }}
-						>
+				<Stack direction="row" sx={{ flexGrow: 1, width: "100%" }}>
+					<Stack
+						direction="column"
+						sx={{ flexGrow: 1, width: "100%", justifyContent: "space-between" }}
+					>
+						<CardContent>
 							<Typography variant="h1" component="h4" fontFamily="Inter">
 								Announcement on Networking Documentation
 							</Typography>
-							<Typography variant="h6">
+							<Typography
+								variant="p"
+								component="p"
+								fontFamily="Roboto"
+								lineHeight="1.5"
+								sx={{
+									display: "-webkit-box", // Creates a flexible block container
+									WebkitBoxOrient: "vertical", // Sets the orientation to vertical
+									WebkitLineClamp: 3, // Limits the content to 3 lines
+									overflow: "hidden", // Hides overflowing text
+									textOverflow: "ellipsis",
+								}}
+							>
 								Some data center professionals rely on outdated network topology
 								diagrams and spreadsheets for their documentation, while Data
+								Center Infrastructure Management (DCIM) software while Data
+								Center Infrastructure Management (DCIM) software while Data
 								Center Infrastructure Management (DCIM) software ....
 							</Typography>
-						</Stack>
-						<Box
-							component="img"
-							src={netBg}
-							sx={{
-								height: "150px",
-								flexGrow: 1,
-								backgroundColor: "#ffffff",
-							}}
-						/>
+						</CardContent>
+						<CardActions>
+							<Stack
+								direction="row"
+								justifyContent="flex-start"
+								gap="10px"
+								width="50%"
+							>
+								<IconButton>
+									<GrLike />
+								</IconButton>
+								<IconButton>
+									<FaRegBookmark />
+								</IconButton>
+								<IconButton>
+									<IoShareSocialSharp />
+								</IconButton>
+							</Stack>
+							<Stack
+								direction="row"
+								justifyContent="flex-start"
+								gap="10px"
+								width="50%"
+							>
+								<Typography
+									variant="p"
+									component="p"
+									fontFamily="Roboto"
+									lineHeight="1.5"
+									fontSize="1rem"
+									textAlign="end"
+									width="75%"
+								>
+									Jan 25-2021
+								</Typography>
+							</Stack>
+						</CardActions>
 					</Stack>
-				</CardContent>
-				<CardActions>
-					<IconButton>
-						<GrLike />
-					</IconButton>
-					<IconButton>
-						<FaRegBookmark />
-					</IconButton>
-					<IconButton>
-						<IoShareSocialSharp />
-					</IconButton>
-				</CardActions>
+					<Box
+						component="img"
+						src={netBg}
+						sx={{
+							height: "70%",
+							alignSelf: "center",
+							mr: "16px",
+							width: "20%",
+							backgroundColor: "#ffffff",
+						}}
+					/>
+				</Stack>
 			</Card>
 		</ThemeProvider>
 	);

@@ -1,14 +1,22 @@
 import { useRoutes } from "react-router-dom";
-import HomePage from "../Pages/HomePage";
 import publicRoutes from "./publicRoutes";
+import EditorPage from "../Pages/EditorPage";
+import ProtectedChecker from "../hooks/ProtectedChecker";
 
 function Routes() {
-	const Routes = useRoutes([
+	const protectRoutes = [
 		{
-			path: "/",
-			element: <HomePage />,
+			path: "/editor",
+			element: <EditorPage />,
 		},
+	];
+	const Routes = useRoutes([
 		...publicRoutes,
+
+		{
+			element: <ProtectedChecker />,
+			children: protectRoutes,
+		},
 	]);
 
 	return Routes;

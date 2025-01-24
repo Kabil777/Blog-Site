@@ -15,7 +15,6 @@ authRouterGoogle.route("/callback").get(
 		session: false,
 	}),
 	async (req, res) => {
-		console.log("Received request at /auth/google/success");
 		const user = req.user;
 		if (!user) res.sendStatus(404);
 		const { accessToken, refreshToken } = await generateToken(user);
@@ -26,7 +25,7 @@ authRouterGoogle.route("/callback").get(
 		res.cookie("accessToken", accessToken, {
 			httpOnly: true,
 		});
-		res.redirect("http://localhost:5173");
+		res.redirect("http://localhost:5173/");
 	},
 );
 module.exports = { authRouterGoogle };

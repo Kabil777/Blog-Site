@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import MDEditor, { commands, executeCommand } from "@uiw/react-md-editor";
-import "@uiw/react-md-editor/markdown-editor.css"; // Required styles
-import "@uiw/react-markdown-preview/markdown.css"; // Required preview styles
+import "@uiw/react-md-editor/markdown-editor.css";
+import "@uiw/react-markdown-preview/markdown.css";
 import "./Page.css";
 import { BsStars, BsTable } from "react-icons/bs";
 import { RxDividerVertical } from "react-icons/rx";

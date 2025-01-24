@@ -8,7 +8,7 @@ function LayoutPage() {
 	return (
 		<Provider store={store}>
 			<Router>
-				<Navbar />
+				<Navbar/>
 
 				<Container
 					maxWidth="xl"

@@ -5,10 +5,6 @@ const publicRoutes = [
 		path: "/login",
 		element: <Login />,
 	},
-	{
-		path: "/",
-		element: <HomePage />,
-	},
 ];
 
 export default publicRoutes;

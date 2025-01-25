@@ -21,7 +21,7 @@ const initialCredits = {
 	id: "",
 	name: "",
 	email: "",
-	status: "none",
+	status: "loading",
 };
 const authDetais = createSlice({
 	name: "UserDetails",

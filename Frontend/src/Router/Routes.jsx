@@ -10,6 +10,11 @@ function Routes() {
 			path: "/editor",
 			element: <EditorPage />,
 		},
+
+		{
+			path: "/",
+			element: <HomePage />,
+		},
 	];
 	const Routes = useRoutes([
 		...publicRoutes,

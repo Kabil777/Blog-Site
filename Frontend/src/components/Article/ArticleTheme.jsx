@@ -6,7 +6,7 @@ const ArticleTheme = createTheme({
 			styleOverrides: {
 				root: {
 					width: "100%",
-					height: "290px",
+					height: "275px",
 					border: "1px solid #e4e4e7",
 					padding: "0 20px 0 20px",
 					boxShadow: "none",
@@ -17,15 +17,17 @@ const ArticleTheme = createTheme({
 		MuiCardContent: {
 			styleOverrides: {
 				root: {
-					marginTop: "10px",
 					cursor: "pointer",
+					marginTop: "10px",
+					marginBottom: "0",
+					paddingBottom: "0",
 				},
 			},
 		},
 		MuiTypography: {
 			styleOverrides: {
 				p: {
-					fontSize: "1.1rem",
+					fontSize: "1rem",
 					fontWeight: "500",
 					width: "90%",
 					justifySelf: "flex-start",
@@ -34,7 +36,7 @@ const ArticleTheme = createTheme({
 					color: "#6e6e67",
 				},
 				h1: {
-					fontSize: "1.5rem",
+					fontSize: "1.3rem",
 					width: "70%",
 					justifySelf: "flex-start",
 					fontWeight: "800",
@@ -46,6 +48,15 @@ const ArticleTheme = createTheme({
 			styleOverrides: {
 				root: {
 					padding: "16px 16px 5px 16px",
+				},
+			},
+		},
+		MuiIconButton: {
+			styleOverrides: {
+				root: {
+					width: "30px",
+					height: "30px",
+					padding: "0",
 				},
 			},
 		},

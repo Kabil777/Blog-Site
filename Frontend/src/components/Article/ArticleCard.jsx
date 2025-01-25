@@ -29,7 +29,7 @@ function ArticleCard() {
 				<Stack direction="row" sx={{ flexGrow: 1, width: "100%" }}>
 					<Stack
 						direction="column"
-						sx={{ flexGrow: 1, width: "100%", justifyContent: "space-between" }}
+						sx={{ flexGrow: 1, width: "100%", justifyContent: "space-around" }}
 					>
 						<CardContent>
 							<Typography variant="h1" component="h4" fontFamily="Roboto">
@@ -39,7 +39,7 @@ function ArticleCard() {
 								variant="p"
 								component="p"
 								fontFamily="Inter"
-								lineHeight="1.5"
+								lineHeight="1.3"
 								sx={{
 									display: "-webkit-box", // Creates a flexible block container
 									WebkitBoxOrient: "vertical", // Sets the orientation to vertical
@@ -61,15 +61,16 @@ function ArticleCard() {
 								justifyContent="flex-start"
 								gap="10px"
 								width="50%"
+								paddingX="8px"
 							>
 								<IconButton>
-									<GrLike />
+									<GrLike size={20} />
 								</IconButton>
 								<IconButton>
-									<FaRegBookmark />
+									<FaRegBookmark size={20} />
 								</IconButton>
 								<IconButton>
-									<IoShareSocialSharp />
+									<IoShareSocialSharp size={20} />
 								</IconButton>
 							</Stack>
 							<Stack

@@ -5,32 +5,35 @@ import Profile from '../profile/profile';
 
 export default function MostFollowed() {
   return (
-    <Box sx={{ 
-      border: '1px solid #ddd', 
-      borderRadius: '8px', 
-      width: '271px', 
-      height: '251px', 
-      padding: '16px', 
-      display: 'flex', 
-      flexDirection: 'column', 
-      justifyContent: 'center', 
-      alignItems: 'center' 
-    }}>
-      <Typography 
-        variant="h5" 
-        sx={{ 
-          textAlign: 'left',  // Align text to the left
-          fontSize: '1rem',  // 14px to rem
-          fontWeight: 'bold',  // Set font to bold
-          marginBottom: '16px' // Adjust space between Typography and Profiles
+    <Box
+      sx={{
+        border: '1px solid #ddd',
+        borderRadius: '8px',
+        width: '76%',
+        height: '29%', 
+        display: 'flex',
+        flexDirection: 'column',
+      
+        alignItems: 'flex-start',
+        padding: '1rem',
+      }}
+    > 
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '0.35rem',
+          width: '100%',
         }}
       >
-        MOST FOLLOWED
-      </Typography>
-      <Profile />
-      <Profile />
-      <Profile />
+        <Typography  sx={{fontWeight:'bold',marginTop:'0.35rem', fontSize:'1.15rem', alignItems:'flex-start', textAlign: 'left',marginLeft:'1.15rem'}}>MOST FOLLOWED</Typography>
+      
+        <Profile sx={{ flex: 1 }} />
+        <Profile sx={{ flex: 1 }} />
+        <Profile sx={{ flex: 1 }} />
+      </Box>
     </Box>
   );
 }
+
 

@@ -2,6 +2,7 @@ import { useRoutes } from "react-router-dom";
 import publicRoutes from "./publicRoutes";
 import EditorPage from "../Pages/EditorPage";
 import ProtectedChecker from "../hooks/ProtectedChecker";
+import HomePage from "../Pages/HomePage";
 
 function Routes() {
 	const protectRoutes = [

@@ -10,7 +10,7 @@ const ArticleTheme = createTheme({
 					border: "1px solid #e4e4e7",
 					padding: "0 20px 0 20px",
 					boxShadow: "none",
-					fontSize: "20px",
+					fontSize: "1%",
 				},
 			},
 		},
@@ -18,13 +18,14 @@ const ArticleTheme = createTheme({
 			styleOverrides: {
 				root: {
 					marginTop: "10px",
+					cursor: "pointer",
 				},
 			},
 		},
 		MuiTypography: {
 			styleOverrides: {
 				p: {
-					fontSize: "1rem",
+					fontSize: "1.1rem",
 					fontWeight: "500",
 					width: "90%",
 					justifySelf: "flex-start",

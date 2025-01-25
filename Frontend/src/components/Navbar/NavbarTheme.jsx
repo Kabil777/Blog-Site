@@ -8,11 +8,12 @@ const AppBarTheme = createTheme({
 		MuiAppBar: {
 			styleOverrides: {
 				root: {
-					height: "75px",
+					height: "60px",
 					boxShadow: "none",
 					borderBottom: "1px solid #e4e4e7",
 					display: "flex",
 					justifyContent: "center",
+					fontSize: "12px",
 				},
 			},
 		},
@@ -28,7 +29,7 @@ const AppBarTheme = createTheme({
 				root: {
 					textAlign: "center",
 					fontFamily: "Teko",
-					fontSize: "2.05rem",
+					fontSize: "2rem",
 					fontWeight: "550",
 				},
 			},
@@ -47,7 +48,7 @@ const AppBarTheme = createTheme({
 				root: {
 					height: "45px",
 					width: "120px",
-					fontSize: "1.35em",
+					fontSize: "1.2rem",
 					fontWeight: "500",
 					textTransform: "none",
 					color: "#67676E",
@@ -72,6 +73,7 @@ const AppBarTheme = createTheme({
 			styleOverrides: {
 				input: {
 					fontFamily: "Inter",
+					height: "1ch",
 					fontSize: "1.1em",
 				},
 			},
@@ -81,8 +83,8 @@ const AppBarTheme = createTheme({
 				root: {
 					fontFamily: "Teko",
 					fontSize: "1.8em",
-					height: "50px",
-					width: "50px",
+					height: "40px",
+					width: "40px",
 					color: "#ffffff",
 					backgroundColor: "#2155CD",
 					marginLeft: "15px",

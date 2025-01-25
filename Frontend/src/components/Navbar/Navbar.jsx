@@ -85,7 +85,7 @@ function Navbar() {
 							sx={{ flexGrow: 2 }}
 						>
 							<TextField
-								sx={{ width: "60ch", marginRight: "70px" }}
+								sx={{ width: "70ch", marginRight: "70px" }}
 								variant="outlined"
 								placeholder="Find Articles..."
 								InputProps={{

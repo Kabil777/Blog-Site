@@ -1,7 +1,26 @@
 import { Box, Container, Stack, Typography } from "@mui/material";
 import loginBg from "../../assets/vecteezy_cloud-computing-modern-flat-concept-for-web-banner-design_5879539.jpg";
 import google from "../../assets/g.jpg";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getInitialCredits } from "../../store/reducers/authReducer";
+import { useNavigate } from "react-router-dom";
+
 function Login() {
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
+	const { authenticated, status } = useSelector((state) => state.auth);
+
+	useEffect(() => {
+		if (authenticated && status === "success") {
+			navigate("/"); // Redirect to the desired route after login
+		}
+		console.log("Calles...");
+	}, [authenticated, status, navigate]);
+
+	useEffect(() => {
+		dispatch(getInitialCredits());
+	}, [dispatch]);
 	return (
 		<Container
 			maxWidth="xl"

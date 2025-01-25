@@ -32,13 +32,13 @@ function ArticleCard() {
 						sx={{ flexGrow: 1, width: "100%", justifyContent: "space-between" }}
 					>
 						<CardContent>
-							<Typography variant="h1" component="h4" fontFamily="Inter">
+							<Typography variant="h1" component="h4" fontFamily="Roboto">
 								Announcement on Networking Documentation
 							</Typography>
 							<Typography
 								variant="p"
 								component="p"
-								fontFamily="Roboto"
+								fontFamily="Inter"
 								lineHeight="1.5"
 								sx={{
 									display: "-webkit-box", // Creates a flexible block container

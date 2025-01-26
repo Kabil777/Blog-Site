@@ -24,11 +24,11 @@ function Profile({ actionEnable }) {
 				alignItems: "center",
 			}}
 			titleTypographyProps={{
-				fontSize: "1.1rem",
+				fontSize: "1rem",
 				fontWeight: "bold",
 			}}
 			subheaderTypographyProps={{
-				fontSize: "1rem",
+				fontSize: "0.9rem",
 				fontWeight: "normal",
 				color: "text.secondary",
 			}}

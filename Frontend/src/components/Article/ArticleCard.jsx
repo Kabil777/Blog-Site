@@ -39,7 +39,7 @@ function ArticleCard() {
 								variant="p"
 								component="p"
 								fontFamily="Inter"
-								lineHeight="1.3"
+								lineHeight="1.2"
 								sx={{
 									display: "-webkit-box", // Creates a flexible block container
 									WebkitBoxOrient: "vertical", // Sets the orientation to vertical

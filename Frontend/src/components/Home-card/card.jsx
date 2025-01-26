@@ -18,6 +18,7 @@ export default function MediaCard() {
 				flexDirection: "column",
 				boxShadow: "none",
 				border: "0.0625rem solid #ccc",
+				width: "100%",
 			}}
 		>
 			<CardMedia

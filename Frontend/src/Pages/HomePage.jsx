@@ -1,4 +1,4 @@
-import { Grid2, Box } from "@mui/material";
+import { Grid2 } from "@mui/material";
 import ArticleCard from "../components/Article/ArticleCard";
 import MediaCard from "../components/Home-card/card";
 import MostFollowed from "../components/Follower/Follow";
@@ -25,19 +25,11 @@ function HomePage() {
 						lg={8}
 						xl={8}
 						size={{ xs: 12, md: 12, lg: 8.5, xl: 7.5 }}
-						spacing={3}
 						overflow="scroll"
 						sx={{ scrollbarWidth: "none" }}
+						spacing={1}
 					>
-						<Grid2
-							container
-							md={8}
-							lg={8}
-							xl={8}
-							size={{ xs: 12, md: 12, lg: 12, xl: 12 }}
-						>
-							<BasicButtons />
-						</Grid2>
+						<BasicButtons />
 						<ArticleCard style={{ fontFamily: "Inter" }} />
 						<ArticleCard />
 						<ArticleCard />
@@ -48,19 +40,14 @@ function HomePage() {
 						lg={8}
 						xl={8}
 						size={{ xs: 0, md: 0, lg: 3.5, xl: 3 }}
-						spacing={6}
+						container
 						overflow="scroll"
 						sx={{ scrollbarWidth: "none" }}
+						spacing={4}
 					>
-						<Box sx={{ height: "100vh" }}>
-							<MostFollowed />
-							<Box sx={{ marginTop: "3rem" }}>
-								<MediaCard sx={{ width: "100%", height: "100%" }} />
-							</Box>
-							<Box sx={{ marginTop: "3rem" }}>
-								<MediaCard sx={{ width: "100%", height: "100%" }} />
-							</Box>
-						</Box>
+						<MostFollowed />
+						<MediaCard sx={{ width: "100%", height: "100%" }} />
+						<MediaCard sx={{ width: "100%", height: "100%" }} />
 					</Grid2>
 				</Grid2>
 			</Container>

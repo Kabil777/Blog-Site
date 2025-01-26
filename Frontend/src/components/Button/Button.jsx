@@ -12,7 +12,7 @@ export default function BasicButtons() {
 		<Stack
 			spacing={3}
 			direction="row"
-			sx={{ height: "50px", overflowX: "scroll" }}
+			sx={{ height: "50px", overflowX: "scroll", scrollbarWidth: "none" }}
 		>
 			<Button
 				variant="contained"

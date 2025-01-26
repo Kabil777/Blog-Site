@@ -6,3 +6,12 @@ datasource db {
         provider = "mysql"
         url      = env("DATABASE_URL")
 }
+
+model User{
+	id String @id @default(uuid())
+	Google_id String @unique
+	name String @unique
+	email String @unique
+	profileCover String
+	createdAt DateTime @default(now())
+}

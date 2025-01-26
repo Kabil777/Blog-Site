@@ -1,4 +1,5 @@
 import Typography from "@mui/material/Typography";
+
 import Profile from "../profile/profile";
 import { Box, Stack } from "@mui/material";
 import FollowTheme from "./FollowTheme";
@@ -13,6 +14,7 @@ export default function MostFollowed() {
 					flexDirection: "column",
 					gap: "0.35rem",
 					justifyContent: "center",
+					width: "100%",
 					border: "1px solid #e4e4e7",
 					padding: "16px 0 0 0",
 				}}

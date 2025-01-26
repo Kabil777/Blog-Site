@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { Navigate, useLocation, Outlet } from "react-router-dom";
 import { CircularProgress, Container } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { getInitialCredits } from "../store/reducers/authReducer";
 
 function ProtectedChecker() {
@@ -12,7 +12,7 @@ function ProtectedChecker() {
 	useEffect(() => {
 		const fetchAuth = () => {
 			try {
-				dispatch(getInitialCredits()); // Fetch user authentication state
+				dispatch(getInitialCredits());
 				console.log("Called");
 			} catch (error) {
 				console.error("Error during auth check:", error);

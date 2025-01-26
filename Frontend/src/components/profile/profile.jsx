@@ -1,7 +1,7 @@
 import { Avatar, IconButton, CardHeader } from "@mui/material";
 import { CiMenuKebab } from "react-icons/ci";
 
-function Profile() {
+function Profile({ actionEnable }) {
 	return (
 		<CardHeader
 			avatar={
@@ -10,9 +10,11 @@ function Profile() {
 				</Avatar>
 			}
 			action={
-				<IconButton aria-label="settings">
-					<CiMenuKebab />
-				</IconButton>
+				actionEnable && (
+					<IconButton aria-label="settings">
+						<CiMenuKebab />
+					</IconButton>
+				)
 			}
 			title="Kabil"
 			subheader="kabil.ec23@bitsathy.ac.in"

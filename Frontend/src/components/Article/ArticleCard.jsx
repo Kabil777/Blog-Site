@@ -25,7 +25,7 @@ function ArticleCard() {
 					justifyContent: "space-between",
 				}}
 			>
-				<Profile action={true} />
+				<Profile actionEnable={true} />
 				<Stack direction="row" sx={{ flexGrow: 1, width: "100%" }}>
 					<Stack
 						direction="column"

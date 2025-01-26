@@ -10,24 +10,19 @@ function HomePage() {
 
 			<Container
 				fixed
-				maxWidth="1250px"
+				maxWidth="1400px"
 				sx={{
 					mt: "100px",
 					overflowY: "hidden",
 				}}
 			>
-				<Grid2
-					container
-					spacing={3}
-					alignItems="flex-start"
-					justifyContent="center"
-				>
+				<Grid2 container spacing={3} justifyContent="center">
 					<Grid2
 						container
 						md={8}
 						lg={8}
 						xl={8}
-						size={{ xs: 12, md: 12, lg: 8.5, xl: 7 }}
+						size={{ xs: 12, md: 12, lg: 8.5, xl: 7.5 }}
 						spacing={3}
 					>
 						<ArticleCard style={{ fontFamily: "Inter" }} />

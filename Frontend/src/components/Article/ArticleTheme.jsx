@@ -6,7 +6,7 @@ const ArticleTheme = createTheme({
 			styleOverrides: {
 				root: {
 					width: "100%",
-					height: "275px",
+					height: "250px",
 					border: "1px solid #e4e4e7",
 					padding: "0 20px 0 20px",
 					boxShadow: "none",
@@ -18,7 +18,6 @@ const ArticleTheme = createTheme({
 			styleOverrides: {
 				root: {
 					cursor: "pointer",
-					marginTop: "10px",
 					marginBottom: "0",
 					paddingBottom: "0",
 				},
@@ -36,7 +35,7 @@ const ArticleTheme = createTheme({
 					color: "#6e6e67",
 				},
 				h1: {
-					fontSize: "1.3rem",
+					fontSize: "1.4rem",
 					width: "70%",
 					justifySelf: "flex-start",
 					fontWeight: "800",

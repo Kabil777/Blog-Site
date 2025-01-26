@@ -100,7 +100,7 @@ function ArticleCard() {
 							height: "70%",
 							alignSelf: "center",
 							mr: "16px",
-							width: "20%",
+							width: "18%",
 							backgroundColor: "#ffffff",
 						}}
 					/>

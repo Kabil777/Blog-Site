@@ -25,7 +25,7 @@ export default function MediaCard() {
       <CardContent sx={{ flexGrow: 1, paddingTop: 0, paddingBottom: 0, marginBottom: '0.625rem' }}>
         <Typography
           gutterBottom
-          variant="h6"
+          variant="h4"
           component="div"
           sx={{
             paddingTop: '0.625rem',
@@ -81,7 +81,7 @@ export default function MediaCard() {
       </CardActions>
       <CardActions sx={{ paddingTop: 0, marginTop: '1rem' }}> {/* Increased marginTop */}
         <Button
-          size="small"
+          size="medium"
           startIcon={<IoMdAdd style={{ fontSize: '0.875rem' }} />}
           sx={{
             fontSize: '0.6875rem',

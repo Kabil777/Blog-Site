@@ -12,11 +12,11 @@ import Typography from '@mui/material/Typography';
 
 export default function MediaCard() {
   return (
-    <Card sx={{ maxWidth: '17rem', maxHeight: '23.5rem', display: 'flex', flexDirection: 'column', boxShadow: 'none', border: '0.0625rem solid #ccc' }}>
+    <Card sx={{ width: '21rem', height: '27.5rem', display: 'flex', flexDirection: 'column', boxShadow: 'none', border: '0.0625rem solid #ccc' }}>
       <CardMedia
         sx={{
-          width: '17rem',
-          height: '17.25rem',
+          width: '100%',
+          height: '80%',
           objectFit: 'contain',
         }}
         image={pythonImage}
@@ -25,7 +25,7 @@ export default function MediaCard() {
       <CardContent sx={{ flexGrow: 1, paddingTop: 0, paddingBottom: 0, marginBottom: '0.625rem' }}>
         <Typography
           gutterBottom
-          variant="h8"
+          variant="h6"
           component="div"
           sx={{
             paddingTop: '0.625rem',
@@ -44,14 +44,14 @@ export default function MediaCard() {
             color: 'black',
             paddingTop: '0.4375rem',
             fontWeight: 'bold',
-            fontSize: '0.85rem',
+            fontSize: '0.90rem',
             textAlign: 'left',
           }}
         >
           DATA STRUCTURES | BIG DATA
         </Typography>
       </CardContent>
-      <CardActions sx={{ paddingTop: '0.3125rem', paddingBottom: 0, display: 'flex', justifyContent: 'space-between', marginTop: '0.1875rem' }}>
+      <CardActions sx={{ paddingTop: '0.3125rem', paddingBottom: 0, display: 'flex',marginTop: '0.1875rem' }}>
         <Button
           size="small"
           startIcon={<FaPython style={{ fontSize: '0.875rem' }} />}

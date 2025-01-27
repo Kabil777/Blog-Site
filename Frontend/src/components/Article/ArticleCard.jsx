@@ -11,7 +11,7 @@ import {
 	CardActions,
 } from "@mui/material";
 import Profile from "../profile/profile";
-import netBg from "../../assets/networks.png";
+import netBg from "../../assets/networks.jpg";
 import { ThemeProvider } from "@mui/material";
 import ArticleTheme from "./ArticleTheme";
 
@@ -22,24 +22,29 @@ function ArticleCard() {
 				sx={{
 					display: "flex",
 					flexDirection: "column",
-					justifyContent: "space-between",
+					justifyContent: "space-evenly",
 				}}
 			>
 				<Profile actionEnable={true} />
-				<Stack direction="row" sx={{ flexGrow: 1, width: "100%" }}>
+				<Stack direction="row" sx={{ width: "100%" }}>
 					<Stack
 						direction="column"
-						sx={{ flexGrow: 1, width: "100%", justifyContent: "space-around" }}
+						sx={{ flexGrow: 1, width: "60%", justifyContent: "space-around" }}
 					>
 						<CardContent>
-							<Typography variant="h1" component="h4" fontFamily="Roboto">
+							<Typography
+								variant="h1"
+								component="h4"
+								fontFamily="Inter"
+								lineHeight="1.5"
+							>
 								Announcement on Networking Documentation
 							</Typography>
 							<Typography
 								variant="p"
 								component="p"
 								fontFamily="Inter"
-								lineHeight="1.2"
+								lineHeight="1.5rem"
 								sx={{
 									display: "-webkit-box", // Creates a flexible block container
 									WebkitBoxOrient: "vertical", // Sets the orientation to vertical
@@ -62,6 +67,7 @@ function ArticleCard() {
 								gap="10px"
 								width="50%"
 								paddingX="8px"
+								paddingY="8px"
 							>
 								<IconButton>
 									<GrLike size={20} />
@@ -78,29 +84,17 @@ function ArticleCard() {
 								justifyContent="flex-start"
 								gap="10px"
 								width="50%"
-							>
-								<Typography
-									variant="p"
-									component="p"
-									fontFamily="Roboto"
-									lineHeight="1.5"
-									fontSize="1rem"
-									textAlign="end"
-									width="75%"
-								>
-									Jan 25-2021
-								</Typography>
-							</Stack>
+							></Stack>
 						</CardActions>
 					</Stack>
-					<Box
+					<Stack
 						component="img"
 						src={netBg}
 						sx={{
 							height: "70%",
-							alignSelf: "center",
+							width: "20%",
 							mr: "16px",
-							width: "18%",
+							justifySelf: "center",
 							backgroundColor: "#ffffff",
 						}}
 					/>

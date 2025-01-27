@@ -7,106 +7,52 @@ import { FaJava } from "react-icons/fa6";
 import { FaHtml5 } from "react-icons/fa";
 import { IoIosGitNetwork } from "react-icons/io";
 import { FaCloudUploadAlt } from "react-icons/fa";
+import React, { useState } from "react";
+
 export default function BasicButtons() {
-	return (
-		<Stack
-			spacing={3}
-			direction="row"
-			sx={{ height: "50px", overflowX: "scroll" }}
-		>
-			<Button
-				variant="contained"
-				startIcon={<FaFeatherAlt />}
-				sx={{
-					fontWeight: "bold",
-					backgroundColor: "#2155CD",
-					width: "15%",
-					height: "90%",
-				}}
-			>
-				Featured
-			</Button>
-			<Button
-				variant="contained"
-				startIcon={<IoMdTrendingUp />}
-				sx={{
-					fontWeight: "bold",
-					backgroundColor: "#EEF5FF",
-					color: "blue",
-					width: "15%",
-					height: "90%",
-				}}
-			>
-				Trending
-			</Button>
-			<Button
-				variant="contained"
-				startIcon={<IoLogoPython />}
-				sx={{
-					fontWeight: "bold",
-					backgroundColor: "#EEF5FF",
-					color: "blue",
-					width: "15%",
-					height: "90%",
-				}}
-			>
-				Python
-			</Button>
+  const [activeButton, setActiveButton] = useState(null);
 
-			<Button
-				variant="contained"
-				startIcon={<FaJava />}
-				sx={{
-					fontWeight: "bold",
-					backgroundColor: "#EEF5FF",
-					color: "blue",
-					width: "15%",
-					height: "90%",
-				}}
-			>
-				Java
-			</Button>
-			<Button
-				variant="contained"
-				startIcon={<FaHtml5 />}
-				sx={{
-					fontWeight: "bold",
-					backgroundColor: "#EEF5FF",
-					color: "blue",
-					width: "15%",
-					height: "90%",
-				}}
-			>
-				HTML
-			</Button>
+  const handleClick = (index) => {
+	  if (activeButton !==index){
+		  setActiveButton(index);
+	  }
+  };
 
-			<Button
-				variant="contained"
-				startIcon={<IoIosGitNetwork />}
-				sx={{
-					fontWeight: "bold",
-					backgroundColor: "#EEF5FF",
-					color: "blue",
-					width: "15%",
-					height: "90%",
-				}}
-			>
-				Outlined
-			</Button>
+  const buttons = [
+    { label: "Featured", icon: <FaFeatherAlt /> },
+    { label: "Trending", icon: <IoMdTrendingUp /> },
+    { label: "Python", icon: <IoLogoPython /> },
+    { label: "Java", icon: <FaJava /> },
+    { label: "HTML", icon: <FaHtml5 /> },
+    { label: "Outlined", icon: <IoIosGitNetwork /> },
+    { label: "Upload", icon: <FaCloudUploadAlt /> },
+  ];
 
-			<Button
-				variant="contained"
-				startIcon={<FaCloudUploadAlt />}
-				sx={{
-					fontWeight: "bold",
-					backgroundColor: "#EEF5FF",
-					color: "blue",
-					width: "15%",
-					height: "90%",
-				}}
-			>
-				Outlined
-			</Button>
-		</Stack>
-	);
+  return (
+    <Stack spacing={3} direction="row" sx={{ height: "50px" }}>
+      {buttons.map((button, index) => (
+        <Button
+          key={index}
+          variant="contained"
+          startIcon={button.icon}
+          onClick={() => handleClick(index)}
+          sx={{
+            fontWeight: "bold",
+            width: "15%",
+            height: "90%",
+			boxShadow:"none",
+			border: "1px solid #EEF5FF",
+			"&:hover":{
+				boxShadow:"none",
+			},
+            backgroundColor: activeButton === index ? "#2155CD" : "#EEF5FF",
+            color: activeButton === index ? "#EEF5FF" : "#2155CD",
+          }}
+        >
+          {button.label}
+        </Button>
+      ))}
+    </Stack>
+  );
 }
+

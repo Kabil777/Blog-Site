@@ -1,4 +1,4 @@
-import { Box, Container, Stack, Typography } from "@mui/material";
+import { Box, Container, Stack, TextField, Typography } from "@mui/material";
 import loginBg from "../../assets/front.jpg";
 import google from "../../assets/g.jpg";
 import github from "../../assets/github.png";
@@ -57,11 +57,76 @@ function Login() {
 						display: "flex",
 						alignItems: "center",
 						justifyContent:"end",
-						backgroundColor:"white"
+						backgroundColor:"white",
+						gap:3
 					}}
-				><Box><input type="text" placeholder="username"/></Box>
-				<Box>password</Box>
-					or
+				>
+				<Box
+				fontSize="2.5rem"
+				fontFamily="sans-serif"
+				fontWeight="bold"
+				color="#2155CD"
+				paddingBottom="5%"
+				>Sign In</Box>
+				<Box
+				border="2px solid #e4e4e7"
+				borderRadius={5}
+				display="flex"
+				alignItems="flex-start"
+				width="60%"
+				
+				sx={{
+					backgroundColor:"#EEF5FF"
+				}}
+				
+				>
+				
+				<TextField placeholder="User Name " variant="outlined" 
+				sx={{
+					'& .MuiOutlinedInput-root': {
+						'& fieldset': {
+							border: 'none',
+						},
+					},
+				}}></TextField></Box>
+				<Box
+				border="2px solid #e4e4e7"
+				borderRadius={5}
+				display="flex"
+				alignItems="flex-start"
+				width="60%"
+				sx={{
+					backgroundColor:"#EEF5FF"
+				}}
+				
+				><TextField placeholder="Password" variant="outlined" 
+				sx={{
+					'& .MuiOutlinedInput-root': {
+						'& fieldset': {
+							border: 'none',
+						},
+					},
+				}}></TextField></Box>
+				<Box
+				border="2px solid #e4e4e7"
+				borderRadius={5}
+				display="flex"
+				alignItems="center"
+				justifyContent="center"
+				width="60%"
+				height="7%"
+				sx={{
+					backgroundColor:"#2155CD"
+				}}	
+				>
+				<button 
+				style={{color:"white", backgroundColor:"#2155CD",border:"none", fontSize:"25px",}}>Log In</button></Box>
+				<Box
+				fontSize="1.2rem"
+				fontFamily="sans-serif"
+				marginTop="20px"
+				fontWeight="semi-	bold"
+				marginBottom="-20px">Or</Box>
 					<Stack
 							direction="column"
 							height={120}

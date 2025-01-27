@@ -25,8 +25,6 @@ function HomePage() {
 						lg={8}
 						xl={8}
 						size={{ xs: 12, md: 12, lg: 8.5, xl: 7.5 }}
-						overflow="scroll"
-						sx={{ scrollbarWidth: "none" }}
 						spacing={1}
 					>
 						<BasicButtons />

@@ -27,7 +27,7 @@ authRouterGoogle.route("/callback").get(
 			maxAge: 60 * 60 * 1000,
 			sameSite: "strict",
 		});
-		res.redirect("http://localhost:5173/");
+		res.redirect("http://192.16.17.13:5173/");
 	},
 );
 module.exports = { authRouterGoogle };

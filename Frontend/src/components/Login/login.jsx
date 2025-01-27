@@ -57,7 +57,7 @@ function Login() {
 						justifyContent="space-evenly"
 						mt="30%"
 						onClick={() => {
-							window.location.href = "http://localhost:7000/auth/google";
+							window.location.href = "http://192.16.17.13:7000/auth/google";
 						}}
 					>
 						<Box component="img" height="80%" width="12%" src={google}></Box>

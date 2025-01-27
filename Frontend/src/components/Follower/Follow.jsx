@@ -13,24 +13,23 @@ export default function MostFollowed() {
 					display: "flex",
 					flexDirection: "column",
 					gap: "0.35rem",
-					justifyContent: "center",
+					justifyContent: "flex-start",
+					alignItems: "flex-start",
 					width: "100%",
 					border: "1px solid #e4e4e7",
-					padding: "16px 0 0 0",
+					padding: "16px 20px",
 				}}
 			>
 				<Typography
 					sx={{
 						fontWeight: "bold",
-						fontSize: "1.15rem",
-						alignItems: "flex-start",
-						textAlign: "left",
-						marginLeft: "1.15rem",
+						fontSize: "1.2rem",
+						fontFamily: "'Source Sans 3',serif"
 					}}
 				>
-					MOST FOLLOWED
+					Top Writers
 				</Typography>
-				<Stack direction="column" width="100%" alignItems="center">
+				<Stack direction="column" width="100%" alignItems="flex-start">
 					<Profile actionEnable={null} />
 					<Profile sx={{}} />
 					<Profile sx={{}} />

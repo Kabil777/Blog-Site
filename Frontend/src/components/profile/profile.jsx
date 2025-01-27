@@ -1,12 +1,13 @@
 import { Avatar, IconButton, CardHeader } from "@mui/material";
 import { CiMenuKebab } from "react-icons/ci";
+import { useSelector } from "react-redux";
 
 function Profile({ actionEnable }) {
+	const avatar = useSelector((state)=>state.auth.profileCover)
 	return (
 		<CardHeader
 			avatar={
-				<Avatar sx={{ bgcolor: "#2155cd" }} aria-label="recipe">
-					K
+				<Avatar src={avatar}alt="bg">
 				</Avatar>
 			}
 			action={

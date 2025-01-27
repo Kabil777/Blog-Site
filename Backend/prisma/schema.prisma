@@ -7,11 +7,39 @@ datasource db {
         url      = env("DATABASE_URL")
 }
 
-model User{
-	id String @id @default(uuid())
-	Google_id String @unique
-	name String @unique
-	email String @unique
-	profileCover String
-	createdAt DateTime @default(now())
+model User {
+        id           String   @id @default(uuid())
+        Google_id    String   @unique
+        name         String   @unique
+        email        String   @unique
+        profileCover String
+        createdAt    DateTime @default(now())
+        posts        Post[]
+}
+
+model Post {
+        id          String      @id @unique
+        name        String
+        description String
+        mdFileName  String
+        user        User        @relation(fields: [userId], references: [id])
+        userId      String
+        createdAt   DateTime    @default(now())
+        tags        TagMapper[]
+}
+
+model Tags {
+        id        Int         @id @default(autoincrement())
+        domain    String
+        skill     String      @unique
+        createdAt DateTime    @default(now())
+        post      TagMapper[]
+}
+
+model TagMapper {
+        id     Int    @id @default(autoincrement())
+        post   Post   @relation(fields: [postId], references: [id])
+        postId String
+        tag    Tags   @relation(fields: [tagId], references: [id])
+        tagId  Int
 }

@@ -12,13 +12,12 @@ function HomePage() {
 
 			<Container
 				fixed
-				maxWidth="1400px"
+				maxWidth="xl"
 				sx={{
 					mt: "100px",
-					overflowY: "hidden",
 				}}
 			>
-				<Grid2 container spacing={3} justifyContent="center">
+				<Grid2 container spacing={3} justifyContent="center" overflow="scroll">
 					<Grid2
 						container
 						md={8}

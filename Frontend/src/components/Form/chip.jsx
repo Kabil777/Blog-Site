@@ -5,7 +5,6 @@ import { FaJs } from "react-icons/fa";
 import { FaGolang } from "react-icons/fa6";
 import { SiCplusplus } from "react-icons/si";
 import { DiLinux } from "react-icons/di";
-import { FaGitAlt } from "react-icons/fa";
 
 const chips = [
 	{

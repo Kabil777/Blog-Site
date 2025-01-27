@@ -1,19 +1,16 @@
-import { GrLike } from "react-icons/gr";
-import { FaRegBookmark } from "react-icons/fa";
-import { IoShareSocialSharp } from "react-icons/io5";
+
 import {
 	Stack,
 	Typography,
 	Card,
-	IconButton,
 	CardContent,
-	Box,
 	CardActions,
 } from "@mui/material";
 import Profile from "../profile/profile";
 import netBg from "../../assets/networks.jpg";
 import { ThemeProvider } from "@mui/material";
 import ArticleTheme from "./ArticleTheme";
+import PostActionButtons from "../PostActions/PostActionButtons";
 
 function ArticleCard() {
 	return (
@@ -46,11 +43,9 @@ function ArticleCard() {
 								fontFamily="Inter"
 								lineHeight="1.5rem"
 								sx={{
-									display: "-webkit-box", // Creates a flexible block container
-									WebkitBoxOrient: "vertical", // Sets the orientation to vertical
-									WebkitLineClamp: 3, // Limits the content to 3 lines
-									overflow: "hidden", // Hides overflowing text
-									textOverflow: "ellipsis",
+									display: "-webkit-box",	
+									WebkitBoxOrient: "vertical",									WebkitLineClamp: 3, 
+									overflow: "hidden",									textOverflow: "ellipsis",
 								}}
 							>
 								Some data center professionals rely on outdated network topology
@@ -61,30 +56,7 @@ function ArticleCard() {
 							</Typography>
 						</CardContent>
 						<CardActions>
-							<Stack
-								direction="row"
-								justifyContent="flex-start"
-								gap="10px"
-								width="50%"
-								paddingX="8px"
-								paddingY="8px"
-							>
-								<IconButton>
-									<GrLike size={20} />
-								</IconButton>
-								<IconButton>
-									<FaRegBookmark size={20} />
-								</IconButton>
-								<IconButton>
-									<IoShareSocialSharp size={20} />
-								</IconButton>
-							</Stack>
-							<Stack
-								direction="row"
-								justifyContent="flex-start"
-								gap="10px"
-								width="50%"
-							></Stack>
+					<PostActionButtons />
 						</CardActions>
 					</Stack>
 					<Stack

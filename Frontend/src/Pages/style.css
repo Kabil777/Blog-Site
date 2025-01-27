@@ -1,5 +1,10 @@
+* {
+	line-height: 1.5;
+}
+
 .reactMarkdown {
 	font-family: "Lato", sans-serif;
+	width: 65%;
 }
 
 .reactMarkdown h1,
@@ -12,13 +17,56 @@
 	margin-bottom: 1rem;
 }
 
+.reactMarkdown h1 {
+	font-size: 2.3rem;
+}
+
+.reactMarkdown h2 {
+	font-size: 2rem;
+}
+
+.reactMarkdown h3 {
+	font-size: 1.75rem;
+}
+
 .reactMarkdown p {
 	margin-bottom: 1rem;
 	font-family: "Source Sans 3", serif;
+	font-size: 1.2rem;
+	color: #4D5B7C;
+}
+
+.reactMarkdown pre {
+	font-family: "JetBrains Mono", monospace;
 	font-size: 1rem;
+	align-self: center;
+	padding: 10px 5px;
 }
 
 .reactMarkdown code {
-	font-family: "JetBrains Mono", monospace;
 	font-size: 1rem;
+	font-family: "JetBrains Mono", monospace;
+	background-color: #e4e4e7;
+	padding: 2px 8px;
+	margin: "0 5px";
+}
+.reactMarkdown pre code{
+	background-color: #1a1b26;
+}
+.reactMarkdown img {
+	width: 100%;
+}
+
+.reactMarkdown blockquote {
+	border-left: 4px solid #2155cd;
+	padding: 5px 15px;
+	margin: 20px 0;
+	font-size: 1.1rem;
+	display: flex;
+	align-items: center;
+	background-color: #eef5ff;
+
+	p {
+		margin-bottom: 0;
+	}
 }

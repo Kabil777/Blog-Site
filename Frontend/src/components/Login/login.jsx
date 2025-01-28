@@ -3,10 +3,26 @@ import Button from '@mui/material/Button';
 import google from "../../assets/g.jpg";
 import github from "../../assets/github.png";
 import icoon from "../../assets/icons odf stack.jpg";
-import { MdOutlineMail } from "react-icons/md";
+import { MdAspectRatio, MdOutlineMail } from "react-icons/md";
 import { CiLock } from "react-icons/ci";
-
+import React, { useEffect, useState } from "react";
+import img1 from "../../assets/4575.jpg";
+import img2 from "../../assets/5037367.jpg";
+import img3 from "../../assets/7124027.jpg";
+import img4 from "../../assets/front.jpg";
+const images = [
+img1,img2,img3,img4
+  ];
 function Login() {
+	const [currentIndex, setCurrentIndex] = useState(0); // Track the current image index
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length); // Loop through images
+    }, 4000); // 3 seconds display + 1 second for transition
+
+    return () => clearInterval(interval); // Cleanup interval on unmount
+  }, []);
 	return (
 		<Container disableGutters
 			maxWidth="100%"
@@ -66,7 +82,7 @@ function Login() {
 					width:"40%",
 					height:"90%"
 					}}>
-						<Stack component="img" height="65%" width="20%" src={google}></Stack>
+						<Stack component="img" sx={{aspectRatio:1}} width="15%" src={google}></Stack>
 						<Typography fontSize="80%" fontFamily="Inter" color="#6e6e67" fontWeight="bold">Google</Typography>
 					</Stack>
 					<Stack /*git*/ sx=
@@ -81,7 +97,7 @@ function Login() {
 					width:"40%",
 					height:"90%"
 					}}>
-						<Stack component="img" height="65%" width="20%" src={github}></Stack>
+						<Stack component="img" sx={{aspectRatio:1}} width="15%" src={github}></Stack>
 						<Typography fontSize="80%" fontFamily="Inter" color="#6e6e67" fontWeight="bold">Github</Typography>
 					</Stack>
 				</Stack> 
@@ -128,8 +144,44 @@ function Login() {
 				</Stack>
 				
 			</Stack>
-			<Stack sx={{ width:"60%"}}>
-				
+			<Stack sx={{ width:"60%",
+				alignItems:"center",justifyContent:"center"
+			}}>
+			<Box
+			borderRadius="50%"
+      sx={{
+        position: "relative",
+        width: "50%",
+        overflow: "hidden",
+        backgroundColor: "#f5f5f5",
+		aspectRatio:1
+		
+      }}
+    >
+      {images.map((image, index) => (
+        <Box
+          key={index}
+          style={{
+            position: "absolute",
+            top: 0,
+            left: `${(index - currentIndex) * 100}%`, // Position images based on the current index
+            width: "100%",
+            height: "100%",
+            transition: "left 1s ease-in-out", // Smooth transition for sliding effect
+          }}
+        >
+          <img
+            src={image}
+            alt={`Slide ${index + 1}`}
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover", // Ensure image fits the container
+            }}
+          />
+        </Box>
+      ))}
+    </Box>
 			</Stack>
 		</Container>
 	);

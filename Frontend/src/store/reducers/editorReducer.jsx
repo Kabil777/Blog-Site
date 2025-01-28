@@ -6,6 +6,7 @@ const initialPost = {
 	description: "",
 	tags: [],
 	blog: "**Write Your Content here....**",
+	titleCover: ""
 };
 export const postCreate = createSlice({
 	name: "handlePost",
@@ -16,6 +17,7 @@ export const postCreate = createSlice({
 				(state.title = action.payload.title),
 				(state.description = action.payload.Desc),
 				(state.tags = action.payload.tags);
+			state.titleCover = action.payload.titleCover
 		},
 		setData: (state, action) => {
 			state.blog = action.payload;

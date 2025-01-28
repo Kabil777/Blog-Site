@@ -1,4 +1,3 @@
-
 import {
 	Stack,
 	Typography,
@@ -43,9 +42,11 @@ function ArticleCard() {
 								fontFamily="Inter"
 								lineHeight="1.5rem"
 								sx={{
-									display: "-webkit-box",	
-									WebkitBoxOrient: "vertical",									WebkitLineClamp: 3, 
-									overflow: "hidden",									textOverflow: "ellipsis",
+									display: "-webkit-box",
+									WebkitBoxOrient: "vertical",
+									WebkitLineClamp: 3,
+									overflow: "hidden",
+									textOverflow: "ellipsis",
 								}}
 							>
 								Some data center professionals rely on outdated network topology
@@ -56,7 +57,7 @@ function ArticleCard() {
 							</Typography>
 						</CardContent>
 						<CardActions>
-					<PostActionButtons />
+							<PostActionButtons position={true} />
 						</CardActions>
 					</Stack>
 					<Stack

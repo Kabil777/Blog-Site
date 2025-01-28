@@ -1,8 +1,7 @@
-
-
 ![rust](https://opensource.com/sites/default/files/lead-images/rust_programming_crab_sea.png)
 
 ### Folder Structure :
+
 ```bash
   .
  ├──  App.css
@@ -20,9 +19,9 @@
 
 ### Basic Store Configuration :
 
-  ContentUsing `ConfigureStore` from reduxjs/toolkit to create a sample store.
+ContentUsing `ConfigureStore` from reduxjs/toolkit to create a sample store.
 
-```jsx
+```jsx live
 import { configureStore } from '@reduxjs/toolkit';
 import Got from './GetUser';
 export const store = configureStore({
@@ -34,7 +33,7 @@ export const store = configureStore({
 
 ### Setup a Inital slice:
 
- Setting up slice using createSlice and named it as GetPost which holds the temporary UserArray and has reducer to add existing values.
+Setting up slice using createSlice and named it as GetPost which holds the temporary UserArray and has reducer to add existing values.
 
 ```JSX
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
@@ -56,8 +55,8 @@ export default GetPost.reducer;
 
 ### USING axios and createAsyncThunk :
 
- createAsyncThunk is a utility provided by Redux Toolkit that simplifies the process of handling asynchronous operations, such as API calls, within Redux applications.
- Axios is a popular JavaScript library used for making HTTP requests from a web browser or Node.js.
+createAsyncThunk is a utility provided by Redux Toolkit that simplifies the process of handling asynchronous operations, such as API calls, within Redux applications.
+Axios is a popular JavaScript library used for making HTTP requests from a web browser or Node.js.
 
 > AsyncThunk :
 
@@ -79,7 +78,6 @@ const response = await axios.get('https://jsonplaceholder.typicode.com/users')
 ```
 
 > extra builders :
-
 
 ```JSX
  extraReducers(builder) {

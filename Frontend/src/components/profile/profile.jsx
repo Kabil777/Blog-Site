@@ -3,13 +3,10 @@ import { CiMenuKebab } from "react-icons/ci";
 import { useSelector } from "react-redux";
 
 function Profile({ actionEnable }) {
-	const avatar = useSelector((state)=>state.auth.profileCover)
+	const avatar = useSelector((state) => state.auth.profileCover);
 	return (
 		<CardHeader
-			avatar={
-				<Avatar src={avatar}alt="bg">
-				</Avatar>
-			}
+			avatar={<Avatar src={avatar} alt="bg"></Avatar>}
 			action={
 				actionEnable && (
 					<IconButton aria-label="settings">

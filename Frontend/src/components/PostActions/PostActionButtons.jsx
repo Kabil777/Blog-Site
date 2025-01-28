@@ -1,13 +1,14 @@
-import { Stack, IconButton } from "@mui/material"
+import { Stack, IconButton } from "@mui/material";
 import { GrLike } from "react-icons/gr";
 import { FaRegBookmark } from "react-icons/fa";
 import { IoShareSocialSharp } from "react-icons/io5";
 
-function PostActionButtons(position) {
+function PostActionButtons({ position }) {
 	return (
 		<Stack
 			direction="row"
-			justifyContent={position ? "flex-end" : "flex-start"}
+			justifyContent={position ? "flex-start" : "flex-end"}
+			alignItems="center"
 			gap="10px"
 			width="50%"
 			paddingX="8px"
@@ -22,8 +23,7 @@ function PostActionButtons(position) {
 				<IoShareSocialSharp size={20} />
 			</IconButton>
 		</Stack>
-
-	)
+	);
 }
 
-export default PostActionButtons
+export default PostActionButtons;

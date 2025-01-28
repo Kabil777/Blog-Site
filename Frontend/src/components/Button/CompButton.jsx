@@ -3,13 +3,15 @@ import { Button } from "@mui/material";
 import { FaPython } from "react-icons/fa";
 import { AiOutlineKubernetes } from "react-icons/ai";
 import { IoMdAdd } from "react-icons/io";
+
 export default function CompButton({ index }) {
 	const buttons = [
-		{ label: "PYHTON", icon: <FaPython /> },
+		{ label: "PYTHON", icon: <FaPython /> },
 		{ label: "DATA STRUCTURES", icon: <AiOutlineKubernetes /> },
 		{ label: "FOLLOW", icon: <IoMdAdd /> },
 	];
 	const button = buttons[index];
+
 	return (
 		<Button
 			key={index}
@@ -17,13 +19,28 @@ export default function CompButton({ index }) {
 			variant="contained"
 			startIcon={button.icon}
 			sx={{
-				width: "4.25rem",
-				justifyContent: "center",
-				textAlign: "center",
-				padding: "none",
-				height: "1.25rem",
-				fontsize: "0.3875rem",
+				width: "5.25rem",           
+				height: "1.5rem",           
+				justifyContent: "center",    
+				textAlign: "center",       
+				padding: 0,                 
+				fontSize: "0.745rem",       
+				display: "flex",
+				boxShadow: "none",
+				color: "#04BF8A",
+				backgroundColor: "#CAFDCA",
+				gap: "0",                   
+
+				"& .MuiButton-startIcon": {  
+					marginRight: '3.5px',
+					fontSize: "0.675rem",      
+					alignContent:"center",
+					alignItems: "center"
+				},
 			}}
-		>{button.label}</Button>
+		>
+			{button.label}
+		</Button>
 	);
 }
+

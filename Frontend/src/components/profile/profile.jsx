@@ -1,9 +1,8 @@
-import { Avatar, IconButton, CardHeader } from "@mui/material";
+import { Avatar, IconButton, CardHeader ,Box } from "@mui/material";
 import { CiMenuKebab } from "react-icons/ci";
 import CompButton from "../Button/CompButton";
 
 function Profile({ actionEnable, showButton }) {
-	console.log(actionEnable)
 	return (
 		<CardHeader
 			avatar={
@@ -12,16 +11,19 @@ function Profile({ actionEnable, showButton }) {
 				</Avatar>
 			}
 			
-			title="Kabil "
-				
-	                action={
+			title={
+				<Box sx={{ display: 'flex', alignItems: 'center' ,gap:1 }}>
+					<span>Kabil</span>
+					{showButton && <CompButton index={2} />}
+				</Box>
+			}
+	        action={
 				<>
 					{actionEnable && (
 						<IconButton aria-label="settings">
 							<CiMenuKebab />
 						</IconButton>
 					)}
-					{showButton && <CompButton index={2} />}
 				</>
 			}
 			subheader="kabil.ec23@bitsathy.ac.in"

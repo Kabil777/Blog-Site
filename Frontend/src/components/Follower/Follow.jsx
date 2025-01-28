@@ -29,9 +29,9 @@ export default function MostFollowed() {
 					MOST FOLLOWED
 				</Typography>
 				<Stack direction="column" width="100%" alignItems="center">
-					<Profile actionEnable={null} />
-					<Profile sx={{}} />
-					<Profile sx={{}} />
+					<Profile actionEnable={null}  showButton={true}/>
+					<Profile showButton={true} />
+					<Profile showButton={true} />
 				</Stack>
 			</Box>
 		</ThemeProvider>

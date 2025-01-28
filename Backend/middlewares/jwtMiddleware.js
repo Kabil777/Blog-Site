@@ -1,5 +1,8 @@
 const dotenv = require("dotenv");
 const jwt = require("jsonwebtoken");
+const { PrismaClient } = require("@prisma/client")
+const prisma = new PrismaClient()
+
 
 dotenv.config();
 
@@ -7,13 +10,28 @@ const generateToken = async (user) => {
 	if (!user) {
 		throw new Error("User object is required for generating token.");
 	}
-	const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_KEY, {
-		expiresIn: "10m",
-	});
-	const refreshToken = jwt.sign(user, process.env.REFRESH_TOKEN_KEY, {
-		expiresIn: "2d",
-	});
-	return { accessToken, refreshToken };
+	try {
+		const userRecord = await prisma.user.findUnique({
+			where: {
+				Google_id: user.Google_id,
+			}
+		})
+		if (!userRecord) {
+			throw new Error("User not found in the database.");
+		}
+		user = { ...user, userId: userRecord.id };
+		console.log("user", user)
+		const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_KEY, {
+			expiresIn: "10m",
+		});
+		const refreshToken = jwt.sign(user, process.env.REFRESH_TOKEN_KEY, {
+			expiresIn: "2d",
+		});
+		return { accessToken, refreshToken };
+	}
+	catch (error) {
+		return error.message
+	}
 };
 
 const verifyRefreshToken = (refreshToken) => {
@@ -48,7 +66,7 @@ const AuthenticateToken = (req, res, next) => {
 				return res.status(401).json({ message: `${error}` });
 			}
 		}
-		req.user = decoded;
+		req.user = decoded
 		next();
 	});
 };

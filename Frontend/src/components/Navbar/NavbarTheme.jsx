@@ -58,6 +58,7 @@ const AppBarTheme = createTheme({
 					},
 					"&:hover": {
 						backgroundColor: "#ffffff",
+						lineHeight: "2",
 					},
 				},
 			},
@@ -71,10 +72,10 @@ const AppBarTheme = createTheme({
 		},
 		MuiInputBase: {
 			styleOverrides: {
-				input: {
+				root: {
 					fontFamily: "Inter",
-					height: "1ch",
-					fontSize: "1.1em",
+					height: "50px",
+					fontSize: "1.1rem",
 				},
 			},
 		},

@@ -3,6 +3,7 @@ import publicRoutes from "./publicRoutes";
 import EditorPage from "../Pages/EditorPage";
 import ProtectedChecker from "../hooks/ProtectedChecker";
 import HomePage from "../Pages/HomePage";
+import PostPage from "../Pages/PostPage";
 
 function Routes() {
 	const protectRoutes = [
@@ -14,6 +15,10 @@ function Routes() {
 		{
 			path: "/",
 			element: <HomePage />,
+		},
+		{
+			path: "/post",
+			element: <PostPage />,
 		},
 	];
 	const Routes = useRoutes([

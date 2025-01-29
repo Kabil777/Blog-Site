@@ -21,6 +21,7 @@ const initialCredits = {
 	id: "",
 	name: "",
 	email: "",
+	profileCover: "",
 	status: "loading",
 };
 const authDetais = createSlice({
@@ -31,6 +32,7 @@ const authDetais = createSlice({
 			(state.id = action.payload.id),
 				(state.name = action.payload.name),
 				(state.email = action.payload.email);
+			state.profileCover = action.payload.profileCover;
 		},
 		logout: (state, action) => {
 			state.userDetails = {};
@@ -50,6 +52,7 @@ const authDetais = createSlice({
 				state.id = action.payload.id;
 				state.name = action.payload.name;
 				state.email = action.payload.email;
+				state.profileCover = action.payload.profileCover;
 				console.log(state.authenticated);
 			})
 			.addCase(getInitialCredits.rejected, (state) => {

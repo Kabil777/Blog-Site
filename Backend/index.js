@@ -1,10 +1,11 @@
-
 const express = require("express");
 const dotenv = require("dotenv");
 const { router } = require("./routes/routes");
 const passport = require("passport");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
+const { PrismaClient } = require("@prisma/client");
+const prisma = new PrismaClient();
 
 const app = express();
 dotenv.config();
@@ -25,4 +26,3 @@ app.use("/", router);
 app.listen(process.env.PORT || 5000, () => {
 	console.log(`App listening on port ${process.env.PORT} `);
 });
-

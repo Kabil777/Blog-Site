@@ -24,6 +24,8 @@ authRouterGoogle.route("/callback").get(
 		});
 		res.cookie("accessToken", accessToken, {
 			httpOnly: true,
+			maxAge: 60 * 60 * 1000,
+			sameSite: "strict",
 		});
 		res.redirect("http://localhost:5173/");
 	},

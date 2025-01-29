@@ -1,19 +1,15 @@
-import { GrLike } from "react-icons/gr";
-import { FaRegBookmark } from "react-icons/fa";
-import { IoShareSocialSharp } from "react-icons/io5";
 import {
 	Stack,
 	Typography,
 	Card,
-	IconButton,
 	CardContent,
-	Box,
 	CardActions,
 } from "@mui/material";
 import Profile from "../profile/profile";
-import netBg from "../../assets/networks.png";
+import netBg from "../../assets/networks.jpg";
 import { ThemeProvider } from "@mui/material";
 import ArticleTheme from "./ArticleTheme";
+import PostActionButtons from "../PostActions/PostActionButtons";
 
 function ArticleCard() {
 	return (
@@ -22,29 +18,34 @@ function ArticleCard() {
 				sx={{
 					display: "flex",
 					flexDirection: "column",
-					justifyContent: "space-between",
+					justifyContent: "space-evenly",
 				}}
 			>
 				<Profile actionEnable={true} />
-				<Stack direction="row" sx={{ flexGrow: 1, width: "100%" }}>
+				<Stack direction="row" sx={{ width: "100%" }}>
 					<Stack
 						direction="column"
-						sx={{ flexGrow: 1, width: "100%", justifyContent: "space-around" }}
+						sx={{ flexGrow: 1, width: "60%", justifyContent: "space-around" }}
 					>
 						<CardContent>
-							<Typography variant="h1" component="h4" fontFamily="Roboto">
+							<Typography
+								variant="h1"
+								component="h4"
+								fontFamily="Inter"
+								lineHeight="1.5"
+							>
 								Announcement on Networking Documentation
 							</Typography>
 							<Typography
 								variant="p"
 								component="p"
 								fontFamily="Inter"
-								lineHeight="1.3"
+								lineHeight="1.5rem"
 								sx={{
-									display: "-webkit-box", // Creates a flexible block container
-									WebkitBoxOrient: "vertical", // Sets the orientation to vertical
-									WebkitLineClamp: 3, // Limits the content to 3 lines
-									overflow: "hidden", // Hides overflowing text
+									display: "-webkit-box",
+									WebkitBoxOrient: "vertical",
+									WebkitLineClamp: 3,
+									overflow: "hidden",
 									textOverflow: "ellipsis",
 								}}
 							>
@@ -56,51 +57,17 @@ function ArticleCard() {
 							</Typography>
 						</CardContent>
 						<CardActions>
-							<Stack
-								direction="row"
-								justifyContent="flex-start"
-								gap="10px"
-								width="50%"
-								paddingX="8px"
-							>
-								<IconButton>
-									<GrLike size={20} />
-								</IconButton>
-								<IconButton>
-									<FaRegBookmark size={20} />
-								</IconButton>
-								<IconButton>
-									<IoShareSocialSharp size={20} />
-								</IconButton>
-							</Stack>
-							<Stack
-								direction="row"
-								justifyContent="flex-start"
-								gap="10px"
-								width="50%"
-							>
-								<Typography
-									variant="p"
-									component="p"
-									fontFamily="Roboto"
-									lineHeight="1.5"
-									fontSize="1rem"
-									textAlign="end"
-									width="75%"
-								>
-									Jan 25-2021
-								</Typography>
-							</Stack>
+							<PostActionButtons position={true} />
 						</CardActions>
 					</Stack>
-					<Box
+					<Stack
 						component="img"
 						src={netBg}
 						sx={{
 							height: "70%",
-							alignSelf: "center",
+							width: "20%",
 							mr: "16px",
-							width: "18%",
+							justifySelf: "center",
 							backgroundColor: "#ffffff",
 						}}
 					/>

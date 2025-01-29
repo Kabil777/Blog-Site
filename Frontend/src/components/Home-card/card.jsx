@@ -8,7 +8,7 @@ import { FaPython } from "react-icons/fa";
 import { AiOutlineKubernetes } from "react-icons/ai";
 import { IoMdAdd } from "react-icons/io";
 import Typography from "@mui/material/Typography";
-
+import CompButton from "../Button/CompButton";
 export default function MediaCard() {
 	return (
 		<Card
@@ -73,49 +73,35 @@ export default function MediaCard() {
 					marginTop: "0.1875rem",
 				}}
 			>
-				<Button
-					size="small"
-					startIcon={<FaPython style={{ fontSize: "0.875rem" }} />}
-					sx={{
-						marginBottom: "0.0625rem",
-						width: "5.25rem",
-						height: "1.375rem",
-						fontSize: "0.6875rem",
-						backgroundColor: "#EEF5FF",
-					}}
-				>
-					Python
-				</Button>
-				<Button
-					size="small"
-					startIcon={<AiOutlineKubernetes style={{ fontSize: "0.875rem" }} />}
-					sx={{
-						marginBottom: "0.0625rem",
-						width: "9.375rem",
-						height: "1.375rem",
-						fontSize: "0.6875rem",
-						backgroundColor: "#EEF5FF",
-					}}
-				>
-					Data Structures
-				</Button>
+
+				<CompButton index={0} sx={{
+					marginBottom: "0.0625rem",
+					width: "5.25rem",
+					height: "1.375rem",
+					fontSize: "0.6875rem",
+					backgroundColor: "#EEF5FF",
+
+				}} />
+				<CompButton index={1} sx={{
+					marginBottom: "0.0625rem",
+					width: "5.25rem",
+					height: "1.375rem",
+					fontSize: "0.6875rem",
+					backgroundColor: "#EEF5FF",
+
+				}} />
+
 			</CardActions>
 			<CardActions sx={{ paddingTop: 0, marginTop: "1rem" }}>
 				{" "}
 				{/* Increased marginTop */}
-				<Button
-					size="medium"
-					startIcon={<IoMdAdd style={{ fontSize: "0.875rem" }} />}
-					sx={{
-						fontSize: "0.6875rem",
-						width: "5.25rem",
-						height: "1.5rem",
-						color: "#04BF8A",
-						backgroundColor: "#CAFDCA",
-					}}
-				>
-					Follow
-				</Button>
+				<CompButton index={2} sx={{
+					fontsize: "0.6875rem",
+					width: "5.25rem",
+					height: "1.5rem",
+					color: "#04bf8a",
+					backgroundcolor: "#cafdca",
+				}} />
 			</CardActions>
 		</Card>
 	);

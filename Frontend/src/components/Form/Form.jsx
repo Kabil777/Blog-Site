@@ -12,13 +12,13 @@ import {
 	Stack,
 	Box,
 	Chip,
-} from '@mui/material';
-import { useDispatch } from 'react-redux';
-import { BsPinAngleFill } from 'react-icons/bs';
-import { setForm } from '../../store/reducers/editorReducer';
-import { useState } from 'react';
-import chips from './chip';
-import { TiDelete } from 'react-icons/ti';
+} from "@mui/material";
+import { useDispatch } from "react-redux";
+import { BsPinAngleFill } from "react-icons/bs";
+import { setForm } from "../../store/reducers/editorReducer";
+import { useState } from "react";
+import chips from "./chip";
+import { TiDelete } from "react-icons/ti";
 function Form({ open, closeReq }) {
 	const dispatch = useDispatch();
 
@@ -29,13 +29,18 @@ function Form({ open, closeReq }) {
 	const handleTabChange = (event, newValue = null) => {
 		if (newValue === null) {
 			setActiveTab((prevTab) => Math.min(prevTab + 1, 1)); // Ensure we don't exceed the last tab
+			console.log(activeTab);
 		} else {
 			setActiveTab(newValue);
 		}
 	};
 
 	const sendHeadders = (formJson) => {
-		dispatch(setForm(formJson));
+		if (formJson.title && formJson.Desc && tag.length > 0) {
+			dispatch(setForm(formJson));
+		} else {
+			console.error("Please complete all fields before submitting.");
+		}
 	};
 
 	const clickAction = (name) => {
@@ -58,119 +63,123 @@ function Form({ open, closeReq }) {
 		<Dialog
 			open={open}
 			onClose={(event, reason) => {
-				if (reason !== 'backdropClick') closeReq();
+				if (reason !== "backdropClick") closeReq();
 			}}
 			disableEscapeKeyDown
 			fullWidth
 			sx={{
-				'& .MuiDialogContent-root': {
-					display: 'flex',
-					flexDirection: 'column',
-					justifyContent: 'space-between',
-					paddingTop: '0px',
+				"& .MuiDialogContent-root": {
+					display: "flex",
+					flexDirection: "column",
+					justifyContent: "space-between",
+					paddingTop: "0px",
 				},
-				'& .MuiTextField-root': {
-					margin: '15px 0px',
+				"& .MuiTextField-root": {
+					margin: "15px 0px",
 				},
-				'& .MuiDialogContentText-root': {
-					color: '#000000',
+				"& .MuiDialogContentText-root": {
+					color: "#000000",
 				},
-				'& .MuiPaper-root': {
-					height: '550px',
-					maxWidth: '500px',
+				"& .MuiPaper-root": {
+					height: "550px",
+					maxWidth: "500px",
 				},
 			}}
 			PaperProps={{
-				component: 'form',
+				component: "form",
 				onSubmit: (e) => {
 					e.preventDefault();
 					const formData = new FormData(e.currentTarget);
 					const formJson = Object.fromEntries(formData.entries());
 					formJson.tags = tag;
-					console.log('Form Submission:', formJson);
+					console.log("Form Submission:", formJson);
 					sendHeadders(formJson);
 					closeReq();
 				},
 			}}
 		>
 			<DialogTitle
-				fontSize='1.5em'
-				fontWeight='600'
-				fontFamily='Lato'
-				sx={{ mt: '10px' }}
+				fontSize="1.5em"
+				fontWeight="600"
+				fontFamily="Lato"
+				sx={{ mt: "10px" }}
 			>
 				<IconButton
-					sx={{ border: '2px solid #e4e4e7' }}
+					sx={{ border: "2px solid #e4e4e7" }}
 					disableFocusRipple
 					disableTouchRipple
 				>
 					<BsPinAngleFill />
-				</IconButton>{' '}
+				</IconButton>{" "}
 				Article Headers
 			</DialogTitle>
 			<Tabs
 				value={activeTab}
 				onChange={handleTabChange}
-				sx={{ ml: '25px', mb: '15px' }}
+				sx={{ ml: "25px", mb: "15px" }}
 			>
 				<Tab
-					label='Title'
+					label="Title"
 					wrapped
-					sx={{ fontSize: '0.9rem', fontWeight: '600', fontFamily: 'Lato' }}
+					sx={{ fontSize: "0.9rem", fontWeight: "600", fontFamily: "Lato" }}
 				/>
 				<Tab
-					label='Tags'
-					sx={{ fontSize: '0.9rem', fontWeight: '600', fontFamily: 'Lato' }}
+					label="Tags"
+					sx={{ fontSize: "0.9rem", fontWeight: "600", fontFamily: "Lato" }}
 				/>
 			</Tabs>
-			<div style={{ width: '100%', height: '345px' }} hidden={activeTab !== 0}>
+			<div style={{ width: "100%", height: "345px" }} hidden={activeTab !== 0}>
 				<DialogContent>
 					<DialogContentText>Title for your Article </DialogContentText>
 					<TextField
 						required
-						name='title'
-						label='Title'
+						name="title"
+						label="Title"
 						fullWidth
-						variant='outlined'
+						variant="outlined"
 					></TextField>
 				</DialogContent>
 				<DialogContent>
 					<DialogContentText>Description for your Article</DialogContentText>
 					<TextField
 						required
-						name='Desc'
-						label='Description'
+						name="Desc"
+						label="Description"
 						fullWidth
-						variant='outlined'
+						variant="outlined"
 						multiline
 						rows={5}
 					></TextField>
 				</DialogContent>
 			</div>
-			<div style={{ width: '100%', height: '345px' }} hidden={activeTab !== 1}>
+			<div style={{ width: "100%", height: "345px" }} hidden={activeTab !== 1}>
 				<DialogContent>
 					<DialogContentText>Choose Tags for your Article</DialogContentText>
 					<Stack
-						direction='row'
-						flexWrap='wrap'
+						direction="row"
+						flexWrap="wrap"
 						sx={{
-							height: '275px',
-							border: '1px solid #e4e4e7',
-							m: '15px 0px',
-							p: '5px 20px',
-							flexDirection: 'row',
-							justifyContent: 'space-between',
-							alignItems: 'center',
-							overflowY: 'scroll',
-							scrollbarWidth: 'none',
-							'& .MuiChip-root': {
-								borderRadius: '2px',
-								backgroundColor: '#eef5ff',
-								color: '#2155cd',
-								fontWeight: '600',
-								width: '120px',
-								'& .MuiChip-icon': {
-									color: '#2155cd',
+							height: "275px",
+							border: "1px solid #e4e4e7",
+							m: "15px 0px",
+							p: "5px 20px",
+							flexDirection: "row",
+							justifyContent: "space-between",
+							alignItems: "center",
+							overflowY: "scroll",
+							scrollbarWidth: "none",
+							"& .MuiChip-root": {
+								borderRadius: "2px",
+								backgroundColor: "#eef5ff",
+								color: "#2155cd",
+								fontWeight: "600",
+								width: "120px",
+								"& .MuiChip-icon": {
+									color: "#2155cd",
+								},
+								"&:hover": {
+									backgroundColor: "#eef5ff",
+									border: "1.5px solid #2155cd",
 								},
 							},
 						}}
@@ -182,20 +191,20 @@ function Form({ open, closeReq }) {
 							const icon = chip.icon;
 
 							return (
-								<Box key={chip.key} sx={{ m: '15px 5px', height: '25px' }}>
+								<Box key={chip.key} sx={{ m: "15px 5px", height: "25px" }}>
 									<Chip
 										icon={icon}
 										label={chip.name}
 										sx={{
-											fontSize: '1rem',
-											border: isClicked ? '1.5px solid #2155cd' : undefined,
+											fontSize: "1rem",
+											border: isClicked ? "1.5px solid #2155cd" : undefined,
 										}}
 										clickable={!isClicked}
 										onClick={() => clickAction(chip.name)}
 										onDelete={
 											isClicked ? () => deleteAction(chip.name) : undefined
 										}
-										deleteIcon={<TiDelete color='#2155cd' />}
+										deleteIcon={<TiDelete color="#2155cd" />}
 									/>
 								</Box>
 							);
@@ -204,32 +213,32 @@ function Form({ open, closeReq }) {
 				</DialogContent>
 			</div>
 			<DialogActions>
-				<Button onClick={closeReq} sx={{ fontWeight: '600' }}>
+				<Button onClick={closeReq} sx={{ fontWeight: "600" }}>
 					Cancel
 				</Button>
 				{activeTab === 1 ? (
 					<Button
-						type='submit'
-						variant='contained'
+						type="submit"
+						variant="contained"
 						sx={{
-							backgroundColor: '#2155cd',
-							boxShadow: 'none',
-							fontFamily: 'Inter',
-							fontWeight: '600',
+							backgroundColor: "#2155cd",
+							boxShadow: "none",
+							fontFamily: "Inter",
+							fontWeight: "600",
 						}}
 					>
 						Update
 					</Button>
 				) : (
 					<Button
-						type='button'
-						onClick={(e) => handleTabChange(e)}
-						variant='contained'
+						type="button"
+						onClick={handleTabChange}
+						variant="contained"
 						sx={{
-							backgroundColor: '#2155cd',
-							boxShadow: 'none',
-							fontFamily: 'Inter',
-							fontWeight: '600',
+							backgroundColor: "#2155cd",
+							boxShadow: "none",
+							fontFamily: "Inter",
+							fontWeight: "600",
 						}}
 					>
 						Next

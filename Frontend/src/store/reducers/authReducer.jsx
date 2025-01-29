@@ -32,6 +32,7 @@ const authDetais = createSlice({
 			(state.id = action.payload.id),
 				(state.name = action.payload.name),
 				(state.email = action.payload.email);
+			state.profileCover = action.payload.profileCover;
 		},
 		logout: (state, action) => {
 			state.userDetails = {};

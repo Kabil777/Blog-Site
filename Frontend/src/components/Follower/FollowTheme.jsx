@@ -6,7 +6,7 @@ const FollowTheme = createTheme({
 			styleOverrides: {
 				root: {
 					width: "85%",
-					padding: "16px 0"
+					padding: "16px 0",
 				},
 			},
 		},

@@ -1,4 +1,3 @@
-import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import { FaFeatherAlt } from "react-icons/fa";
 import { IoMdTrendingUp } from "react-icons/io";
@@ -32,8 +31,15 @@ export default function BasicButtons() {
 	];
 
 	return (
-		<ButtonGroup size="small"
-			sx={{overflow:"scroll",flexShrink:"0",maxWidth:"100%",display:"flex",scrollbarWidth:"none"}}
+		<ButtonGroup
+			size="small"
+			sx={{
+				overflow: "scroll",
+				flexShrink: "0",
+				maxWidth: "100%",
+				display: "flex",
+				scrollbarWidth: "none",
+			}}
 		>
 			{buttons.map((button, index) => (
 				<Button
@@ -48,19 +54,16 @@ export default function BasicButtons() {
 						"&:hover": {
 							boxShadow: "none",
 						},
-						marginX:"20px",
-						height:"70%",
-						flexShrink:"0",
+						marginX: "20px",
+						height: "70%",
+						flexShrink: "0",
 						backgroundColor: activeButton === index ? "#2155CD" : "#EEF5FF",
 						color: activeButton === index ? "#EEF5FF" : "#2155CD",
 					}}
 				>
 					{button.label}
 				</Button>
-			)
-			)
-			}
-
-				</ButtonGroup>
+			))}
+		</ButtonGroup>
 	);
 }

@@ -4,18 +4,12 @@ import CompButton from "../Button/CompButton";
 import { useSelector } from "react-redux";
 
 function Profile({ actionEnable, showButton }) {
-	console.log(actionEnable)
-	const avatar = useSelector((state)=>state.auth.profileCover)
+	const avatar = useSelector((state) => state.auth.profileCover);
 	return (
 		<CardHeader
-			avatar={
-				<Avatar src={avatar}alt="bg">
-				</Avatar>
-			}
-			
+			avatar={<Avatar src={avatar} alt="bg"></Avatar>}
 			title="Kabil "
-				
-	                action={
+			action={
 				<>
 					{actionEnable && (
 						<IconButton aria-label="settings">

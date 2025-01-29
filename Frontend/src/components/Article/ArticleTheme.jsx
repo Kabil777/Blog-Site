@@ -6,9 +6,9 @@ const ArticleTheme = createTheme({
 			styleOverrides: {
 				root: {
 					width: "100%",
-					height: "230px",
+					height: "240px",
 					border: "1px solid #e4e4e7",
-					padding: " 16px 8px",
+					padding: " 10px 8px",
 					boxShadow: "none",
 					fontSize: "14px",
 				},
@@ -18,9 +18,8 @@ const ArticleTheme = createTheme({
 			styleOverrides: {
 				root: {
 					cursor: "pointer",
-					marginBottom: "0",
-					paddingBottom: "0",
 					paddingTop: "0",
+					paddingBottom: "10px",
 				},
 			},
 		},
@@ -46,7 +45,7 @@ const ArticleTheme = createTheme({
 		MuiCardHeader: {
 			styleOverrides: {
 				root: {
-					padding: "16px 16px 16px 16px",
+					padding: "10px 16px 16px 16px",
 				},
 			},
 		},

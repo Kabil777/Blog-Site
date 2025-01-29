@@ -10,16 +10,18 @@ function ProtectedChecker() {
 	const location = useLocation();
 	const dispatch = useDispatch();
 	useEffect(() => {
-		const fetchAuth = () => {
-			try {
-				dispatch(getInitialCredits());
-				console.log("Called");
-			} catch (error) {
-				console.error("Error during auth check:", error);
-			}
-		};
-		fetchAuth();
-	}, [dispatch]);
+		if (!(status == "success")) {
+			const fetchAuth = () => {
+				try {
+					dispatch(getInitialCredits());
+					console.log("Called");
+				} catch (error) {
+					console.error("Error during auth check:", error);
+				}
+			};
+			fetchAuth();
+		}
+	}, [dispatch, status]);
 
 	if (status == "loading") {
 		return (

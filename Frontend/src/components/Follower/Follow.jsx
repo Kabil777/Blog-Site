@@ -24,13 +24,13 @@ export default function MostFollowed() {
 					sx={{
 						fontWeight: "bold",
 						fontSize: "1.2rem",
-						fontFamily: "'Source Sans 3',serif"
+						fontFamily: "'Source Sans 3',serif",
 					}}
 				>
 					Top Writers
 				</Typography>
-				<Stack direction="column" width="100%" alignItems="center">
-					<Profile actionEnable={null}  showButton={true}/>
+				<Stack direction="column" width="100%" alignItems="flex-start">
+					<Profile actionEnable={null} showButton={true} />
 					<Profile showButton={true} />
 					<Profile showButton={true} />
 				</Stack>

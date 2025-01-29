@@ -1,5 +1,4 @@
 const fs = require("fs").promises;
-const path = require("path");
 
 const ensureDirectoryExists = async (folderPath) => {
 	try {
@@ -15,4 +14,4 @@ const ensureDirectoryExists = async (folderPath) => {
 	}
 };
 
-module.exports = { ensureDirectoryExists }
+module.exports = { ensureDirectoryExists };

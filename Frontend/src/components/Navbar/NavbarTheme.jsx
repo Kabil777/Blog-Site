@@ -75,6 +75,7 @@ const AppBarTheme = createTheme({
 				root: {
 					fontFamily: "Inter",
 					height: "50px",
+					padding: "0",
 					fontSize: "1.1rem",
 				},
 			},
@@ -82,7 +83,6 @@ const AppBarTheme = createTheme({
 		MuiIconButton: {
 			styleOverrides: {
 				root: {
-					fontFamily: "Teko",
 					fontSize: "1.8em",
 					height: "40px",
 					width: "40px",

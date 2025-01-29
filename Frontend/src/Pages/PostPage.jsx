@@ -12,15 +12,35 @@ import { ThemeProvider } from "@mui/material/styles";
 import PostTheme from "./PostTheme";
 import PostActionButtons from "../components/PostActions/PostActionButtons";
 import ChipComponent from "../components/Form/chipComponent";
+import remarkGfm from "remark-gfm"; // For GitHub Flavored Markdown
+import rehypeRaw from "rehype-raw";
+import remarkBreaks from "remark-breaks";
+import axios from "axios";
 
 function PostPage() {
 	const [content, setContent] = useState("");
 
 	useEffect(() => {
-		fetch("../../public/REDUX.md")
-			.then((res) => res.text())
-			.then((text) => setContent(text));
+		const getPost = async () => {
+			try {
+				const { data } = await axios.get("http://localhost:7000/post");
+
+				console.log("Raw response:", data);
+
+				const formattedText = data
+					.replace(/^"|"$/g, "") // Remove surrounding quotes
+					.replace(/\\n/g, "\n") // Convert escaped newlines
+					.replace(/\\\\/g, "\\"); // Convert escaped backslashes
+
+				setContent(formattedText);
+			} catch (error) {
+				console.error("Error fetching post:", error);
+			}
+		};
+
+		getPost();
 	}, []);
+
 	return (
 		<>
 			<ThemeProvider theme={PostTheme}>
@@ -28,8 +48,8 @@ function PostPage() {
 				<Container
 					maxWidth="xl"
 					sx={{
-						mt: "100px",
 						display: "flex",
+						mt: "100px",
 						alignItems: "center",
 						justifyContent: "center",
 						overflowY: "hidden",
@@ -72,7 +92,8 @@ function PostPage() {
 					</Stack>
 
 					<ReactMarkdown
-						rehypePlugins={[rehypeHighlight]}
+						rehypePlugins={[rehypeHighlight, rehypeRaw]}
+						remarkPlugins={[remarkGfm, remarkBreaks]} // Add the remarkGfm plugin
 						className="reactMarkdown"
 					>
 						{content}

@@ -34,7 +34,6 @@ function LoginStack() {
                       display: "flex",
                       height: "100vh",
                       overflow: "hidden",
-                      position: "fixed",
                   }}
               >
 

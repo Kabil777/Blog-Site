@@ -1,6 +1,7 @@
 import { Avatar, IconButton, CardHeader, Box } from "@mui/material";
-import { CiMenuKebab } from "react-icons/ci";
+import { CiLineHeight, CiMenuKebab } from "react-icons/ci";
 import CompButton from "../Button/CompButton";
+import CompFollow from "../Button/CompFollow";
 
 function Profile({ actionEnable, showButton }) {
 	return (
@@ -14,26 +15,7 @@ function Profile({ actionEnable, showButton }) {
 			title={
 				<Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
 					<span>Kabil</span>
-					{showButton && <CompButton index={2} sx={{
-						width: "5.25rem",
-						height: "1.5rem",
-						justifyContent: "center",
-						textAlign: "center",
-						padding: 0,
-						fontSize: "0.745rem",
-						display: "flex",
-						boxShadow: "none",
-						color: "#04BF8A",
-						backgroundColor: "#CAFDCA",
-						gap: "0",
-
-						"& .MuiButton-startIcon": {
-							marginRight: '3.5px',
-							fontSize: "0.675rem",
-							alignContent: "center",
-							alignItems: "center"
-						},
-					}} />}
+					{showButton && <CompFollow index={0} />}
 				</Box>
 			}
 			action={

@@ -5,7 +5,6 @@ import MostFollowed from "../components/Follower/Follow";
 import BasicButtons from "../components/Button/Button";
 import Navbar from "../components/Navbar/Navbar";
 import Container from "@mui/material/Container";
-import {FaDisplay} from "react-icons/fa6";
 function HomePage() {
 	return (
 		<>

@@ -3,12 +3,8 @@ import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
-import Button from "@mui/material/Button";
-import { FaPython } from "react-icons/fa";
-import { AiOutlineKubernetes } from "react-icons/ai";
-import { IoMdAdd } from "react-icons/io";
 import Typography from "@mui/material/Typography";
-import CompButton from "../Button/CompButton";
+import ReUseButton from "../Button/ReUs-Button";
 export default function MediaCard() {
 	return (
 		<Card
@@ -69,39 +65,20 @@ export default function MediaCard() {
 				sx={{
 					paddingTop: "0.3125rem",
 					paddingBottom: 0,
+					padding:'0 0 0 0.9rem',
 					display: "flex",
 					marginTop: "0.1875rem",
 				}}
 			>
+				<ReUseButton text="PYTHON" bgcolor="#EEF5FF" color="#336699" />
+				<ReUseButton text="DATA STRUCTURES" bgcolor="#EEF5FF" color="#336699" />
 
-				<CompButton index={0} sx={{
-					marginBottom: "0.0625rem",
-					width: "5.25rem",
-					height: "1.375rem",
-					fontSize: "0.6875rem",
-					backgroundColor: "#EEF5FF",
 
-				}} />
-				<CompButton index={1} sx={{
-					marginBottom: "0.0625rem",
-					width: "5.25rem",
-					height: "1.375rem",
-					fontSize: "0.6875rem",
-					backgroundColor: "#EEF5FF",
-
-				}} />
 
 			</CardActions>
-			<CardActions sx={{ paddingTop: 0, marginTop: "1rem" }}>
+			<CardActions sx={{ paddingTop: 0, marginTop: "1rem" ,padding:'0 0 0 0.9rem', marginBottom: '1rem' }}>
 				{" "}
-				{/* Increased marginTop */}
-				<CompButton index={2} sx={{
-					fontsize: "0.6875rem",
-					width: "5.25rem",
-					height: "1.5rem",
-					color: "#04bf8a",
-					backgroundcolor: "#cafdca",
-				}} />
+				<ReUseButton text="FOLLOW" bgcolor="#d9ffb3" color="#339933" />
 			</CardActions>
 		</Card>
 	);

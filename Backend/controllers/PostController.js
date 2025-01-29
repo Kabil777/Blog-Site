@@ -14,7 +14,8 @@ const postController = {
 			console.log(userToken);
 			const decoded = jwt.verify(userToken, process.env.ACCESS_TOKEN_KEY);
 			const userId = decoded.id;
-			const { postId, title, description, tags, blog } = req.body;
+			const { postId, slug, title, description, tags, blog } = req.body;
+			console.log(req.body)
 			if (!postId || !title || !blog) {
 				return res
 					.status(400)
@@ -26,6 +27,7 @@ const postController = {
 				data: {
 					userId: userId,
 					id: postId,
+					slug: slug,
 					name: title,
 					description: description,
 					mdFileName: fileName,

@@ -102,8 +102,6 @@ export default function MediaCard() {
 				</Button>
 			</CardActions>
 			<CardActions sx={{ paddingTop: 0, marginTop: "1rem" }}>
-				{" "}
-				{/* Increased marginTop */}
 				<Button
 					size="medium"
 					startIcon={<IoMdAdd style={{ fontSize: "0.875rem" }} />}

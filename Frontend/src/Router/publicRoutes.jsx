@@ -1,4 +1,5 @@
 import Login from "../components/Login/login";
+import LoginStack from "../components/Login/loginStackShare";
 import EditorPage from "../Pages/EditorPage";
 const publicRoutes = [
 	{
@@ -8,6 +9,10 @@ const publicRoutes = [
 	{
 		path: "/login",
 		element: <Login />,
+	},
+	{
+		path: "/loginstackshare",
+		element: <LoginStack />,
 	},
 ];
 

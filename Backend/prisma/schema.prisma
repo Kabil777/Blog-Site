@@ -1,46 +1,51 @@
-
 generator client {
-        provider = "prisma-client-js"
+  provider = "prisma-client-js"
 }
 
 datasource db {
-        provider = "mysql"
-        url      = env("DATABASE_URL")
+  provider = "mysql"
+  url      = env("DATABASE_URL")
 }
 
 model User {
-        id           String   @id @default(uuid())
-        Google_id    String   @unique
-        name         String   @unique
-        email        String   @unique
-        profileCover String
-        createdAt    DateTime @default(now())
-        posts        Post[]
+  id           String   @id @default(uuid())
+  Google_id    String   @unique
+  name         String   @unique
+  email        String   @unique
+  profileCover String
+  createdAt    DateTime @default(now())
+  posts        Post[]
 }
 
 model Post {
-        id          String      @id @unique
-        name        String
-        description String
-        mdFileName  String
-        user        User        @relation(fields: [userId], references: [id])
-        userId      String
-        createdAt   DateTime    @default(now())
-        tags        TagMapper[]
+  id          String      @id @unique
+  slug        String      @unique
+  name        String
+  description String
+  mdFileName  String
+  userId      String
+  createdAt   DateTime    @default(now())
+  user        User        @relation(fields: [userId], references: [id])
+  tags        TagMapper[]
+
+  @@index([userId], map: "Post_userId_fkey")
 }
 
 model Tags {
-        id        Int         @id @default(autoincrement())
-        domain    String
-        skill     String      @unique
-        createdAt DateTime    @default(now())
-        post      TagMapper[]
+  id        Int         @id @default(autoincrement())
+  domain    String
+  skill     String      @unique
+  createdAt DateTime    @default(now())
+  post      TagMapper[]
 }
 
 model TagMapper {
-        id     Int    @id @default(autoincrement())
-        post   Post   @relation(fields: [postId], references: [id])
-        postId String
-        tag    Tags   @relation(fields: [tagId], references: [id])
-        tagId  Int
+  id     Int    @id @default(autoincrement())
+  postId String
+  tagId  Int
+  post   Post   @relation(fields: [postId], references: [id])
+  tag    Tags   @relation(fields: [tagId], references: [id])
+
+  @@index([postId], map: "TagMapper_postId_fkey")
+  @@index([tagId], map: "TagMapper_tagId_fkey")
 }

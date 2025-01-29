@@ -19,9 +19,10 @@ import { setForm } from "../../store/reducers/editorReducer";
 import { useState } from "react";
 import chips from "./chip";
 import { TiDelete } from "react-icons/ti";
+import { useNavigate } from "react-router-dom";
 function Form({ open, closeReq }) {
 	const dispatch = useDispatch();
-
+	const navigate = useNavigate()
 	const [activeTab, setActiveTab] = useState(0);
 	const [tag, tagSetter] = useState([]);
 	const [clickedChips, setClickedChips] = useState([]);
@@ -35,8 +36,11 @@ function Form({ open, closeReq }) {
 		}
 	};
 
+	const cancelNaviate = () => {
+		navigate("/")
+	}
 	const sendHeadders = (formJson) => {
-		if (formJson.title && formJson.Desc && tag.length > 0) {
+		if (formJson.title && formJson.description && tag.length > 0) {
 			dispatch(setForm(formJson));
 		} else {
 			console.error("Please complete all fields before submitting.");
@@ -143,7 +147,7 @@ function Form({ open, closeReq }) {
 					<DialogContentText>Description for your Article</DialogContentText>
 					<TextField
 						required
-						name="Desc"
+						name="description"
 						label="Description"
 						fullWidth
 						variant="outlined"
@@ -213,7 +217,7 @@ function Form({ open, closeReq }) {
 				</DialogContent>
 			</div>
 			<DialogActions>
-				<Button onClick={closeReq} sx={{ fontWeight: "600" }}>
+				<Button onClick={cancelNaviate} sx={{ fontWeight: "600" }} >
 					Cancel
 				</Button>
 				{activeTab === 1 ? (

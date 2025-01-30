@@ -32,7 +32,7 @@ const initialPost = {
 	title: "",
 	description: "",
 	tags: [],
-	blog: "**Write Your Content here....**",
+	blog: "### Write Your Content here....",
 	titleCover: "",
 };
 export const postCreate = createSlice({

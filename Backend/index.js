@@ -5,6 +5,7 @@ const passport = require("passport");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const { PrismaClient } = require("@prisma/client");
+const { AuthenticateToken } = require("./middlewares/jwtMiddleware");
 const prisma = new PrismaClient();
 
 const app = express();

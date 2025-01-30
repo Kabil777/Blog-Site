@@ -141,8 +141,8 @@ function Navbar() {
 						>
 							<InputBase
 								sx={{ ml: 1, flex: 1 }}
-								placeholder="Search Google Maps"
-								inputProps={{ "aria-label": "search google maps" }}
+								placeholder="Search for Articles..."
+								inputProps={{ "aria-label": "Search for Articles" }}
 							/>
 							<IconButton
 								type="button"

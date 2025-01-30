@@ -16,9 +16,11 @@ import remarkGfm from "remark-gfm"; // For GitHub Flavored Markdown
 import rehypeRaw from "rehype-raw";
 import remarkBreaks from "remark-breaks";
 import axios from "axios";
+import { CircularProgress } from "@mui/material";
 
 function PostPage() {
 	const [content, setContent] = useState("");
+	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
 		const getPost = async () => {
@@ -28,13 +30,17 @@ function PostPage() {
 				console.log("Raw response:", data);
 
 				const formattedText = data
-					.replace(/^"|"$/g, "") // Remove surrounding quotes
-					.replace(/\\n/g, "\n") // Convert escaped newlines
-					.replace(/\\\\/g, "\\"); // Convert escaped backslashes
+					.replace(/\\#/g, "#") // Unescape headers
+					.replace(/\\\[/g, "[") // Unescape links
+					.replace(/\\\]/g, "]")
+					.replace(/\\\*/g, "*") // Unescape bold/italic
+					.replace(/&#x20;/g, " ");
 
 				setContent(formattedText);
 			} catch (error) {
 				console.error("Error fetching post:", error);
+			} finally {
+				setLoading(false); // Stop loading after fetch
 			}
 		};
 
@@ -90,14 +96,18 @@ function PostPage() {
 							sx={{ width: "100%", marginY: 2, alignSelf: "center" }}
 						/>
 					</Stack>
-
-					<ReactMarkdown
-						rehypePlugins={[rehypeHighlight, rehypeRaw]}
-						remarkPlugins={[remarkGfm, remarkBreaks]} // Add the remarkGfm plugin
-						className="reactMarkdown"
-					>
-						{content}
-					</ReactMarkdown>
+					{loading ? (
+						<CircularProgress />
+					) : (
+						<ReactMarkdown
+							remarkPlugins={[remarkGfm, remarkBreaks]}
+							rehypePlugins={[rehypeRaw, rehypeHighlight]}
+							className="reactMarkdown"
+							parserOptions={{ commonmark: true }}
+						>
+							{content}
+						</ReactMarkdown>
+					)}
 				</Container>
 			</ThemeProvider>
 		</>

@@ -1,14 +1,13 @@
 const { fileWriter } = require("../utils/PostWriter");
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
-const jwt = require("jsonwebtoken");
 const fs = require("fs");
 
 const postController = {
 	getMethod: async (req, res) => {
 		try {
 			const fileData = await fs.promises.readFile(
-				"/home/kabil/projects/node/Blog-site/Backend/uploads/6f3ub453MzWeBRI18HNKG.md",
+				"/home/kabil/projects/node/Blog-site/Backend/uploads/test.md",
 				"utf-8",
 			);
 			res.send(fileData);
@@ -17,12 +16,9 @@ const postController = {
 		}
 	},
 	postMethod: async (req, res) => {
-		console.log(req.body);
 		try {
-			const userToken = req.cookies.accessToken;
-			console.log(userToken);
-			const decoded = jwt.verify(userToken, process.env.ACCESS_TOKEN_KEY);
-			const userId = decoded.id;
+			console.log(req.user);
+			const userId = req.user.id;
 			const { postId, slug, title, description, tags, blog } = req.body;
 			console.log(req.body);
 			if (!postId || !title || !blog) {

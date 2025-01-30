@@ -4,6 +4,6 @@ const {
 
 const fetchPostRouter = require("express").Router();
 
-fetchPostRouter.route("/@:slugId").get(PostRequestController.getMethod);
+fetchPostRouter.route("/@:user/:slugId").get(PostRequestController.getMethod);
 
 module.exports = { fetchPostRouter };

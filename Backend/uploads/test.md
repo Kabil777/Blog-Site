@@ -128,7 +128,7 @@ A resource refers to a specific API URL used to access an object. Resources are 
 Every object in Kubernetes is represented/created using a YAML file.
 Kubernetes has many native objects (20+), however, every object YAML follows a hierarchical structure as shown below.
 
-```
+``` yaml
 apiVersion: <API version>
 kind: <Kind of object>
 metadata:

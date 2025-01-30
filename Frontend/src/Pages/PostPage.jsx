@@ -4,7 +4,6 @@ import Navbar from "../components/Navbar/Navbar";
 import ReactMarkdown from "react-markdown";
 import "highlight.js/styles/tokyo-night-dark.css";
 import rehypeHighlight from "rehype-highlight";
-import { useState } from "react";
 import { useEffect } from "react";
 import "./style.css";
 import Profile from "../components/profile/profile";
@@ -15,36 +14,22 @@ import ChipComponent from "../components/Form/chipComponent";
 import remarkGfm from "remark-gfm"; // For GitHub Flavored Markdown
 import rehypeRaw from "rehype-raw";
 import remarkBreaks from "remark-breaks";
-import axios from "axios";
 import { CircularProgress } from "@mui/material";
+import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { ArticleGetter } from "../store/reducers/getArticles";
 
 function PostPage() {
-	const [content, setContent] = useState("");
-	const [loading, setLoading] = useState(true);
-
+	const { user, slug } = useParams()
+	console.log(slug)
+	const dispatch = useDispatch()
+	const data = useSelector((state)=>state.article.postContent)	
+	const status = useSelector((state)=>state.article.status)
+	const getArticle = ()=>{
+		dispatch(ArticleGetter({user,slug}))
+	}
 	useEffect(() => {
-		const getPost = async () => {
-			try {
-				const { data } = await axios.get("http://localhost:7000/post");
-
-				console.log("Raw response:", data);
-
-				const formattedText = data
-					.replace(/\\#/g, "#") // Unescape headers
-					.replace(/\\\[/g, "[") // Unescape links
-					.replace(/\\\]/g, "]")
-					.replace(/\\\*/g, "*") // Unescape bold/italic
-					.replace(/&#x20;/g, " ");
-
-				setContent(formattedText);
-			} catch (error) {
-				console.error("Error fetching post:", error);
-			} finally {
-				setLoading(false); // Stop loading after fetch
-			}
-		};
-
-		getPost();
+	getArticle()
 	}, []);
 
 	return (
@@ -96,7 +81,7 @@ function PostPage() {
 							sx={{ width: "100%", marginY: 2, alignSelf: "center" }}
 						/>
 					</Stack>
-					{loading ? (
+					{(status === "loading")? (
 						<CircularProgress />
 					) : (
 						<ReactMarkdown
@@ -105,7 +90,7 @@ function PostPage() {
 							className="reactMarkdown"
 							parserOptions={{ commonmark: true }}
 						>
-							{content}
+							{data}
 						</ReactMarkdown>
 					)}
 				</Container>

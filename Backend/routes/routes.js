@@ -10,7 +10,7 @@ router.route("/").get((req, res) => {
 	res.send("hello from /");
 });
 router.use("/user", AuthenticateToken, userRouter);
-router.use("/post", PostRouter);
+router.use("/post", AuthenticateToken, PostRouter);
 router.use("/auth/google", authRouterGoogle);
 router.use("/fetchPost", fetchPostRouter);
 module.exports = { router };

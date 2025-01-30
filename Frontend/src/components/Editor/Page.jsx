@@ -50,7 +50,9 @@ function Page() {
 	}, []);
 
 	const SetBlog = (content) => {
+		content = content.replace(/\\/g, "");
 		dispatch(setData(content))
+		console.log(content)
 	}
 	const submitPost = () => {
 		dispatch(PostSend(postData))

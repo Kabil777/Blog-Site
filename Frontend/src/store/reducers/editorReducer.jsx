@@ -17,9 +17,10 @@ export const PostSend = createAsyncThunk(
 				},
 			);
 			if (!response) {
-				throw new Error("Faild to upload your post");
+				throw new Error("Failed to upload your post");
 			}
-			console.log(response.data);
+			console.log(postData)
+			console.log(response.status);
 			return response.data;
 		} catch (error) {
 			return rejectWithValue(error.message);

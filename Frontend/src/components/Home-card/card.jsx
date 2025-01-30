@@ -4,6 +4,7 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
+import CustomButton from "../Button/CustomButton";
 import ReUseButton from "../Button/ReUs-Button";
 export default function MediaCard() {
 	return (
@@ -71,15 +72,49 @@ export default function MediaCard() {
 					marginTop: "0.1875rem",
 				}}
 			>
-				<ReUseButton text="PYTHON" bgcolor="#EEF5FF" color="#336699" />
-				<ReUseButton text="DATA STRUCTURES" bgcolor="#EEF5FF" color="#336699" />
-
-
-
+				<Button
+					size="small"
+					startIcon={<FaPython style={{ fontSize: "0.875rem" }} />}
+					sx={{
+						marginBottom: "0.0625rem",
+						width: "5.25rem",
+						height: "1.375rem",
+						fontSize: "0.6875rem",
+						backgroundColor: "#EEF5FF",
+					}}
+				>
+					Python
+				</Button>
+				<Button
+					size="small"
+					startIcon={<AiOutlineKubernetes style={{ fontSize: "0.875rem" }} />}
+					sx={{
+						marginBottom: "0.0625rem",
+						width: "9.375rem",
+						height: "1.375rem",
+						fontSize: "0.6875rem",
+						backgroundColor: "#EEF5FF",
+					}}
+				>
+					Data Structures
+				</Button>
 			</CardActions>
-			<CardActions sx={{ paddingTop: 0, marginTop: "1rem" ,padding:'0 0 0 0.9rem', marginBottom: '1rem' }}>
+			<CardActions sx={{ paddingTop: 0, marginTop: "1rem" }}>
 				{" "}
-				<ReUseButton text="FOLLOW" bgcolor="#d9ffb3" color="#339933" />
+				{/* Increased marginTop */}
+				<Button
+					size="medium"
+					startIcon={<IoMdAdd style={{ fontSize: "0.875rem" }} />}
+					sx={{
+						fontSize: "0.6875rem",
+						width: "5.25rem",
+						height: "1.5rem",
+						color: "#04BF8A",
+						backgroundColor: "#CAFDCA",
+					}}
+				>
+					Follow
+				</Button>
 			</CardActions>
 		</Card>
 	);

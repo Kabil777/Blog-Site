@@ -1,7 +1,8 @@
-import { Avatar, IconButton, CardHeader } from "@mui/material";
+import { Avatar, IconButton, CardHeader, ThemeProvider } from "@mui/material";
 import CompButton from "../Button/CompButton";
 import { useSelector } from "react-redux";
 import { HiOutlineDotsVertical } from "react-icons/hi";
+import profileTheme from "./profileTheme";
 
 function Profile({ coverDetails, userDetails, actionEnable, showButton }) {
 	const avatar = useSelector((state) => state.auth.profileCover);
@@ -18,36 +19,51 @@ function Profile({ coverDetails, userDetails, actionEnable, showButton }) {
 	};
 	const data = getProfile();
 	return (
-		<CardHeader
-			avatar={
-				<Avatar src={data ? data.profileCover : avatar} alt="bg"></Avatar>
-			}
-			title={data ? data.name : name}
-			action={
-				<>
-					{actionEnable && (
-						<IconButton aria-label="settings">
-							<HiOutlineDotsVertical />
-						</IconButton>
-					)}
-				</>
-			}
-			subheader={data ? data.email : email}
-			sx={{
-				justifyContent: "flex-start",
-				textAlign: "start",
-				alignItems: "center",
-			}}
-			titleTypographyProps={{
-				fontSize: "1rem",
-				fontWeight: "bold",
-			}}
-			subheaderTypographyProps={{
-				fontSize: "0.9rem",
-				fontWeight: "normal",
-				color: "text.secondary",
-			}}
-		/>
+		<ThemeProvider theme={profileTheme}>
+			<CardHeader
+				avatar={
+					<Avatar sx={{ bgcolor: "#2155cd" }} aria-label="recipe">
+						K
+					</Avatar>
+				}
+
+				title={
+					<span className="kabil" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", }}>
+						Kabil{" "}
+						{showButton && (
+							<span style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+								<CompButton index={2} />
+							</span>
+						)}
+					</span>
+				}
+				action={
+					<>
+						{actionEnable && (
+							<IconButton aria-label="settings">
+								<CiMenuKebab />
+							</IconButton>
+						)}
+
+					</>
+				}
+				subheader="kabil.ec23@bitsathy.ac.in"
+				sx={{
+					justifyContent: "flex-start",
+					textAlign: "start",
+					alignItems: "center",
+				}}
+				titleTypographyProps={{
+					fontSize: "1.1rem",
+					fontWeight: "bold",
+				}}
+				subheaderTypographyProps={{
+					fontSize: "1rem",
+					fontWeight: "normal",
+					color: "text.secondary",
+				}}
+			/>
+		</ThemeProvider>
 	);
 }
 export default Profile;

@@ -3,6 +3,8 @@ import { FaPython } from "react-icons/fa";
 import { AiOutlineKubernetes } from "react-icons/ai";
 import  {IoMdAdd} from "react-icons/io";
 
+import { ThemeProvider } from "@mui/material";
+import ButtonTheme from "./ButtonTheme";
 export default function CompButton({ index }) {
 	const buttons = [
 		{ label: "PYTHON", icon: <FaPython /> },
@@ -12,30 +14,30 @@ export default function CompButton({ index }) {
 	const button = buttons[index];
 
 	return (
-		<Button
-			key={index}
-			size="medium"
-			variant="contained"
-			startIcon={button.icon}
-			sx={{
-				height: "30px",
-				width: "80px",
-				justifyContent: "center",
-				textAlign: "center",
-				padding: "none",
-				background: "#eef5ff",
-				color: "#2155cd",
-				boxShadow: "none",
-				p: "5px 2px",
-				fontSize: "0.75rem",
-				borderRadius: "0",
-				"&:hover": {
-					boxShadow: "none",
-				},
-			}}
-		>
-			{button.label}
-		</Button>
+		<ThemeProvider theme={ButtonTheme} >
+			<Button
+				key={index}
+				size="small"
+				variant="contained"
+				startIcon={button.icon}
+				sx={{
+					width: "100%",
+					justifyContent: "center",
+					backgroundColor: "#ccffe6",
+					color: "#04BF8A",
+					padding: '5px',
+					textAlign: "center",
+					boxShadow: 'none',
+					height: "1.25rem",
+					" :hover": {
+						boxShadow: "none",
+					},
+					"& .MuiButton-startIcon": {
+						marginRight: '2px',
+					},
+				}}
+			>{button.label}</Button>
+		</ThemeProvider>
 	);
 }
 

@@ -1,29 +1,43 @@
-import { Box, Container, Stack, TextField, Typography } from "@mui/material";
-import Button from '@mui/material/Button';
+import { Box, Container, Stack, TextField, Button, Typography } from "@mui/material";
 import google from "../../assets/g.jpg";
 import github from "../../assets/github.png";
 import icoon from "../../assets/icons odf stack.jpg";
-import { MdAspectRatio, MdOutlineMail } from "react-icons/md";
+import { MdOutlineMail } from "react-icons/md";
 import { CiLock } from "react-icons/ci";
 import React, { useEffect, useState } from "react";
 import img1 from "../../assets/4575.jpg";
 import img2 from "../../assets/5037367.jpg";
 import img3 from "../../assets/7124027.jpg";
 import img4 from "../../assets/front.jpg";
-const images = [
-img1,img2,img3,img4
-  ];
+import MultipleSnackbars from "../Snackbar/Snackbar";
+
+const images = [img1, img2, img3, img4];
+
 function Login() {
-	const [currentIndex, setCurrentIndex] = useState(0); // Track the current image index
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [snackbarMessage, setSnackbarMessage] = useState('');
+  const [snackbarType, setSnackbarType] = useState('');
+  const [openSnackbar, setOpenSnackbar] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length); // Loop through images
-    }, 4000); // 3 seconds display + 1 second for transition
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 4000);
 
-    return () => clearInterval(interval); // Cleanup interval on unmount
+    return () => clearInterval(interval);
   }, []);
+
+  const handleSnackbar = (message, type) => {
+    setSnackbarMessage(message);
+    setSnackbarType(type);
+    setOpenSnackbar(true);
+  };
+
+  const handleCloseSnackbar = () => {
+    setOpenSnackbar(false);
+  };
 	return (
+		
 		<Container disableGutters
 			maxWidth="100%"
 			sx={{
@@ -36,7 +50,13 @@ function Login() {
 			  padding:"0",
 				margin:"0",
 			}}	
-		>
+		><MultipleSnackbars 
+
+		openSnackbar={openSnackbar} 
+		snackbarMessage={snackbarMessage} 
+		snackbarType={snackbarType} 
+		handleCloseSnackbar={handleCloseSnackbar} 
+		/>
 			<Stack /* left side body */
 			sx={{
 				
@@ -85,6 +105,7 @@ function Login() {
 						<Stack component="img" sx={{aspectRatio:1}} width="15%" src={google}></Stack>
 						<Typography fontSize="80%" fontFamily="Inter" color="#6e6e67" fontWeight="bold">Google</Typography>
 					</Stack>
+					
 					<Stack /*git*/ sx=
 					{{
 					display:"flex",
@@ -96,7 +117,7 @@ function Login() {
 					justifyContent:"center",
 					width:"40%",
 					height:"90%"
-					}}>
+					}}onClick={() => handleSnackbar("GitHub login feature is not implemented yet!", "failure")}>
 						<Stack component="img" sx={{aspectRatio:1}} width="15%" src={github}></Stack>
 						<Typography fontSize="80%" fontFamily="Inter" color="#6e6e67" fontWeight="bold">Github</Typography>
 					</Stack>
@@ -140,7 +161,15 @@ function Login() {
 				</Stack>
 				</Stack>
 				<Button variant="contained" sx={{width:"80%"}}>Log In </Button>
-				<Stack sx={{width:"80%",display:"flex",flexDirection:"row" ,alignItems:"center" ,gap :"0.6rem", justifyContent:"center"}}><Typography>Dont Have An Account ?</Typography><Typography sx={{color:"#0759D7"}}>Create an Account</Typography></Stack> 
+				<Stack 
+				sx={{width:"80%",
+				display:"flex",
+				flexDirection:"row" ,
+				alignItems:"center" ,
+				gap :"0.6rem", 
+				justifyContent:"center"
+				}}>
+					<Typography>Dont Have An Account ?</Typography><Typography sx={{color:"#0759D7"}}>Create an Account</Typography></Stack> 
 				</Stack>
 				
 			</Stack>

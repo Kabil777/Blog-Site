@@ -20,16 +20,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { ArticleGetter } from "../store/reducers/getArticles";
 
 function PostPage() {
-	const { user, slug } = useParams()
-	console.log(slug)
-	const dispatch = useDispatch()
-	const data = useSelector((state)=>state.article.postContent)	
-	const status = useSelector((state)=>state.article.status)
-	const getArticle = ()=>{
-		dispatch(ArticleGetter({user,slug}))
-	}
+	const { user, slug } = useParams();
+	console.log(slug);
+	const dispatch = useDispatch();
+	const data = useSelector((state) => state.article.postContent);
+	const status = useSelector((state) => state.article.status);
+	const title = useSelector((state) => state.article.postDetails.name);
+	const getArticle = () => {
+		dispatch(ArticleGetter({ user, slug }));
+	};
 	useEffect(() => {
-	getArticle()
+		getArticle();
 	}, []);
 
 	return (
@@ -56,7 +57,7 @@ function PostPage() {
 							fontWeight="600"
 							fontFamily="Lato"
 						>
-							Basic Redux: Basic Redux Components
+							{title}
 						</Typography>
 						<Profile />
 						<Stack
@@ -81,7 +82,7 @@ function PostPage() {
 							sx={{ width: "100%", marginY: 2, alignSelf: "center" }}
 						/>
 					</Stack>
-					{(status === "loading")? (
+					{status === "loading" ? (
 						<CircularProgress />
 					) : (
 						<ReactMarkdown

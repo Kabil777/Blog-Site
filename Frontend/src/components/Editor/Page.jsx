@@ -24,19 +24,19 @@ import {
 	tablePlugin,
 	headingsPlugin,
 	linkPlugin,
-	linkDialogPlugin
+	linkDialogPlugin,
 } from "@mdxeditor/editor";
 import { setData, PostSend } from "../../store/reducers/editorReducer";
 
 import { FaFileUpload } from "react-icons/fa";
-import './Page.css'
+import "./Page.css";
 import "@mdxeditor/editor/style.css";
-import { IconButton, Stack, } from "@mui/material";
+import { IconButton, Stack } from "@mui/material";
 
 function Page() {
-	const dispatch = useDispatch()
-	const markdownContent = useSelector((state) => state.post.blog)
-	const postData = useSelector((state) => state.post)
+	const dispatch = useDispatch();
+	const markdownContent = useSelector((state) => state.post.blog);
+	const postData = useSelector((state) => state.post);
 	const [isSourceMode, setIsSourceMode] = useState(false);
 	const [open, changeOpenState] = useState(true);
 	const closeReq = () => {
@@ -50,13 +50,16 @@ function Page() {
 	}, []);
 
 	const SetBlog = (content) => {
-		content = content.replace(/\\/g, "");
-		dispatch(setData(content))
-		console.log(content)
-	}
+		content = content
+			.replace(/\\/g, "")
+			.replace(/&#x9;/g, "\t")
+			.replace(/&#x20;/g, " ");
+		dispatch(setData(content));
+		console.log(content);
+	};
 	const submitPost = () => {
-		dispatch(PostSend(postData))
-	}
+		dispatch(PostSend(postData));
+	};
 	const languageMapping = {
 		js: "JavaScript",
 		ts: "TypeScript",
@@ -78,8 +81,16 @@ function Page() {
 			return acc;
 		}, {});
 	};
-	const ToolbarDivider = () => <div style={{ width: "1px", height: "20px", backgroundColor: "#ccc", margin: "0 8px" }} />;
-
+	const ToolbarDivider = () => (
+		<div
+			style={{
+				width: "1px",
+				height: "20px",
+				backgroundColor: "#ccc",
+				margin: "0 8px",
+			}}
+		/>
+	);
 
 	return (
 		<>
@@ -90,12 +101,13 @@ function Page() {
 				onChange={SetBlog}
 				plugins={[
 					codeBlockPlugin({
-						defaultCodeBlockLanguage: 'js'
+						defaultCodeBlockLanguage: "js",
 					}),
 					listsPlugin(),
 					quotePlugin(),
 					headingsPlugin(),
-					thematicBreakPlugin(), tablePlugin(),
+					thematicBreakPlugin(),
+					tablePlugin(),
 					linkPlugin(),
 					linkDialogPlugin(),
 					codeMirrorPlugin({ codeBlockLanguages: getSupportedLanguages() }),
@@ -104,18 +116,25 @@ function Page() {
 						toolbarContents: () => (
 							<>
 								{" "}
-
 								<ConditionalContents
 									options={[
-										{ when: (editor) => editor?.editorType === 'codeblock', contents: () => (<ChangeCodeMirrorLanguage />) },
+										{
+											when: (editor) => editor?.editorType === "codeblock",
+											contents: () => <ChangeCodeMirrorLanguage />,
+										},
 										{
 											fallback: () => {
-												<InsertCodeBlock />
-											}
-										}
-										,
-									]} />
-								<Stack direction="row" alignItems="center" justifyContent="flex-start" width="50%">
+												<InsertCodeBlock />;
+											},
+										},
+									]}
+								/>
+								<Stack
+									direction="row"
+									alignItems="center"
+									justifyContent="flex-start"
+									width="50%"
+								>
 									<BoldItalicUnderlineToggles />
 									<ToolbarDivider />
 									<CodeToggle />
@@ -130,18 +149,29 @@ function Page() {
 									<ToolbarDivider />
 									<InsertTable />
 									<InsertThematicBreak />
-									<IconButton onClick={() => { console.log(isSourceMode); setIsSourceMode(!isSourceMode) }}>
+									<IconButton
+										onClick={() => {
+											console.log(isSourceMode);
+											setIsSourceMode(!isSourceMode);
+										}}
+									>
 										<TbSourceCode />
 									</IconButton>
 								</Stack>
-								<Stack direction="row" alignItems="center" justifyContent="flex-end" width="50%">
-									<IconButton color="#2155cd" onClick={submitPost} ><FaFileUpload size={20} color="#2155cd" /></IconButton>
+								<Stack
+									direction="row"
+									alignItems="center"
+									justifyContent="flex-end"
+									width="50%"
+								>
+									<IconButton color="#2155cd" onClick={submitPost}>
+										<FaFileUpload size={20} color="#2155cd" />
+									</IconButton>
 								</Stack>
 							</>
 						),
 					}),
 				]}
-
 			/>
 			<Form open={open} closeReq={closeReq} />
 		</>

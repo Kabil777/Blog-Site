@@ -5,7 +5,30 @@ import MostFollowed from "../components/Follower/Follow";
 import BasicButtons from "../components/Button/Button";
 import Navbar from "../components/Navbar/Navbar";
 import Container from "@mui/material/Container";
+import { useEffect, useState } from "react";
+import axios from "axios";
 function HomePage() {
+	const [data, setData] = useState([]);
+	const getArtcleCover = async () => {
+		if (data) {
+			try {
+				const response = await axios.get("http://localhost:7000/post", {
+					withCredentials: true,
+				});
+				if (!data) {
+					throw new Error("fetching failed");
+				}
+				console.log(response.data.data);
+				return setData(response.data.data);
+			} catch (error) {
+				console.log(error);
+			}
+		}
+	};
+	useEffect(() => {
+		getArtcleCover();
+		console.log("data", data);
+	}, []);
 	return (
 		<>
 			<Navbar />
@@ -24,13 +47,12 @@ function HomePage() {
 						lg={8}
 						xl={8}
 						size={{ xs: 12, md: 12, lg: 8.5, xl: 7.5 }}
-						spacing={1}
+						spacing={4}
 					>
 						<BasicButtons />
-						<ArticleCard style={{ fontFamily: "Inter" }} />
-						<ArticleCard />
-						<ArticleCard />
-						<ArticleCard />
+						{data.map((post) => {
+							return <ArticleCard key={post.id} post={post} />;
+						})}
 					</Grid2>
 					<Grid2
 						md={8}
@@ -40,6 +62,7 @@ function HomePage() {
 						container
 						overflow="scroll"
 						sx={{ scrollbarWidth: "none" }}
+						height="100%"
 						spacing={4}
 					>
 						<MostFollowed />

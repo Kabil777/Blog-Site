@@ -38,6 +38,7 @@ export default function BasicButtons() {
 				flexShrink: "0",
 				maxWidth: "100%",
 				display: "flex",
+				height: "40px",
 				scrollbarWidth: "none",
 			}}
 		>
@@ -50,12 +51,11 @@ export default function BasicButtons() {
 					sx={{
 						fontWeight: "bold",
 						boxShadow: "none",
-						border: "1px solid #EEF5FF",
 						"&:hover": {
 							boxShadow: "none",
 						},
 						marginX: "20px",
-						height: "70%",
+						height: "100%",
 						flexShrink: "0",
 						backgroundColor: activeButton === index ? "#2155CD" : "#EEF5FF",
 						color: activeButton === index ? "#EEF5FF" : "#2155CD",

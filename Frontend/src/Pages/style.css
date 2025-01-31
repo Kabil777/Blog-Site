@@ -41,6 +41,8 @@
 	font-size: 1rem;
 	align-self: center;
 	padding: 10px 5px;
+	margin: 0;
+	background-color: #1a1b26;
 }
 
 .reactMarkdown code {
@@ -48,7 +50,7 @@
 	font-family: "JetBrains Mono", monospace;
 	background-color: #e4e4e7;
 	padding: 2px 8px;
-	margin: "0 5px";
+	margin: 0 5px;
 }
 
 .reactMarkdown pre code {
@@ -77,4 +79,11 @@
 
 .reactMarkdown ul {
 	list-style: none;
+}
+
+.reactMarkdown li {
+	margin-bottom: 1rem;
+	font-family: "Source Sans 3", serif;
+	font-size: 1.2rem;
+	color: #4d5b7c;
 }

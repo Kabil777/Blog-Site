@@ -10,8 +10,13 @@ import netBg from "../../assets/networks.jpg";
 import { ThemeProvider } from "@mui/material";
 import ArticleTheme from "./ArticleTheme";
 import PostActionButtons from "../PostActions/PostActionButtons";
+import { useNavigate } from "react-router-dom";
 
-function ArticleCard() {
+function ArticleCard({ post }) {
+	const navigate = useNavigate();
+	const postNavigate = () => {
+		navigate(`/kabil/${post.slug}`);
+	};
 	return (
 		<ThemeProvider theme={ArticleTheme}>
 			<Card
@@ -27,14 +32,14 @@ function ArticleCard() {
 						direction="column"
 						sx={{ flexGrow: 1, width: "60%", justifyContent: "space-around" }}
 					>
-						<CardContent>
+						<CardContent onClick={postNavigate}>
 							<Typography
 								variant="h1"
 								component="h4"
 								fontFamily="Inter"
 								lineHeight="1.5"
 							>
-								Announcement on Networking Documentation
+								{post.name}
 							</Typography>
 							<Typography
 								variant="p"
@@ -49,11 +54,7 @@ function ArticleCard() {
 									textOverflow: "ellipsis",
 								}}
 							>
-								Some data center professionals rely on outdated network topology
-								diagrams and spreadsheets for their documentation, while Data
-								Center Infrastructure Management (DCIM) software while Data
-								Center Infrastructure Management (DCIM) software while Data
-								Center Infrastructure Management (DCIM) software ....
+								{post.description}
 							</Typography>
 						</CardContent>
 						<CardActions>

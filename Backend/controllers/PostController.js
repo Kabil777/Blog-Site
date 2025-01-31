@@ -5,35 +5,18 @@ const prisma = new PrismaClient();
 const postController = {
 	getMethod: async (req, res) => {
 		try {
-			const { cursor, limit = 3 } = req.query
-			console.log(cursor, limit)
-			const limitNumber = parseInt(limit, 10)
-			if (isNaN(limitNumber) || limitNumber <= 0) {
-				return res.status(400).json({ error: "Invalid limit parameter" });
-			}
-			let cursorObj = cursor ? { id: cursor } : undefined;
 			const data = await prisma.post.findMany({
-				take: limitNumber + 1,
-				cursor: cursorObj,
-				orderBy: { id: 'asc' },
+				take: 5,
+				orderBy: { id: "desc" },
 				include: {
-					tags: true
-				}
+					tags: true,
+					user: true,
+				},
 			});
-
-			const hasNextPage = data.length > limitNumber;
-			const result = hasNextPage ? data.slice(0, -1) : data;
-			const nextCursor = hasNextPage ? result[result.length - 1].id : null;
-
 			res.status(200).json({
-				data: result,
-				pagination: {
-					nextCursor: nextCursor,
-					hasNextPage: hasNextPage
-				}
+				data: data,
 			});
-		}
-		catch (error) {
+		} catch (error) {
 			res.status(500).json({ error: error.message });
 		}
 	},

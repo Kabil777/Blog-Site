@@ -1,4 +1,3 @@
-import React from "react";
 import { Button } from "@mui/material";
 import { FaPython } from "react-icons/fa";
 import { AiOutlineKubernetes } from "react-icons/ai";
@@ -24,6 +23,8 @@ export default function CompButton({ index }) {
 				height: "1.25rem",
 				fontsize: "0.3875rem",
 			}}
-		>{button.label}</Button>
+		>
+			{button.label}
+		</Button>
 	);
 }

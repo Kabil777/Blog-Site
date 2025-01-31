@@ -3,12 +3,15 @@ import { CiMenuKebab } from "react-icons/ci";
 import CompButton from "../Button/CompButton";
 import { useSelector } from "react-redux";
 
-function Profile({ actionEnable, showButton }) {
+function Profile({userDetails, actionEnable, showButton }) {
 	const avatar = useSelector((state) => state.auth.profileCover);
+	const name = useSelector((state)=>state.auth.name)
+	const email = useSelector((state)=>state.auth.email)
+	console.log(userDetails)
 	return (
 		<CardHeader
-			avatar={<Avatar src={avatar} alt="bg"></Avatar>}
-			title="Kabil "
+			avatar={<Avatar src={userDetails?userDetails.profileCover:avatar} alt="bg"></Avatar>}
+			title={userDetails?userDetails.name :name }
 			action={
 				<>
 					{actionEnable && (
@@ -19,7 +22,7 @@ function Profile({ actionEnable, showButton }) {
 					{showButton && <CompButton index={2} />}
 				</>
 			}
-			subheader="kabil.ec23@bitsathy.ac.in"
+			subheader={userDetails?userDetails.email:email}
 			sx={{
 				justifyContent: "flex-start",
 				textAlign: "start",

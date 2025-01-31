@@ -18,7 +18,20 @@ const PostRequestController = {
 					description: false,
 					mdFileName: false,
 					userId: true,
-					tags: true
+					tags: {
+						select: {
+							postId: false,
+							id: false,
+							tag: {
+								select: {
+									createdAt: false,
+									id: false,
+									skill: true,
+									domain: true
+								}
+							}
+						},
+					}
 				},
 
 			});
@@ -39,19 +52,8 @@ const PostRequestController = {
 					profileCover: true,
 				}
 			})
-			const tags = await prisma.tags.findUnique({
-				where: {
-					id: data.tags[0].tagId,
-				},
-				select: {
-					skill: true,
-					domain: false,
-					id: true,
-					createdAt: false
-				}
-			});
 			const fileContent = await postReader(data.id)
-			res.json({ userDetails: userData, postDetails: data, tags: tags, postContent: fileContent });
+			res.json({ userDetails: userData, postDetails: data, postContent: fileContent });
 		} catch (error) {
 			res.status(400).send(error.message);
 		}

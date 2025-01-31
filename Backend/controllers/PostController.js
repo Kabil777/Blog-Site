@@ -7,11 +7,31 @@ const postController = {
 		try {
 			const data = await prisma.post.findMany({
 				take: 5,
-				orderBy: { id: "desc" },
-				include: {
-					tags: true,
-					user: true,
-				},
+				orderBy: { createdAt: "desc" },
+				select: {
+					createdAt: true,
+					id: true,
+					slug: true,
+					name: true,
+					description: true,
+					user: {
+						select: {
+							id: true,
+							email: true,
+							profileCover: true,
+						}
+					},
+					tags: {
+						select: {
+							tag: {
+								select: {
+									skill: true,
+								}
+							}
+						}
+					}
+
+				}
 			});
 			res.status(200).json({
 				data: data,

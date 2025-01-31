@@ -7,8 +7,13 @@ import Navbar from "../components/Navbar/Navbar";
 import Container from "@mui/material/Container";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { getPostCover } from "../store/reducers/getArticleCover";
 function HomePage() {
 	const [data, setData] = useState([]);
+	const coverData = useSelector((state)=>state.cover.Articles)
+	const status = useSelector((state)=>state.cover.status)
+	const dispatch = useDispatch()
 	const getArtcleCover = async () => {
 		if (data) {
 			try {
@@ -26,9 +31,9 @@ function HomePage() {
 		}
 	};
 	useEffect(() => {
-		getArtcleCover();
-		console.log("data", data);
-	}, []);
+		if(status!=="success")
+			dispatch(getPostCover())	
+	}, [status,dispatch]);
 	return (
 		<>
 			<Navbar />
@@ -50,7 +55,7 @@ function HomePage() {
 						spacing={4}
 					>
 						<BasicButtons />
-						{data.map((post) => {
+						{coverData.map((post) => {
 							return <ArticleCard key={post.id} post={post} />;
 						})}
 					</Grid2>

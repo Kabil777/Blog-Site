@@ -11,7 +11,7 @@ import { ThemeProvider } from "@mui/material/styles";
 import PostTheme from "./PostTheme";
 import PostActionButtons from "../components/PostActions/PostActionButtons";
 import ChipComponent from "../components/Form/chipComponent";
-import remarkGfm from "remark-gfm"; // For GitHub Flavored Markdown
+import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import remarkBreaks from "remark-breaks";
 import { CircularProgress } from "@mui/material";
@@ -26,6 +26,8 @@ function PostPage() {
 	const data = useSelector((state) => state.article.postContent);
 	const status = useSelector((state) => state.article.status);
 	const title = useSelector((state) => state.article.postDetails.name);
+	const userDetails = useSelector((state) => state.article.userDetails)
+	console.log(userDetails)
 	const getArticle = () => {
 		dispatch(ArticleGetter({ user, slug }));
 	};
@@ -59,7 +61,7 @@ function PostPage() {
 						>
 							{title}
 						</Typography>
-						<Profile />
+						<Profile userDetails={userDetails} actionEnable={false} showButton={false} />
 						<Stack
 							direction="row"
 							alignItems="center"

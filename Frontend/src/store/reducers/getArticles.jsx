@@ -31,7 +31,7 @@ const fetchArticles = createSlice({
 	initialState: initialSlice,
 	reducers: {
 		setArticle: (state, action) => {
-			(state.userDetails = action.payload.userDetails),
+				(state.userDetails = action.payload.userDetails),
 				(state.postDetails = action.payload.postDetails),
 				(state.tags = action.payload.tags),
 				(state.postContent = action.payload.postContent);
@@ -47,6 +47,7 @@ const fetchArticles = createSlice({
 				(state.postDetails = action.payload.postDetails),
 				(state.tags = action.payload.tags),
 				(state.postContent = action.payload.postContent);
+			console.log("user",state.userDetails)
 		});
 		builder.addCase(ArticleGetter.rejected, (state) => {
 			state.status = "rejected";

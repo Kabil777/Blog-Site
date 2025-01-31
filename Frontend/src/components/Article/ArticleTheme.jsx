@@ -11,6 +11,7 @@ const ArticleTheme = createTheme({
 					padding: " 10px 8px",
 					boxShadow: "none",
 					fontSize: "14px",
+					justifyContent: "space-between"
 				},
 			},
 		},

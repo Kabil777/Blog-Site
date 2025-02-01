@@ -6,34 +6,16 @@ import BasicButtons from "../components/Button/Button";
 import Navbar from "../components/Navbar/Navbar";
 import Container from "@mui/material/Container";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { getPostCover } from "../store/reducers/getArticleCover";
 function HomePage() {
-	const [data, setData] = useState([]);
-	const coverData = useSelector((state)=>state.cover.Articles)
-	const status = useSelector((state)=>state.cover.status)
-	const dispatch = useDispatch()
-	const getArtcleCover = async () => {
-		if (data) {
-			try {
-				const response = await axios.get("http://localhost:7000/post", {
-					withCredentials: true,
-				});
-				if (!data) {
-					throw new Error("fetching failed");
-				}
-				console.log(response.data.data);
-				return setData(response.data.data);
-			} catch (error) {
-				console.log(error);
-			}
-		}
-	};
+	const coverData = useSelector((state) => state.cover.Articles);
+	const status = useSelector((state) => state.cover.status);
+	const dispatch = useDispatch();
+
 	useEffect(() => {
-		if(status!=="success")
-			dispatch(getPostCover())	
-	}, [status,dispatch]);
+		if (status !== "success") dispatch(getPostCover());
+	}, [status, dispatch]);
 	return (
 		<>
 			<Navbar />

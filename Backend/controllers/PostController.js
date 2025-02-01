@@ -17,21 +17,21 @@ const postController = {
 					user: {
 						select: {
 							id: true,
+							name: true,
 							email: true,
 							profileCover: true,
-						}
+						},
 					},
 					tags: {
 						select: {
 							tag: {
 								select: {
 									skill: true,
-								}
-							}
-						}
-					}
-
-				}
+								},
+							},
+						},
+					},
+				},
 			});
 			res.status(200).json({
 				data: data,

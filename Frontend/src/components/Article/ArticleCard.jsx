@@ -17,6 +17,7 @@ function ArticleCard({ post }) {
 	const postNavigate = () => {
 		navigate(`/kabil/${post.slug}`);
 	};
+	console.log("post", post);
 	return (
 		<ThemeProvider theme={ArticleTheme}>
 			<Card
@@ -26,7 +27,7 @@ function ArticleCard({ post }) {
 					justifyContent: "space-evenly",
 				}}
 			>
-				<Profile actionEnable={true} />
+				<Profile actionEnable={true} coverDetails={post} />
 				<Stack direction="row" sx={{ width: "100%" }}>
 					<Stack
 						direction="column"

@@ -3,15 +3,27 @@ import { CiMenuKebab } from "react-icons/ci";
 import CompButton from "../Button/CompButton";
 import { useSelector } from "react-redux";
 
-function Profile({userDetails, actionEnable, showButton }) {
+function Profile({ coverDetails, userDetails, actionEnable, showButton }) {
 	const avatar = useSelector((state) => state.auth.profileCover);
-	const name = useSelector((state)=>state.auth.name)
-	const email = useSelector((state)=>state.auth.email)
-	console.log(userDetails)
+	const name = useSelector((state) => state.auth.name);
+	const email = useSelector((state) => state.auth.email);
+	console.log("profile", coverDetails);
+	const getProfile = () => {
+		if (userDetails) {
+			return userDetails;
+		} else if (coverDetails) {
+			return coverDetails.user;
+		} else {
+			return false;
+		}
+	};
+	const data = getProfile();
 	return (
 		<CardHeader
-			avatar={<Avatar src={userDetails?userDetails.profileCover:avatar} alt="bg"></Avatar>}
-			title={userDetails?userDetails.name :name }
+			avatar={
+				<Avatar src={data ? data.profileCover : avatar} alt="bg"></Avatar>
+			}
+			title={data ? data.name : name}
 			action={
 				<>
 					{actionEnable && (
@@ -22,7 +34,7 @@ function Profile({userDetails, actionEnable, showButton }) {
 					{showButton && <CompButton index={2} />}
 				</>
 			}
-			subheader={userDetails?userDetails.email:email}
+			subheader={data ? data.email : email}
 			sx={{
 				justifyContent: "flex-start",
 				textAlign: "start",

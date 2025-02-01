@@ -38,7 +38,6 @@ function PostPage() {
 	return (
 		<>
 			<ThemeProvider theme={PostTheme}>
-				<Navbar />
 				<Container
 					maxWidth="xl"
 					sx={{

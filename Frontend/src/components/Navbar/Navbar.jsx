@@ -13,6 +13,7 @@ import {
 	Stack,
 	Toolbar,
 	Typography,
+	SwipeableDrawer
 } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 import AppBarTheme from "./NavbarTheme";
@@ -114,16 +115,7 @@ function Navbar() {
 										},
 									}}
 								>
-									<Typography
-										variant="button"
-										paddingX="10px"
-										fontFamily="Inter"
-										fontSize="1.2rem"
-										textTransform="none"
-										color="#67676e"
-									>
-										You hit resources
-									</Typography>
+									<SwipeableDrawer sx={{ height: "400px", width: "100%" }} />
 								</Popover>
 							</Stack>
 						</Stack>

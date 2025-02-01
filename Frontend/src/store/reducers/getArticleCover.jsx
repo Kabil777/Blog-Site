@@ -31,10 +31,10 @@ const getProfileCover = createSlice({
 		builder.addCase(getPostCover.pending, (state) => {
 			state.status = "loading"
 		})
-		builder.addCase(getPostCover.fulfilled, (state,action) => {
-			state.Articles = action.payload.data;
-			console.log("status",state.Articles)
+		builder.addCase(getPostCover.fulfilled, (state, action) => {
 			state.status = "success"
+			state.Articles = action.payload.data;
+			console.log("status", state.status)
 		})
 		builder.addCase(getPostCover.rejected, (state) => {
 			state.status = "rejected"

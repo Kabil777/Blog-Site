@@ -12,16 +12,25 @@ export default function CompButton({ index }) {
 	return (
 		<Button
 			key={index}
-			size="small"
+			size="medium"
 			variant="contained"
 			startIcon={button.icon}
 			sx={{
-				width: "4.25rem",
+				height: "30px",
+				width: "80px",
 				justifyContent: "center",
 				textAlign: "center",
 				padding: "none",
-				height: "1.25rem",
-				fontsize: "0.3875rem",
+				height: "25px",
+				background: "#eef5ff",
+				color: "#2155cd",
+				boxShadow: "none",
+				p: "5px 2px",
+				fontSize: "0.75rem",
+				borderRadius: "0",
+				"&:hover": {
+					boxShadow: "none"
+				}
 			}}
 		>
 			{button.label}

@@ -24,10 +24,10 @@ function PostPage() {
 	console.log(slug);
 	const dispatch = useDispatch();
 	const data = useSelector((state) => state.article.postContent);
+	console.log(data)
 	const status = useSelector((state) => state.article.status);
 	const title = useSelector((state) => state.article.postDetails.name);
 	const userDetails = useSelector((state) => state.article.userDetails)
-	console.log(userDetails)
 	const getArticle = () => {
 		dispatch(ArticleGetter({ user, slug }));
 	};

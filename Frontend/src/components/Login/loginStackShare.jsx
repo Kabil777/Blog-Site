@@ -141,6 +141,7 @@ function LoginStack() {
 				<Stack /* Usename */
                  sx={{  
                     width:"100%",
+					height:"auto",
                     display:"flex",
                     flexDirection:"row" ,
                     alignItems:"center",
@@ -149,16 +150,18 @@ function LoginStack() {
 				<TextField placeholder="Email " variant="outlined" type="email" required
 				sx={{
 					'& .MuiOutlinedInput-root': {
+						paddingLeft: '25px',
 						'& fieldset': {
-							border: 'none',
-                            color:"#67676E"
+							border:"1px solid #e4e4e7",
+						},
+						"&:hover fieldset": {
+							borderColor:"#2155CD",
 						},
 					},
-                    border:"1px solid #e4e4e7",
                     borderRadius:"4px", 
                     width:"100%",
+					height:"auto",
                     backgroundColor:"#EEF5FF",
-                    paddingLeft:"25px"
 				}}></TextField>
 
 				</Stack>
@@ -172,15 +175,20 @@ function LoginStack() {
 				<TextField placeholder="Password" variant="outlined" type="password" required
 				sx={{
 					'& .MuiOutlinedInput-root': {
+						paddingLeft: '25px',
 						'& fieldset': {
-							border: 'none'
+                            color:"#67676E",
+							border:"1px solid #e4e4e7",
+						},
+						"&:hover fieldset": {
+							borderColor: "#2155CD",
 						},
 					},
-                    border:"1px solid #e4e4e7",
+                    border:"none",
                     borderRadius:"4px", 
                     width:"100%",
+					height:"auto",
                     backgroundColor:"#EEF5FF",
-                    paddingLeft:"25px"
 				}}>
                 </TextField>
 				</Stack>

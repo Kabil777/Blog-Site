@@ -100,7 +100,7 @@ function Login() {
 					borderRadius:"10%",
 					justifyContent:"center",
 					width:"40%",
-					height:"90%"
+					height:"110%"
 					}}>
 						<Stack component="img" sx={{aspectRatio:1}} width="15%" src={google}></Stack>
 						<Typography fontSize="80%" fontFamily="Inter" color="#6e6e67" fontWeight="bold">Google</Typography>
@@ -116,7 +116,7 @@ function Login() {
 					borderRadius:"10%",
 					justifyContent:"center",
 					width:"40%",
-					height:"90%"
+					height:"110%"
 					}}onClick={() => handleSnackbar("GitHub login feature is not implemented yet!", "failure")}>
 						<Stack component="img" sx={{aspectRatio:1}} width="15%" src={github}></Stack>
 						<Typography fontSize="80%" fontFamily="Inter" color="#6e6e67" fontWeight="bold">Github</Typography>
@@ -130,10 +130,11 @@ function Login() {
     </Box>
 				</Stack>
 				<Stack sx={{gap:"0.8rem"}}>
-				<Stack /* Usename */ sx={{border:"2px solid #F9F9F9", width:"80%",display:"flex",flexDirection:"row" ,alignItems:"center"}} >
+				<Stack /* Usename */ sx={{border:"2px solid #F9F9F9", width:"80%",display:"flex",flexDirection:"row" ,alignItems:"center",paddingLeft:"10px"}} >
 				<MdOutlineMail style={{fontSize:"20px" , color:"gray"}} />
 				<TextField placeholder="Email " variant="outlined" 
 				sx={{
+					
 					'& .MuiOutlinedInput-root': {
 						'& fieldset': {
 							border: 'none',
@@ -142,7 +143,7 @@ function Login() {
 					},
 				}}></TextField>
 				</Stack>
-				<Stack /* Password */ sx={{border:"2px solid #F9F9F9", width:"80%",display:"flex",flexDirection:"row" ,alignItems:"center"}} >
+				<Stack /* Password */ sx={{border:"2px solid #F9F9F9", width:"80%",display:"flex",flexDirection:"row" ,alignItems:"center",paddingLeft:"10px"}} >
 				<CiLock 
 				style={{fontSize:"20px" , color:"gray"}} />
 				<TextField placeholder="Password" variant="outlined" 

@@ -66,10 +66,12 @@ function ArticleCard({ post }) {
 						component="img"
 						src={netBg}
 						sx={{
-							height: "70%",
+							height: "100px",
+							borderRadius: "5%",
 							width: "20%",
 							mr: "16px",
 							justifySelf: "center",
+							alignSelf: "flex-start",
 							backgroundColor: "#ffffff",
 						}}
 					/>

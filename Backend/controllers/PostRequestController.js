@@ -25,7 +25,7 @@ const PostRequestController = {
 							tag: {
 								select: {
 									createdAt: false,
-									id: false,
+									id: true,
 									skill: true,
 									domain: true
 								}

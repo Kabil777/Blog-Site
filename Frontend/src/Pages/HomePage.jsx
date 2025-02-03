@@ -15,11 +15,9 @@ function HomePage() {
 
 	useEffect(() => {
 		if (status !== "success") dispatch(getPostCover());
-	}, [status, dispatch]);
+	}, [dispatch]);
 	return (
 		<>
-			<Navbar />
-
 			<Container
 				fixed
 				maxWidth="xl"

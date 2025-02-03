@@ -6,7 +6,7 @@ export default function CompButton({ index }) {
 	const buttons = [
 		{ label: "PYHTON", icon: <FaPython /> },
 		{ label: "DATA STRUCTURES", icon: <AiOutlineKubernetes /> },
-		{ label: "FOLLOW", icon: <IoMdAdd /> },
+		{ label: "FOLLOW", icon: <IoMdAdd size={15} /> },
 	];
 	const button = buttons[index];
 	return (
@@ -21,7 +21,6 @@ export default function CompButton({ index }) {
 				justifyContent: "center",
 				textAlign: "center",
 				padding: "none",
-				height: "25px",
 				background: "#eef5ff",
 				color: "#2155cd",
 				boxShadow: "none",
@@ -29,8 +28,8 @@ export default function CompButton({ index }) {
 				fontSize: "0.75rem",
 				borderRadius: "0",
 				"&:hover": {
-					boxShadow: "none"
-				}
+					boxShadow: "none",
+				},
 			}}
 		>
 			{button.label}

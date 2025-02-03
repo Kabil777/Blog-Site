@@ -77,13 +77,39 @@
 	}
 }
 
-.reactMarkdown ul {
-	list-style: none;
-}
+.reactMarkdown ul {}
 
 .reactMarkdown li {
 	margin-bottom: 1rem;
 	font-family: "Source Sans 3", serif;
 	font-size: 1.2rem;
 	color: #4d5b7c;
+}
+
+.reactMarkdown table {
+	width: 100%;
+	border-collapse: collapse;
+	margin: 20px 0;
+	font-size: 1rem;
+	font-family: "Source Sans 3", sans-serif;
+	background-color: #ffffff;
+	border-radius: 5px;
+	overflow: hidden;
+}
+
+.reactMarkdown th,
+.reactMarkdown td {
+	padding: 10px;
+	border-bottom: 2px solid #e4e4e7;
+	text-align: left;
+}
+
+.reactMarkdown th {
+	background-color: #29334d;
+	color: white;
+	font-weight: 600;
+}
+
+.reactMarkdown tr:hover {
+	background-color: #f2f2f2;
 }

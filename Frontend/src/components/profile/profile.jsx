@@ -1,13 +1,12 @@
 import { Avatar, IconButton, CardHeader } from "@mui/material";
-import { CiMenuKebab } from "react-icons/ci";
 import CompButton from "../Button/CompButton";
 import { useSelector } from "react-redux";
+import { HiOutlineDotsVertical } from "react-icons/hi";
 
 function Profile({ coverDetails, userDetails, actionEnable, showButton }) {
 	const avatar = useSelector((state) => state.auth.profileCover);
 	const name = useSelector((state) => state.auth.name);
 	const email = useSelector((state) => state.auth.email);
-	console.log("profile", coverDetails);
 	const getProfile = () => {
 		if (userDetails) {
 			return userDetails;
@@ -28,7 +27,7 @@ function Profile({ coverDetails, userDetails, actionEnable, showButton }) {
 				<>
 					{actionEnable && (
 						<IconButton aria-label="settings">
-							<CiMenuKebab />
+							<HiOutlineDotsVertical />
 						</IconButton>
 					)}
 					{showButton && <CompButton index={2} />}

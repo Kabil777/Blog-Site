@@ -45,7 +45,7 @@ const fetchArticles = createSlice({
 			(state.status = "success"),
 				(state.userDetails = action.payload.userDetails),
 				(state.postDetails = action.payload.postDetails),
-				(state.tags = action.payload.tags),
+				(state.tags = action.payload.postDetails.tags),
 				(state.postContent = action.payload.postContent);
 			console.log("user",state.userDetails)
 		});

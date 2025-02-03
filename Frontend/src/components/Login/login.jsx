@@ -51,7 +51,6 @@ function Login() {
 				overflowY: "hidden",
 				height: "100vh",
 				backgroundColor: "#065AD7",
-				overflow: "hidden",
 				display: "flex",
 				padding: "0",
 				margin: "0",

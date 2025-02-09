@@ -1,0 +1,33 @@
+[33m25e8a9d[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mnandha[m[33m)[m HEAD@{0}: reset: moving to ORIG_HEAD
+[33m2a45cac[m[33m ([m[1;31morigin/nandha[m[33m)[m HEAD@{1}: checkout: moving from kowsik to nandha
+[33m561fd1a[m[33m ([m[1;31morigin/kowsik[m[33m, [m[1;32mkowsik[m[33m)[m HEAD@{2}: checkout: moving from stark to kowsik
+[33m493068d[m[33m ([m[1;31morigin/stark[m[33m, [m[1;32mstark[m[33m)[m HEAD@{3}: pull: Fast-forward
+[33m25e8a9d[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mnandha[m[33m)[m HEAD@{4}: checkout: moving from dev to stark
+[33m1e73a0f[m[33m ([m[1;32mdev[m[33m)[m HEAD@{5}: checkout: moving from nandha to dev
+[33m2a45cac[m[33m ([m[1;31morigin/nandha[m[33m)[m HEAD@{6}: commit (merge): Merge branch 'kabil' of github.com:Kabil777/Blog-Site into nandha
+[33m02cede7[m HEAD@{7}: checkout: moving from kabil to nandha
+[33m649d11e[m[33m ([m[1;32mkabil[m[33m)[m HEAD@{8}: checkout: moving from nandha to kabil
+[33m02cede7[m HEAD@{9}: commit: Follow-Button
+[33m071117f[m HEAD@{10}: pull origin nandha: Fast-forward
+[33m00da4aa[m HEAD@{11}: commit: Follow-Button
+[33mdd6fe57[m HEAD@{12}: pull origin nandha: Fast-forward
+[33m8141c3b[m HEAD@{13}: commit: Activebutton
+[33mdef1d9a[m HEAD@{14}: pull origin kabil: Fast-forward
+[33me5fc4a4[m HEAD@{15}: commit: Button,Card update
+[33m45ae772[m HEAD@{16}: commit: Button update
+[33mfa79a50[m HEAD@{17}: commit: Card,Follow update
+[33mdd5df6d[m HEAD@{18}: checkout: moving from kabil to nandha
+[33m649d11e[m[33m ([m[1;32mkabil[m[33m)[m HEAD@{19}: pull: Fast-forward
+[33ma7dcc9e[m HEAD@{20}: checkout: moving from nandha to kabil
+[33mdd5df6d[m HEAD@{21}: commit: 2 comp
+[33ma79c1a8[m HEAD@{22}: checkout: moving from dev to nandha
+[33m1e73a0f[m[33m ([m[1;32mdev[m[33m)[m HEAD@{23}: checkout: moving from main to dev
+[33me0ad457[m[33m ([m[1;32mmain[m[33m)[m HEAD@{24}: checkout: moving from nandha to main
+[33ma79c1a8[m HEAD@{25}: pull origin kabil: Merge made by the 'ort' strategy.
+[33m1e73a0f[m[33m ([m[1;32mdev[m[33m)[m HEAD@{26}: checkout: moving from kabil to nandha
+[33ma7dcc9e[m HEAD@{27}: checkout: moving from nandha to kabil
+[33m1e73a0f[m[33m ([m[1;32mdev[m[33m)[m HEAD@{28}: checkout: moving from nandha to nandha
+[33m1e73a0f[m[33m ([m[1;32mdev[m[33m)[m HEAD@{29}: checkout: moving from dev to nandha
+[33m1e73a0f[m[33m ([m[1;32mdev[m[33m)[m HEAD@{30}: pull origin dev: Fast-forward
+[33m495617b[m HEAD@{31}: checkout: moving from main to dev
+[33me0ad457[m[33m ([m[1;32mmain[m[33m)[m HEAD@{32}: clone: from github.com:Kabil777/Blog-Site.git

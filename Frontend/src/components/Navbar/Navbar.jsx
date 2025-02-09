@@ -1,15 +1,15 @@
-import { RiArrowDropDownLine } from "react-icons/ri";
 import { AiOutlineEdit } from "react-icons/ai";
+import { RiArrowDropDownLine } from "react-icons/ri";
 import { IoNotifications } from "react-icons/io5";
 import { CiSearch } from "react-icons/ci";
 import {
 	AppBar,
 	Avatar,
-	Button,
 	Card,
 	Divider,
 	IconButton,
 	InputAdornment,
+	Popover,
 	Stack,
 	TextField,
 	Toolbar,
@@ -31,13 +31,14 @@ import Profile from "../profile/profile";
 function Navbar() {
 	const navigate = useNavigate();
 	const [anchor, setAnchor] = useState(null);
+	const [ResourceOpen, setOpen] = useState(null);
+	const openResource = Boolean(ResourceOpen);
 	const open = Boolean(anchor);
 	const openReq = (event) => {
 		setAnchor(event.currentTarget);
 	};
 	const closeReq = () => {
 		setAnchor(null);
-		console.log(open);
 	};
 	return (
 		<>
@@ -58,34 +59,78 @@ function Navbar() {
 								STACK SHARE
 							</Typography>
 							<Divider orientation="vertical" variant="middle" flexItem />
-							<Button
-								type="button"
-								variant="text"
-								disableRipple
+							<Typography
+								variant="button"
+								fontFamily="Inter"
+								fontSize="1.2rem"
+								textTransform="none"
+								sx={{ color: "#67676e", cursor: "pointer" }}
+								paddingX="10px"
 								onClick={() => {
 									navigate("/");
 								}}
 							>
 								Home
-							</Button>
-							<Button
-								variant="text"
-								endIcon={<RiArrowDropDownLine size={25} />}
-								disableRipple
-								disableElevation
+							</Typography>
+							<Stack
+								direction="row"
+								alignItems="center"
+								justifyContent="center"
+								onMouseEnter={(event) => setOpen(event.currentTarget)}
+								onMouseLeave={() => setOpen(null)}
+								aria-owns={openResource ? "mouse-over-popover" : undefined}
+								aria-haspopup="true"
 							>
-								Resources
-							</Button>
+								<Typography
+									variant="button"
+									paddingX="10px"
+									fontFamily="Inter"
+									fontSize="1.2rem"
+									textTransform="none"
+									color="#67676e"
+								>
+									Resources
+								</Typography>
+								<RiArrowDropDownLine style={{ marginTop: "5px" }} size={25} />
+								<Popover
+									anchorEl={ResourceOpen} // Ensure ResourceOpen is null or a DOM element
+									anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+									transformOrigin={{
+										vertical: "top",
+										horizontal: "center",
+									}}
+									id="mouse-over-popover"
+									open={openResource}
+									onClose={() => setOpen(null)}
+									PaperProps={{
+										onMouseEnter: () => setOpen(ResourceOpen),
+										onMouseLeave: () => setOpen(null),
+										sx: {
+											boxShadow: "none",
+										},
+									}}
+								>
+									<Typography
+										variant="button"
+										paddingX="10px"
+										fontFamily="Inter"
+										fontSize="1.2rem"
+										textTransform="none"
+										color="#67676e"
+									>
+										You hit resources
+									</Typography>
+								</Popover>
+							</Stack>
 						</Stack>
 
 						<Stack
 							direction="row"
 							alignItems="center"
 							justifyContent="flex-end"
-							sx={{ flexGrow: 2 }}
 						>
 							<TextField
-								sx={{ width: "60ch", marginRight: "70px" }}
+								sx={{ width: "70ch", marginRight: "70px", lineHeight: "2.5" }}
 								variant="outlined"
 								placeholder="Find Articles..."
 								InputProps={{

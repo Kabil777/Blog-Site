@@ -1,7 +1,9 @@
-import { Avatar, IconButton, CardHeader } from "@mui/material";
-import { CiMenuKebab } from "react-icons/ci";
+import { Avatar, IconButton, CardHeader, Box } from "@mui/material";
+import { CiLineHeight, CiMenuKebab } from "react-icons/ci";
+import CompButton from "../Button/CompButton";
+import CompFollow from "../Button/CompFollow";
 
-function Profile() {
+function Profile({ actionEnable, showButton }) {
 	return (
 		<CardHeader
 			avatar={
@@ -9,12 +11,22 @@ function Profile() {
 					K
 				</Avatar>
 			}
-			action={
-				<IconButton aria-label="settings">
-					<CiMenuKebab />
-				</IconButton>
+
+			title={
+				<Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+					<span>Kabil</span>
+					{showButton && <CompFollow index={0} />}
+				</Box>
 			}
-			title="Kabil"
+			action={
+				<>
+					{actionEnable && (
+						<IconButton aria-label="settings">
+							<CiMenuKebab />
+						</IconButton>
+					)}
+				</>
+			}
 			subheader="kabil.ec23@bitsathy.ac.in"
 			sx={{
 				justifyContent: "flex-start",
@@ -22,16 +34,15 @@ function Profile() {
 				alignItems: "center",
 			}}
 			titleTypographyProps={{
-				fontSize: "1.1rem",
+				fontSize: "1rem",
 				fontWeight: "bold",
 			}}
 			subheaderTypographyProps={{
-				fontSize: "1rem",
+				fontSize: "0.9rem",
 				fontWeight: "normal",
 				color: "text.secondary",
 			}}
 		/>
 	);
 }
-
 export default Profile;

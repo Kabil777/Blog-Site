@@ -1,19 +1,15 @@
-import { GrLike } from "react-icons/gr";
-import { FaRegBookmark } from "react-icons/fa";
-import { IoShareSocialSharp } from "react-icons/io5";
 import {
 	Stack,
 	Typography,
 	Card,
-	IconButton,
 	CardContent,
-	Box,
 	CardActions,
 } from "@mui/material";
 import Profile from "../profile/profile";
-import netBg from "../../assets/networks.png";
+import netBg from "../../assets/networks.jpg";
 import { ThemeProvider } from "@mui/material";
 import ArticleTheme from "./ArticleTheme";
+import PostActionButtons from "../PostActions/PostActionButtons";
 
 function ArticleCard() {
 	return (
@@ -22,48 +18,60 @@ function ArticleCard() {
 				sx={{
 					display: "flex",
 					flexDirection: "column",
-					justifyContent: "space-between",
+					justifyContent: "space-evenly",
 				}}
 			>
-				<Profile action={true} />
-				<CardContent>
-					<Stack direction="row" sx={{ flexGrow: 1, width: "100%" }}>
-						<Stack
-							direction="column"
-							alignItems="flex-start"
-							sx={{ flexGrow: "1" }}
-						>
-							<Typography variant="h1" component="h4" fontFamily="Inter">
+				<Profile actionEnable={true} />
+				<Stack direction="row" sx={{ width: "100%" }}>
+					<Stack
+						direction="column"
+						sx={{ flexGrow: 1, width: "60%", justifyContent: "space-around" }}
+					>
+						<CardContent>
+							<Typography
+								variant="h1"
+								component="h4"
+								fontFamily="Inter"
+								lineHeight="1.5"
+							>
 								Announcement on Networking Documentation
 							</Typography>
-							<Typography variant="h6">
+							<Typography
+								variant="p"
+								component="p"
+								fontFamily="Inter"
+								lineHeight="1.5rem"
+								sx={{
+									display: "-webkit-box",
+									WebkitBoxOrient: "vertical",
+									WebkitLineClamp: 3,
+									overflow: "hidden",
+									textOverflow: "ellipsis",
+								}}
+							>
 								Some data center professionals rely on outdated network topology
 								diagrams and spreadsheets for their documentation, while Data
+								Center Infrastructure Management (DCIM) software while Data
+								Center Infrastructure Management (DCIM) software while Data
 								Center Infrastructure Management (DCIM) software ....
 							</Typography>
-						</Stack>
-						<Box
-							component="img"
-							src={netBg}
-							sx={{
-								height: "150px",
-								flexGrow: 1,
-								backgroundColor: "#ffffff",
-							}}
-						/>
+						</CardContent>
+						<CardActions>
+							<PostActionButtons position={true} />
+						</CardActions>
 					</Stack>
-				</CardContent>
-				<CardActions>
-					<IconButton>
-						<GrLike />
-					</IconButton>
-					<IconButton>
-						<FaRegBookmark />
-					</IconButton>
-					<IconButton>
-						<IoShareSocialSharp />
-					</IconButton>
-				</CardActions>
+					<Stack
+						component="img"
+						src={netBg}
+						sx={{
+							height: "70%",
+							width: "20%",
+							mr: "16px",
+							justifySelf: "center",
+							backgroundColor: "#ffffff",
+						}}
+					/>
+				</Stack>
 			</Card>
 		</ThemeProvider>
 	);

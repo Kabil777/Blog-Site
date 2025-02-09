@@ -1,8 +1,7 @@
 const dotenv = require("dotenv");
 const jwt = require("jsonwebtoken");
-const { PrismaClient } = require("@prisma/client")
-const prisma = new PrismaClient()
-
+const { PrismaClient } = require("@prisma/client");
+const prisma = new PrismaClient();
 
 dotenv.config();
 
@@ -14,13 +13,13 @@ const generateToken = async (user) => {
 		const userRecord = await prisma.user.findUnique({
 			where: {
 				Google_id: user.Google_id,
-			}
-		})
+			},
+		});
 		if (!userRecord) {
 			throw new Error("User not found in the database.");
 		}
 		user = { ...user, userId: userRecord.id };
-		console.log("user", user)
+		console.log("user", user);
 		const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_KEY, {
 			expiresIn: "10m",
 		});
@@ -28,9 +27,8 @@ const generateToken = async (user) => {
 			expiresIn: "2d",
 		});
 		return { accessToken, refreshToken };
-	}
-	catch (error) {
-		return error.message
+	} catch (error) {
+		return error.message;
 	}
 };
 
@@ -39,7 +37,9 @@ const verifyRefreshToken = (refreshToken) => {
 		let decodedToken = jwt.verify(refreshToken, process.env.REFRESH_TOKEN_KEY);
 		console.log("decoded refresh:", decodedToken);
 		if (decodedToken) {
-			const Token = jwt.sign(decodedToken, process.env.ACCESS_TOKEN_KEY);
+			const Token = jwt.sign(decodedToken, process.env.ACCESS_TOKEN_KEY, {
+				expiresIn: "10m",
+			});
 			console.log(Token);
 			return Token;
 		}
@@ -66,7 +66,7 @@ const AuthenticateToken = (req, res, next) => {
 				return res.status(401).json({ message: `${error}` });
 			}
 		}
-		req.user = decoded
+		req.user = decoded;
 		next();
 	});
 };

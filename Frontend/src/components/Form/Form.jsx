@@ -29,7 +29,7 @@ function Form({ open, closeReq }) {
 
 	const handleTabChange = (event, newValue = null) => {
 		if (newValue === null) {
-			setActiveTab((prevTab) => Math.min(prevTab + 1, 1)); // Ensure we don't exceed the last tab
+			setActiveTab((prevTab) => prevTab + 1, 1); // Ensure we don't exceed the last tab
 			console.log(activeTab);
 		} else {
 			setActiveTab(newValue);

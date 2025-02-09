@@ -12,12 +12,14 @@ export default function MostFollowed() {
 				sx={{
 					display: "flex",
 					flexDirection: "column",
-					gap: "0.35rem",
+					gap: "7%",
 					justifyContent: "flex-start",
 					alignItems: "flex-start",
 					width: "100%",
+					fontSize:"12px",
 					border: "1px solid #e4e4e7",
 					padding: "16px 20px",
+					height: "275px",
 				}}
 			>
 				<Typography

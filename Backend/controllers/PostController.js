@@ -1,21 +1,51 @@
 const { fileWriter } = require("../utils/PostWriter");
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
-const jwt = require("jsonwebtoken");
 
 const postController = {
-	getMethod: (req, res) => {
-		res.send("hello");
+	getMethod: async (req, res) => {
+		try {
+			const data = await prisma.post.findMany({
+				take: 5,
+				orderBy: { createdAt: "desc" },
+				select: {
+					createdAt: true,
+					id: true,
+					slug: true,
+					name: true,
+					description: true,
+					user: {
+						select: {
+							id: true,
+							name: true,
+							email: true,
+							profileCover: true,
+						},
+					},
+					tags: {
+						select: {
+							tag: {
+								select: {
+									skill: true,
+								},
+							},
+						},
+					},
+				},
+			});
+			res.status(200).json({
+				data: data,
+			});
+		} catch (error) {
+			res.status(500).json({ error: error.message });
+		}
 	},
 	postMethod: async (req, res) => {
-		console.log(req.body);
 		try {
-			const userToken = req.cookies.accessToken;
-			console.log(userToken);
-			const decoded = jwt.verify(userToken, process.env.ACCESS_TOKEN_KEY);
-			const userId = decoded.id;
+			console.log(req.user);
+			const userId = req.user.id;
 			const { postId, slug, title, description, tags, blog } = req.body;
-			console.log(req.body)
+			console.log(req.body);
 			if (!postId || !title || !blog) {
 				return res
 					.status(400)

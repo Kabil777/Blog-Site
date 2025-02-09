@@ -5,11 +5,19 @@ import MostFollowed from "../components/Follower/Follow";
 import BasicButtons from "../components/Button/Button";
 import Navbar from "../components/Navbar/Navbar";
 import Container from "@mui/material/Container";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getPostCover } from "../store/reducers/getArticleCover";
 function HomePage() {
+	const coverData = useSelector((state) => state.cover.Articles);
+	const status = useSelector((state) => state.cover.status);
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		if (status !== "success") dispatch(getPostCover());
+	}, [dispatch]);
 	return (
 		<>
-			<Navbar />
-
 			<Container
 				fixed
 				maxWidth="xl"
@@ -24,13 +32,12 @@ function HomePage() {
 						lg={8}
 						xl={8}
 						size={{ xs: 12, md: 12, lg: 8.5, xl: 7.5 }}
-						spacing={1}
+						spacing={4}
 					>
 						<BasicButtons />
-						<ArticleCard style={{ fontFamily: "Inter" }} />
-						<ArticleCard />
-						<ArticleCard />
-						<ArticleCard />
+						{coverData.map((post) => {
+							return <ArticleCard key={post.id} post={post} />;
+						})}
 					</Grid2>
 					<Grid2
 						md={8}
@@ -40,6 +47,7 @@ function HomePage() {
 						container
 						overflow="scroll"
 						sx={{ scrollbarWidth: "none" }}
+						height="100%"
 						spacing={4}
 					>
 						<MostFollowed />

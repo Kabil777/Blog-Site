@@ -1,33 +1,38 @@
-import { Avatar, IconButton, CardHeader, Box } from "@mui/material";
-import { CiLineHeight, CiMenuKebab } from "react-icons/ci";
+import { Avatar, IconButton, CardHeader } from "@mui/material";
 import CompButton from "../Button/CompButton";
-import CompFollow from "../Button/CompFollow";
+import { useSelector } from "react-redux";
+import { HiOutlineDotsVertical } from "react-icons/hi";
 
-function Profile({ actionEnable, showButton }) {
+function Profile({ coverDetails, userDetails, actionEnable, showButton }) {
+	const avatar = useSelector((state) => state.auth.profileCover);
+	const name = useSelector((state) => state.auth.name);
+	const email = useSelector((state) => state.auth.email);
+	const getProfile = () => {
+		if (userDetails) {
+			return userDetails;
+		} else if (coverDetails) {
+			return coverDetails.user;
+		} else {
+			return false;
+		}
+	};
+	const data = getProfile();
 	return (
 		<CardHeader
 			avatar={
-				<Avatar sx={{ bgcolor: "#2155cd" }} aria-label="recipe">
-					K
-				</Avatar>
+				<Avatar src={data ? data.profileCover : avatar} alt="bg"></Avatar>
 			}
-
-			title={
-				<Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-					<span>Kabil</span>
-					{showButton && <CompFollow index={0} />}
-				</Box>
-			}
+			title={data ? data.name : name}
 			action={
 				<>
 					{actionEnable && (
 						<IconButton aria-label="settings">
-							<CiMenuKebab />
+							<HiOutlineDotsVertical />
 						</IconButton>
 					)}
 				</>
 			}
-			subheader="kabil.ec23@bitsathy.ac.in"
+			subheader={data ? data.email : email}
 			sx={{
 				justifyContent: "flex-start",
 				textAlign: "start",

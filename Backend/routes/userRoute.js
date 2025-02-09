@@ -3,7 +3,7 @@ const express = require("express");
 const { AuthenticateToken } = require("../middlewares/jwtMiddleware");
 const userRouter = express.Router();
 
-userRouter.route("/").get(AuthenticateToken, (req, res) => {
+userRouter.route("/").get((req, res) => {
 	res.json(req.user);
 });
 

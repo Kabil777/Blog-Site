@@ -26,7 +26,10 @@
 		"react-redux": "^9.2.0",
 		"react-router-dom": "^7.1.1",
 		"rehype-highlight": "^7.0.1",
+		"rehype-raw": "^7.0.0",
+		"remark-breaks": "^4.0.0",
 		"remark-gfm": "^4.0.0",
+		"remark-parse": "^11.0.0",
 		"slugify": "^1.6.6"
 	},
 	"devDependencies": {

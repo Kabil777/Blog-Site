@@ -16,6 +16,7 @@ CREATE TABLE `User` (
 -- CreateTable
 CREATE TABLE `Post` (
     `id` VARCHAR(191) NOT NULL,
+    `slug` VARCHAR(191) NOT NULL,
     `name` VARCHAR(191) NOT NULL,
     `description` VARCHAR(191) NOT NULL,
     `mdFileName` VARCHAR(191) NOT NULL,
@@ -23,6 +24,8 @@ CREATE TABLE `Post` (
     `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
 
     UNIQUE INDEX `Post_id_key`(`id`),
+    UNIQUE INDEX `Post_slug_key`(`slug`),
+    INDEX `Post_userId_fkey`(`userId`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
@@ -43,6 +46,8 @@ CREATE TABLE `TagMapper` (
     `postId` VARCHAR(191) NOT NULL,
     `tagId` INTEGER NOT NULL,
 
+    INDEX `TagMapper_postId_fkey`(`postId`),
+    INDEX `TagMapper_tagId_fkey`(`tagId`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 

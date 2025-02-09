@@ -1,4 +1,3 @@
-import React from "react";
 import { Button } from "@mui/material";
 import { FaPython } from "react-icons/fa";
 import { AiOutlineKubernetes } from "react-icons/ai";
@@ -8,22 +7,32 @@ export default function CompButton({ index }) {
 	const buttons = [
 		{ label: "PYTHON", icon: <FaPython /> },
 		{ label: "DATA STRUCTURES", icon: <AiOutlineKubernetes /> },
-		{ label: "FOLLOW", icon: <IoMdAdd /> },
+		{ label: "FOLLOW", icon: <IoMdAdd size={15} /> },
 	];
 	const button = buttons[index];
 
 	return (
 		<Button
 			key={index}
-			size="small"
+			size="medium"
 			variant="contained"
 			startIcon={button.icon}
-			sx={{lineHeight: 1,color:"#336699",backgroundColor:"#EEF5FF" ,	width: "auto",
-				    minWidth:'unset',
-					height: "auto",
-				    minHeight: 'unset',
-				    boxShadow:"none",
-					fontSize: "0.6875rem",}}
+			sx={{
+				height: "30px",
+				width: "80px",
+				justifyContent: "center",
+				textAlign: "center",
+				padding: "none",
+				background: "#eef5ff",
+				color: "#2155cd",
+				boxShadow: "none",
+				p: "5px 2px",
+				fontSize: "0.75rem",
+				borderRadius: "0",
+				"&:hover": {
+					boxShadow: "none",
+				},
+			}}
 		>
 			{button.label}
 		</Button>

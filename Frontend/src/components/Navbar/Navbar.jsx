@@ -8,12 +8,12 @@ import {
 	Card,
 	Divider,
 	IconButton,
-	InputAdornment,
+	InputBase,
 	Popover,
 	Stack,
-	TextField,
 	Toolbar,
 	Typography,
+	SwipeableDrawer
 } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 import AppBarTheme from "./NavbarTheme";
@@ -62,9 +62,13 @@ function Navbar() {
 							<Typography
 								variant="button"
 								fontFamily="Inter"
-								fontSize="1.2rem"
+								fontSize="1.1rem"
+								fontWeight="400"
 								textTransform="none"
-								sx={{ color: "#67676e", cursor: "pointer" }}
+								sx={{
+									color: "#67676e",
+									cursor: "pointer",
+								}}
 								paddingX="10px"
 								onClick={() => {
 									navigate("/");
@@ -85,7 +89,8 @@ function Navbar() {
 									variant="button"
 									paddingX="10px"
 									fontFamily="Inter"
-									fontSize="1.2rem"
+									fontSize="1.1rem"
+									fontWeight="400"
 									textTransform="none"
 									color="#67676e"
 								>
@@ -110,16 +115,7 @@ function Navbar() {
 										},
 									}}
 								>
-									<Typography
-										variant="button"
-										paddingX="10px"
-										fontFamily="Inter"
-										fontSize="1.2rem"
-										textTransform="none"
-										color="#67676e"
-									>
-										You hit resources
-									</Typography>
+									<SwipeableDrawer sx={{ height: "400px", width: "100%" }} />
 								</Popover>
 							</Stack>
 						</Stack>
@@ -127,20 +123,37 @@ function Navbar() {
 						<Stack
 							direction="row"
 							alignItems="center"
-							justifyContent="flex-end"
+							justifyContent="center"
+							height="70%"
+							width="20%"
+							m="0px 25px"
+							border="1.5px solid #e4e4e7"
+							borderRadius="1%"
+							p="0px 5px"
 						>
-							<TextField
-								sx={{ width: "70ch", marginRight: "70px", lineHeight: "2.5" }}
-								variant="outlined"
-								placeholder="Find Articles..."
-								InputProps={{
-									startAdornment: (
-										<InputAdornment position="start">
-											<CiSearch size={25} />
-										</InputAdornment>
-									),
-								}}
+							<InputBase
+								sx={{ ml: 1, flex: 1 }}
+								placeholder="Search for Articles..."
+								inputProps={{ "aria-label": "Search for Articles" }}
 							/>
+							<IconButton
+								type="button"
+								aria-label="search"
+								sx={{
+									padding: "10px",
+									fontSize: "2em",
+									fontWeight: "600",
+									height: "40px",
+									width: "40px",
+									color: "#67676e",
+									backgroundColor: "#ffffff",
+									"&:hover": {
+										backgroundColor: "#ffffff",
+									},
+								}}
+							>
+								<CiSearch />
+							</IconButton>
 						</Stack>
 
 						<Stack

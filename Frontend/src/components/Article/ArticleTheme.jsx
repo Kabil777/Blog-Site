@@ -21,6 +21,7 @@ const ArticleTheme = createTheme({
 					cursor: "pointer",
 					paddingTop: "0",
 					paddingBottom: "10px",
+					width: "75%",
 				},
 			},
 		},

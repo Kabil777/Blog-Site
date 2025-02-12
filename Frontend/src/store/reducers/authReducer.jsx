@@ -22,7 +22,7 @@ const initialCredits = {
 	name: "",
 	email: "",
 	profileCover: "",
-	status: "loading",
+	status: "idle",
 };
 const authDetais = createSlice({
 	name: "UserDetails",

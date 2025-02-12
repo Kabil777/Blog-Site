@@ -84,6 +84,8 @@ function LoginStack() {
 
             <Stack /*googling and githubing*/ 
 				sx={{
+					userSelect:"none",
+					userDrag:"none",
 					display:"flex",
 					flexDirection:"row",
 					gap:"25px"
@@ -100,7 +102,11 @@ function LoginStack() {
 					justifyContent:"center",
 					gap:"10px",
 					boxShadow:"none",
-					textTransform:"none"
+					textTransform:"none",
+					'&:hover': {
+						boxShadow: 'none',
+					}
+
 					}}>
 						<Stack component="img" sx={{aspectRatio:1}} width="20px" height="21px" src={google}></Stack>
 						<Typography fontSize="16px" fontFamily="Inter" color="#6e6e67" fontWeight="medium">Goolge</Typography>
@@ -118,7 +124,10 @@ function LoginStack() {
 					justifyContent:"center",
 					gap:"10px",
 					boxShadow:"none",
-					textTransform:"none"
+					textTransform:"none",
+					'&:hover': {
+						boxShadow: 'none',
+					}
 					}}>
 						<Stack component="img" sx={{aspectRatio:1}} width="20px" height="20px" src={github}></Stack>
 						<Typography fontSize="16px" fontFamily="Inter" color="#6e6e67" fontWeight="medium">Github</Typography>
@@ -161,7 +170,6 @@ function LoginStack() {
                     borderRadius:"4px", 
                     width:"100%",
 					height:"auto",
-                    backgroundColor:"#EEF5FF",
 				}}></TextField>
 
 				</Stack>
@@ -187,8 +195,7 @@ function LoginStack() {
                     border:"none",
                     borderRadius:"4px", 
                     width:"100%",
-					height:"auto",
-                    backgroundColor:"#EEF5FF",
+					height:"auto",	
 				}}>
                 </TextField>
 				</Stack>

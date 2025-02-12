@@ -90,7 +90,9 @@ function LoginStack() {
 					flexDirection:"row",
 					gap:"25px"
 				}}>
-				<Button variant="contained" sx={{
+				<Button variant="contained"
+				onClick={()=>{window.location.href="http://localhost:7000/auth/google"}}
+				 sx={{
 					display:"flex",
 					flexDirection:"row",
 					backgroundColor:"white",
@@ -105,10 +107,12 @@ function LoginStack() {
 					textTransform:"none",
 					'&:hover': {
 						boxShadow: 'none',
-					}
-
+					},
+					'&:active': {
+						boxShadow: 'none',
+					},
 					}}>
-						<Stack component="img" sx={{aspectRatio:1}} width="20px" height="21px" src={google}></Stack>
+						<Stack component="img" sx={{aspectRatio:1}} width="20px" height="21px" src={google} ></Stack>
 						<Typography fontSize="16px" fontFamily="Inter" color="#6e6e67" fontWeight="medium">Goolge</Typography>
 				</Button>
 
@@ -127,7 +131,10 @@ function LoginStack() {
 					textTransform:"none",
 					'&:hover': {
 						boxShadow: 'none',
-					}
+					},
+					'&:active': {
+						boxShadow: 'none',
+					},
 					}}>
 						<Stack component="img" sx={{aspectRatio:1}} width="20px" height="20px" src={github}></Stack>
 						<Typography fontSize="16px" fontFamily="Inter" color="#6e6e67" fontWeight="medium">Github</Typography>
@@ -160,16 +167,20 @@ function LoginStack() {
 				sx={{
 					'& .MuiOutlinedInput-root': {
 						paddingLeft: '25px',
-						'& fieldset': {
-							border:"1px solid #e4e4e7",
+                        color:"#67676E",
+						border:"1px solid #e4e4e7",
+						"&:hover": {
+							borderColor: "#2155CD",
 						},
-						"&:hover fieldset": {
-							borderColor:"#2155CD",
-						},
+						
+						"& fieldset": {
+							border:"none",
+						}
+
 					},
                     borderRadius:"4px", 
                     width:"100%",
-					height:"auto",
+					height:"auto",	
 				}}></TextField>
 
 				</Stack>
@@ -184,15 +195,16 @@ function LoginStack() {
 				sx={{
 					'& .MuiOutlinedInput-root': {
 						paddingLeft: '25px',
-						'& fieldset': {
-                            color:"#67676E",
-							border:"1px solid #e4e4e7",
-						},
-						"&:hover fieldset": {
+                        color:"#67676E",
+						border:"1px solid #e4e4e7",
+						"&:hover": {
 							borderColor: "#2155CD",
 						},
+						"& fieldset": {
+							border:"none",
+						}
+
 					},
-                    border:"none",
                     borderRadius:"4px", 
                     width:"100%",
 					height:"auto",	

@@ -31,7 +31,13 @@
 	background-color: #ffffff !important;
 }
 
-;
+.reactMarkdown pre {
+	color: #ffffff;
+
+	code {
+		line-height: 2;
+	}
+}
 
 .cm-gutter {
 	align-items: center;
@@ -43,6 +49,5 @@
 }
 
 .cm-line>span {
-
 	font-family: "JetBrains Mono", monospace !important;
 }

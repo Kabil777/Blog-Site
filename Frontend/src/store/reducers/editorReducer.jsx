@@ -19,7 +19,7 @@ export const PostSend = createAsyncThunk(
 			if (!response) {
 				throw new Error("Failed to upload your post");
 			}
-			console.log(postData)
+			console.log(postData);
 			console.log(response.status);
 			return response.data;
 		} catch (error) {
@@ -35,6 +35,7 @@ const initialPost = {
 	tags: [],
 	blog: "### Write Your Content here....",
 	titleCover: "",
+	likes: 0,
 };
 export const postCreate = createSlice({
 	name: "handlePost",
@@ -56,7 +57,7 @@ export const postCreate = createSlice({
 						postId: id,
 						slug: slug,
 						title: data.title,
-						description: data.description,
+						description: data.Desc,
 						tags: data.tags,
 					},
 				};

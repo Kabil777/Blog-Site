@@ -9,15 +9,18 @@ function ProtectedChecker() {
 	const status = useSelector((state) => state.auth.status);
 	const location = useLocation();
 	const dispatch = useDispatch();
-
 	useEffect(() => {
-		if (status !== "success") {
-			dispatch(getInitialCredits());
-			console.log("Called authentication check");
+		if (status === "idle") {
+			try {
+				dispatch(getInitialCredits());
+				console.log("Called");
+			} catch (error) {
+				console.error("Error during auth check:", error);
+			}
 		}
-	}, [dispatch, status]); // Ensure this runs only when `status` changes
+	}, [dispatch, status]);
 
-	if (status === "loading") {
+	if (status === "idle" || status === "loading") {
 		return (
 			<Container
 				sx={{

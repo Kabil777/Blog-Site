@@ -7,7 +7,6 @@ import PostPage from "../Pages/PostPage";
 import Navbar from "../components/Navbar/Navbar";
 
 function Routes() {
-	const loaction = useLocation();
 	const protectRoutes = [
 		{
 			path: "/editor",

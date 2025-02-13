@@ -13,7 +13,7 @@ import {
 	Stack,
 	Toolbar,
 	Typography,
-	SwipeableDrawer
+	SwipeableDrawer,
 } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 import AppBarTheme from "./NavbarTheme";
@@ -115,7 +115,12 @@ function Navbar() {
 										},
 									}}
 								>
-									<SwipeableDrawer sx={{ height: "400px", width: "100%" }} />
+									<SwipeableDrawer
+										anchor="left"
+										open={open}
+										onClose={openReq} // Ensure this prop is passed
+										onOpen={closeReq} // Ensure this prop is passed
+									/>
 								</Popover>
 							</Stack>
 						</Stack>

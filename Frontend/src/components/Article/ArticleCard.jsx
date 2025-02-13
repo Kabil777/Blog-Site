@@ -31,14 +31,21 @@ function ArticleCard({ post }) {
 				<Stack direction="column" sx={{ width: "100%" }}>
 					<Stack
 						direction="row"
-						sx={{ flexGrow: 1, width: "100%", justifyContent: "center",alignItems:"center" }}
+						sx={{ flexGrow: 1, width: "100%", justifyContent: "center", alignItems: "center" }}
 					>
-						<CardContent onClick={postNavigate} sx={{width:"75%"}}>
+						<CardContent onClick={postNavigate} sx={{ width: "75%" }}>
 							<Typography
 								variant="h1"
 								component="h4"
 								fontFamily="Inter"
 								lineHeight="1.5"
+								sx={{
+									display: "-webkit-box",
+									WebkitBoxOrient: "vertical",
+									WebkitLineClamp: 2,
+									overflow: "hidden",
+									textOverflow: "ellipsis",
+								}}
 							>
 								{post.name}
 							</Typography>
@@ -59,22 +66,22 @@ function ArticleCard({ post }) {
 							</Typography>
 						</CardContent>
 						<Stack
-						component="img"
-						src={netBg}
-						sx={{
-							height: "100px",
-							borderRadius: "5%",
-							width: "20%",
-							mr: "16px",
-							justifySelf: "center",
-							backgroundColor: "#ffffff",
-						}}
-					/>
+							component="img"
+							src={netBg}
+							sx={{
+								height: "100px",
+								borderRadius: "5%",
+								width: "20%",
+								mr: "16px",
+								justifySelf: "center",
+								backgroundColor: "#ffffff",
+							}}
+						/>
 					</Stack>
-				
-	<CardActions>
-							<PostActionButtons position={true} />
-						</CardActions>
+
+					<CardActions>
+						<PostActionButtons position={true} article={post} />
+					</CardActions>
 				</Stack>
 			</Card>
 		</ThemeProvider>

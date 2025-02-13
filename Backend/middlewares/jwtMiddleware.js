@@ -21,7 +21,7 @@ const generateToken = async (user) => {
 		user = { ...user, userId: userRecord.id };
 		console.log("user", user);
 		const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_KEY, {
-			expiresIn: "10m",
+			expiresIn: "10s",
 		});
 		const refreshToken = jwt.sign(user, process.env.REFRESH_TOKEN_KEY, {
 			expiresIn: "2d",
@@ -34,15 +34,24 @@ const generateToken = async (user) => {
 
 const verifyRefreshToken = (refreshToken) => {
 	try {
-		let decodedToken = jwt.verify(refreshToken, process.env.REFRESH_TOKEN_KEY);
+		const decodedToken = jwt.verify(refreshToken, process.env.REFRESH_TOKEN_KEY);
 		console.log("decoded refresh:", decodedToken);
-		if (decodedToken) {
-			const Token = jwt.sign(decodedToken, process.env.ACCESS_TOKEN_KEY, {
-				expiresIn: "10m",
+		const user = {
+			userId: decodedToken.userId,
+			Google_id: decodedToken.Google_id,
+			email: decodedToken.email,
+			name: decodedToken.name,
+			profileCover: decodedToken.profileCover
+		};
+		if (user) {
+			const Token = jwt.sign(user, process.env.ACCESS_TOKEN_KEY, {
+				expiresIn: "1m",
 			});
-			console.log(Token);
+			console.log("new", Token);
+
 			return Token;
 		}
+
 	} catch (error) {
 		throw new Error("Invalid refresh token.");
 	}
@@ -51,16 +60,16 @@ const verifyRefreshToken = (refreshToken) => {
 const AuthenticateToken = (req, res, next) => {
 	let accessToken = req.cookies.accessToken;
 	if (!accessToken) return res.sendStatus(401);
-	jwt.verify(accessToken, process.env.ACCESS_TOKEN_KEY, (error, decoded) => {
+	decoded = jwt.verify(accessToken, process.env.ACCESS_TOKEN_KEY, (error, decoded) => {
 		if (error) {
 			try {
+				console.log("refresh", req.cookies.sessionRefreshToken)
 				const accessToken = verifyRefreshToken(req.cookies.sessionRefreshToken);
-				console.log("returned", accessToken);
 				res.cookie("accessToken", accessToken, {
 					httpOnly: true,
 				});
 				req.user = jwt.verify(accessToken, process.env.ACCESS_TOKEN_KEY);
-				console.log(req.user || "No user found");
+				console.log("user", req.user || "No user found");
 				next();
 			} catch (error) {
 				return res.status(401).json({ message: `${error}` });

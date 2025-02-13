@@ -12,7 +12,7 @@ export const ArticleGetter = createAsyncThunk(
 				},
 			);
 			if (!articleData) throw new Error("Failed to fetch Article");
-			console.log(articleData);
+			console.log(articleData.data);
 			return articleData.data;
 		} catch (error) {
 			return rejectWithValue(error.message);
@@ -31,11 +31,14 @@ const fetchArticles = createSlice({
 	initialState: initialSlice,
 	reducers: {
 		setArticle: (state, action) => {
-				(state.userDetails = action.payload.userDetails),
+			(state.userDetails = action.payload.userDetails),
 				(state.postDetails = action.payload.postDetails),
 				(state.tags = action.payload.tags),
 				(state.postContent = action.payload.postContent);
 		},
+		updateLike: (state, actions) => {
+
+		}
 	},
 	extraReducers(builder) {
 		builder.addCase(ArticleGetter.pending, (state) => {
@@ -47,7 +50,7 @@ const fetchArticles = createSlice({
 				(state.postDetails = action.payload.postDetails),
 				(state.tags = action.payload.postDetails.tags),
 				(state.postContent = action.payload.postContent);
-			console.log("user",state.userDetails)
+			console.log("user", state.userDetails);
 		});
 		builder.addCase(ArticleGetter.rejected, (state) => {
 			state.status = "rejected";
@@ -55,5 +58,5 @@ const fetchArticles = createSlice({
 	},
 });
 
-export const { setArticle } = fetchArticles.actions;
+export const { setArticle, updateLike } = fetchArticles.actions;
 export default fetchArticles.reducer;

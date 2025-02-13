@@ -21,11 +21,12 @@ authRouterGoogle.route("/callback").get(
 		res.cookie("sessionRefreshToken", refreshToken, {
 			httpOnly: true,
 			maxAge: 24 * 60 * 60 * 100 * 2,
+			sameSite: "lax"
 		});
 		res.cookie("accessToken", accessToken, {
 			httpOnly: true,
 			maxAge: 60 * 60 * 1000,
-			sameSite: "strict",
+			sameSite: "lax",
 		});
 		res.redirect("http://localhost:5173/");
 	},

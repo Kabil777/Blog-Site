@@ -1,6 +1,5 @@
 import { Container, Stack, Typography } from "@mui/material";
 import Divider from "@mui/material/Divider";
-import Navbar from "../components/Navbar/Navbar";
 import ReactMarkdown from "react-markdown";
 import "highlight.js/styles/tokyo-night-dark.css";
 import rehypeHighlight from "rehype-highlight";
@@ -24,10 +23,11 @@ function PostPage() {
 	console.log(slug);
 	const dispatch = useDispatch();
 	const data = useSelector((state) => state.article.postContent);
-	console.log(data)
+	console.log(data);
 	const status = useSelector((state) => state.article.status);
 	const title = useSelector((state) => state.article.postDetails.name);
-	const userDetails = useSelector((state) => state.article.userDetails)
+	const userDetails = useSelector((state) => state.article.userDetails);
+	const postDetails = useSelector((state) => state.article.postDetails);
 	const getArticle = () => {
 		dispatch(ArticleGetter({ user, slug }));
 	};
@@ -60,7 +60,11 @@ function PostPage() {
 						>
 							{title}
 						</Typography>
-						<Profile userDetails={userDetails} actionEnable={false} showButton={false} />
+						<Profile
+							userDetails={userDetails}
+							actionEnable={false}
+							showButton={false}
+						/>
 						<Stack
 							direction="row"
 							alignItems="center"
@@ -75,7 +79,7 @@ function PostPage() {
 							>
 								<ChipComponent />
 							</Stack>
-							<PostActionButtons position={false} />
+							<PostActionButtons position={false} article={postDetails} />
 						</Stack>
 						<Divider
 							variant="fullWidth"

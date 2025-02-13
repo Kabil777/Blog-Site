@@ -1,27 +1,25 @@
 import { Box, Container, Stack, TextField, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import Link from '@mui/material/Link';
-import Button from '@mui/material/Button';
-import Checkbox from '@mui/material/Checkbox';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormControl from '@mui/material/FormControl';
+import Link from "@mui/material/Link";
+import Button from "@mui/material/Button";
+import Checkbox from "@mui/material/Checkbox";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormControl from "@mui/material/FormControl";
 import google from "../../assets/google.png";
 import github from "../../assets/github.png";
 import img1 from "../../assets/4575.jpg";
 import img2 from "../../assets/5037367.jpg";
 import img3 from "../../assets/7124027.jpg";
 import img4 from "../../assets/front.jpg";
-const images = [
-img1,img2,img3,img4
-  ];
+const images = [img1, img2, img3, img4];
 function LoginStack() {
 	const [currentIndex, setCurrentIndex] = useState(0); // Track the current image index
-	
-	  useEffect(() => {
+
+	useEffect(() => {
 		const interval = setInterval(() => {
-		  setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length); // Loop through images
+			setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length); // Loop through images
 		}, 4000); // 3 seconds display + 1 second for transition
-	
+
 		return () => clearInterval(interval); // Cleanup interval on unmount
 	  }, []);	
       return (
@@ -233,67 +231,84 @@ function LoginStack() {
 				</Stack>
 				<Button variant="contained" type="submit" sx={{width:"100%",backgroundColor:"#2155CD",height:"50px"}}>Log In </Button>
 
-				<Stack sx={{width:"100%",display:"flex",flexDirection:"row" ,alignItems:"center" ,gap :"0.6rem",justifyContent:"space-between"}}>
-                    <Typography sx={{
-                        fontSize:"14px", 
-                        color:"#67676E"
-                    }}>Dont have an Account ?</Typography>
-                    <Typography sx={{fontSize:"14px", color:"#2155CD",textDecoration:"underline"}}>Create an Account</Typography>
-                </Stack> 
-				</Stack>
-                
-				
-			</Stack>
-
-            <Stack /* right side body */
-            sx={{
-                width: "60%",
-                justifyContent:"center",
-                alignItems:"center",
-                backgroundColor:"#2155CD",
-				borderRadius:"0px 10px 10px 0px",
-            }}
-            >
-				<Box
-							borderRadius="50%"
-					  sx={{
-						position: "relative",
-						width: "50%",
-						overflow: "hidden",
-						backgroundColor: "#f5f5f5",
-						aspectRatio:1
-						
-					  }}
-					>
-					  {images.map((image, index) => (
-						<Box
-						  key={index}
-						  style={{
-							position: "absolute",
-							top: 0,
-							left: `${(index - currentIndex) * 100}%`, // Position images based on the current index
-							width: "100%",
-							height: "100%",
-							transition: "left 1s ease-in-out", // Smooth transition for sliding effect
-						  }}
-						>
-						  <img
-							src={image}
-							alt={`Slide ${index + 1}`}
-							style={{
-							  width: "100%",
-							  height: "100%",
-							  objectFit: "cover",
+						<Stack
+							sx={{
+								width: "100%",
+								display: "flex",
+								flexDirection: "row",
+								alignItems: "center",
+								gap: "0.6rem",
+								justifyContent: "space-between",
 							}}
-						  />
-						</Box>
-					  ))}
+						>
+							<Typography
+								sx={{
+									fontSize: "14px",
+									color: "#67676E",
+								}}
+							>
+								Dont have an Account ?
+							</Typography>
+							<Typography
+								sx={{
+									fontSize: "14px",
+									color: "#2155CD",
+									textDecoration: "underline",
+								}}
+							>
+								Create an Account
+							</Typography>
+						</Stack>
+					</Stack>
+				</Stack>
+
+				<Stack /* right side body */
+					sx={{
+						width: "60%",
+						justifyContent: "center",
+						alignItems: "center",
+						backgroundColor: "#2155CD",
+						borderRadius: "0px 10px 10px 0px",
+					}}
+				>
+					<Box
+						borderRadius="50%"
+						sx={{
+							position: "relative",
+							width: "50%",
+							overflow: "hidden",
+							backgroundColor: "#f5f5f5",
+							aspectRatio: 1,
+						}}
+					>
+						{images.map((image, index) => (
+							<Box
+								key={index}
+								style={{
+									position: "absolute",
+									top: 0,
+									left: `${(index - currentIndex) * 100}%`, // Position images based on the current index
+									width: "100%",
+									height: "100%",
+									transition: "left 1s ease-in-out", // Smooth transition for sliding effect
+								}}
+							>
+								<img
+									src={image}
+									alt={`Slide ${index + 1}`}
+									style={{
+										width: "100%",
+										height: "100%",
+										objectFit: "cover",
+									}}
+								/>
+							</Box>
+						))}
 					</Box>
-            </Stack>
-              </Container>
-          </>
-      );
-  }
-  
-  export default LoginStack;
-  
+				</Stack>
+			</Container>
+		</>
+	);
+}
+
+export default LoginStack;

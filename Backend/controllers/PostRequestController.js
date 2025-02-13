@@ -6,9 +6,10 @@ const PostRequestController = {
 	getMethod: async (req, res) => {
 		try {
 			const { user, slugId } = req.params;
+			console.log(slugId);
 			const data = await prisma.post.findUnique({
 				where: {
-					slug: slugId
+					slug: slugId,
 				},
 				select: {
 					id: true,
@@ -27,21 +28,25 @@ const PostRequestController = {
 									createdAt: false,
 									id: true,
 									skill: true,
-									domain: true
-								}
-							}
+									domain: true,
+								},
+							},
 						},
-					}
+					},
+					_count: {
+						select: {
+							like: true,
+						},
+					},
 				},
-
 			});
 			if (!data) {
-				return res.status(404).json({ message: 'Post not found' });
+				return res.status(404).json({ message: "Post not found" });
 			}
-			console.log(data)
+			console.log(data);
 			const userData = await prisma.user.findUnique({
 				where: {
-					id: data.userId
+					id: data.userId,
 				},
 				select: {
 					id: true,
@@ -50,10 +55,14 @@ const PostRequestController = {
 					name: true,
 					email: true,
 					profileCover: true,
-				}
-			})
-			const fileContent = await postReader(data.id)
-			res.json({ userDetails: userData, postDetails: data, postContent: fileContent });
+				},
+			});
+			const fileContent = await postReader(data.id);
+			res.json({
+				userDetails: userData,
+				postDetails: data,
+				postContent: fileContent,
+			});
 		} catch (error) {
 			res.status(400).send(error.message);
 		}
@@ -61,4 +70,3 @@ const PostRequestController = {
 };
 
 module.exports = { PostRequestController };
-

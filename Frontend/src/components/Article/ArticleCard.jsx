@@ -34,16 +34,23 @@ function ArticleCard({ post }) {
 						sx={{
 							flexGrow: 1,
 							width: "100%",
-							justifyContent: "space-between",
+							justifyContent: "center",
 							alignItems: "center",
 						}}
 					>
-						<CardContent onClick={postNavigate}>
+						<CardContent onClick={postNavigate} sx={{ width: "75%" }}>
 							<Typography
 								variant="h1"
 								component="h4"
 								fontFamily="Inter"
 								lineHeight="1.5"
+								sx={{
+									display: "-webkit-box",
+									WebkitBoxOrient: "vertical",
+									WebkitLineClamp: 2,
+									overflow: "hidden",
+									textOverflow: "ellipsis",
+								}}
 							>
 								{post.name}
 							</Typography>
@@ -63,22 +70,22 @@ function ArticleCard({ post }) {
 								{post.description}
 							</Typography>
 						</CardContent>
-
 						<Stack
 							component="img"
 							src={netBg}
 							sx={{
 								height: "100px",
 								borderRadius: "5%",
-								width: "170px",
+								width: "20%",
 								mr: "16px",
 								justifySelf: "center",
 								backgroundColor: "#ffffff",
 							}}
 						/>
 					</Stack>
+
 					<CardActions>
-						<PostActionButtons position={true} />
+						<PostActionButtons position={true} article={post} />
 					</CardActions>
 				</Stack>
 			</Card>

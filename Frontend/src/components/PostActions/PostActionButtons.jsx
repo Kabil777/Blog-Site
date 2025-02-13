@@ -20,23 +20,42 @@ function PostActionButtons({ position, article }) {
 			direction="row"
 			justifyContent={position ? "flex-start" : "flex-end"}
 			alignItems="center"
-			gap="10px"
+			gap="30px"
 			width="50%"
-			paddingX="8px"
+			
 		>
-			<Stack direction="row" alignItems="flex-end" justifyContent="center">
-				<Typography sx={{ m: "0" }} alignSelf="flex-end">
+			<IconButton onClick={Like} direction="row" alignItems="flex-end" justifyContent="center"
+			sx={{
+				gap:"5px",
+				border:"1px solid #e4e4e7",
+				borderRadius:"4px",
+				width:"70px",
+				height:"35px",
+				p:"5px 3px",
+				}}>
+			<GrLike size={20} />
+				<Typography sx={{ m: "0",fontSize:"1rem" }} alignSelf="flex-end">
 					{article?._count?.like || 0}
-				</Typography>
-
-				<IconButton onClick={Like} sx={{}}>
-					<GrLike size={20} />
-				</IconButton>
-			</Stack>
-			<IconButton>
+				</Typography>	
+			</IconButton >
+			<IconButton sx={{
+				gap:"5px",
+				border:"1px solid #e4e4e7",
+				borderRadius:"4px",
+				width:"70px",
+				height:"35px",
+				p:"5px 3px",
+				}} >
 				<FaRegBookmark size={20} />
 			</IconButton>
-			<IconButton>
+			<IconButton sx={{
+				gap:"5px",
+				border:"1px solid #e4e4e7",
+				borderRadius:"4px",
+				width:"70px",
+				height:"35px",
+				p:"5px 3px",
+				}} >
 				<IoShareSocialSharp size={20} />
 			</IconButton>
 		</Stack>

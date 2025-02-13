@@ -19,6 +19,7 @@ export default function BasicButtons() {
 	};
 
 	const buttons = [
+		{ label: "All" },
 		{ label: "Featured", icon: <FaFeatherAlt /> },
 		{ label: "Trending", icon: <IoMdTrendingUp /> },
 		{ label: "Python", icon: <IoLogoPython /> },
@@ -41,6 +42,7 @@ export default function BasicButtons() {
 				borderRadius: "0px",
 				height: "35px",
 				scrollbarWidth: "none",
+				gap: "20px",
 				'& .MuiButton-root': {
    						borderRadius: '2px',
  		},
@@ -54,12 +56,12 @@ export default function BasicButtons() {
 					onClick={() => handleClick(index)}
 					sx={{
 						borderRadius: "0px",
+						padding: "10px 15px",
 						fontWeight: "bold",
 						boxShadow: "none",
 						"&:hover": {
 							boxShadow: "none",
 						},
-						marginX: "20px",
 						height: "100%",
 						flexShrink: "0",
 						backgroundColor: activeButton === index ? "#2155CD" : "#EEF5FF",

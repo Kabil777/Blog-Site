@@ -23,8 +23,10 @@ function ArticleCard({ post }) {
 			<Card
 				sx={{
 					display: "flex",
+					gap: "12px",
 					flexDirection: "column",
 					justifyContent: "space-evenly",
+					padding: "25px",
 				}}
 			>
 				<Profile actionEnable={true} coverDetails={post} />
@@ -34,7 +36,7 @@ function ArticleCard({ post }) {
 						sx={{
 							flexGrow: 1,
 							width: "100%",
-							justifyContent: "center",
+							justifyContent: "space-between",
 							alignItems: "center",
 						}}
 					>
@@ -77,17 +79,17 @@ function ArticleCard({ post }) {
 								height: "100px",
 								borderRadius: "5%",
 								width: "20%",
-								mr: "16px",
 								justifySelf: "center",
+								
 								backgroundColor: "#ffffff",
 							}}
 						/>
 					</Stack>
 
-					<CardActions>
+				</Stack>
+					<CardActions sx={{ padding: "0px" }}>
 						<PostActionButtons position={true} article={post} />
 					</CardActions>
-				</Stack>
 			</Card>
 		</ThemeProvider>
 	);

@@ -30,6 +30,9 @@ export default function CompButton({ index }) {
 				"&:hover": {
 					boxShadow: "none",
 				},
+				"&:active": {
+					boxShadow: "none",
+				},
 			}}
 		>
 			{button.label}

@@ -28,12 +28,12 @@ function ArticleCard({ post }) {
 				}}
 			>
 				<Profile actionEnable={true} coverDetails={post} />
-				<Stack direction="row" sx={{ width: "100%" }}>
+				<Stack direction="column" sx={{ width: "100%" }}>
 					<Stack
-						direction="column"
-						sx={{ flexGrow: 1, width: "60%", justifyContent: "space-around" }}
+						direction="row"
+						sx={{ flexGrow: 1, width: "100%", justifyContent: "center",alignItems:"center" }}
 					>
-						<CardContent onClick={postNavigate}>
+						<CardContent onClick={postNavigate} sx={{width:"75%"}}>
 							<Typography
 								variant="h1"
 								component="h4"
@@ -58,11 +58,7 @@ function ArticleCard({ post }) {
 								{post.description}
 							</Typography>
 						</CardContent>
-						<CardActions>
-							<PostActionButtons position={true} />
-						</CardActions>
-					</Stack>
-					<Stack
+						<Stack
 						component="img"
 						src={netBg}
 						sx={{
@@ -71,10 +67,14 @@ function ArticleCard({ post }) {
 							width: "20%",
 							mr: "16px",
 							justifySelf: "center",
-							alignSelf: "flex-start",
 							backgroundColor: "#ffffff",
 						}}
 					/>
+					</Stack>
+				
+	<CardActions>
+							<PostActionButtons position={true} />
+						</CardActions>
 				</Stack>
 			</Card>
 		</ThemeProvider>

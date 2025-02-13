@@ -6,7 +6,7 @@ const ArticleTheme = createTheme({
 			styleOverrides: {
 				root: {
 					width: "100%",
-					height: "240px",
+					height: "275px",
 					border: "1px solid #e4e4e7",
 					padding: " 10px 8px",
 					boxShadow: "none",

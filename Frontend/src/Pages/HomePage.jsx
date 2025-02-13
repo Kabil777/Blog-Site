@@ -25,7 +25,7 @@ function HomePage() {
 					mt: "100px",
 				}}
 			>
-				<Grid2 container spacing={3} justifyContent="center">
+				<Grid2 container spacing={3} justifyContent="center" alignItems="flex-start">
 					<Grid2
 						container
 						md={8}

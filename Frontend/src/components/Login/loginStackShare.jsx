@@ -29,7 +29,7 @@ function LoginStack() {
               <Container
                   maxWidth="xl"
                   sx={{
-                      padding: "24px",
+                      padding: "2rem",
                       width: "100%",
                       display: "flex",
                       height: "100vh",
@@ -41,6 +41,7 @@ function LoginStack() {
             <Stack /* left side body */
 			sx={{
                 width: "40%",
+				height:"100%",
 				backgroundColor:"white",
 				justifyContent:"center",
 				alignItems:"center",
@@ -50,7 +51,8 @@ function LoginStack() {
 			>
 			<Stack /*content of left side*/sx={{
 				gap:"25px",
-                width: "350px",
+                width: "65%",
+				height:"fit-content",
             }} >
 
 
@@ -66,7 +68,7 @@ function LoginStack() {
 						}>
 
 				    <Stack /*name*/>
-                        <Typography fontSize="40px" fontFamily="Teko" color="#1357B3" fontWeight="medium" padding="10px 0 0 0">Stack Share</Typography>
+                        <Typography fontSize="2.5rem" fontFamily="Teko" color="#1357B3" fontWeight="medium" padding="10px 0 0 0">Stack Share</Typography>
                     </Stack>
 
 				</Stack>
@@ -76,7 +78,7 @@ function LoginStack() {
 					<Typography variant="h5" fontFamily="Inter" color="#2E2F39" fontWeight="bold" textAlign="left">
 						Log In to Your Account
 					</Typography>
-					<Typography  fontFamily="Inter" color="#A9A9AB" fontSize="70%" fontWeight="bold" textAlign="left">
+					<Typography  fontFamily="Inter" color="#A9A9AB" fontSize="0.8rem" fontWeight="bold" textAlign="left">
 						Welcome back! Select method to log In
 					</Typography>
 				</Stack>
@@ -99,7 +101,7 @@ function LoginStack() {
 					border:"2px solid #F7F7F7",
 					borderRadius:"4px",
                     width:"100%",
-                    height:"50px",
+                    height:"3rem",
 					alignItems:"center",
 					justifyContent:"center",
 					gap:"10px",
@@ -112,8 +114,8 @@ function LoginStack() {
 						boxShadow: 'none',
 					},
 					}}>
-						<Stack component="img" sx={{aspectRatio:1}} width="20px" height="21px" src={google} ></Stack>
-						<Typography fontSize="16px" fontFamily="Inter" color="#6e6e67" fontWeight="medium">Goolge</Typography>
+						<Stack component="img" sx={{aspectRatio:1}} width="1.1rem" height="1.2rem" src={google} ></Stack>
+						<Typography fontSize="1rem" fontFamily="Inter" color="#6e6e67" fontWeight="medium">Goolge</Typography>
 				</Button>
 
 				<Button variant="contained" sx={{
@@ -123,7 +125,7 @@ function LoginStack() {
 					border:"2px solid #F7F7F7",
 					borderRadius:"4px",
                     width:"100%",
-                    height:"50px",
+                    height:"3rem",
 					alignItems:"center",
 					justifyContent:"center",
 					gap:"10px",
@@ -136,8 +138,8 @@ function LoginStack() {
 						boxShadow: 'none',
 					},
 					}}>
-						<Stack component="img" sx={{aspectRatio:1}} width="20px" height="20px" src={github}></Stack>
-						<Typography fontSize="16px" fontFamily="Inter" color="#6e6e67" fontWeight="medium">Github</Typography>
+						<Stack component="img" sx={{aspectRatio:1}} width="1.2rem" height="1.3rem" src={github}></Stack>
+						<Typography fontSize="1rem" fontFamily="Inter" color="#6e6e67" fontWeight="medium">Github</Typography>
 				</Button>
 
 			</Stack>

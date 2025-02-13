@@ -1,8 +1,8 @@
-import Login from "../components/Login/login";
+import LoginStack from "../components/Login/loginStackShare";
 const publicRoutes = [
 	{
 		path: "/login",
-		element: <Login />,
+		element: <LoginStack />,
 	},
 ];
 

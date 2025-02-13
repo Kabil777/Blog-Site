@@ -31,6 +31,11 @@ const postController = {
 							},
 						},
 					},
+					_count: {
+						select: {
+							like: true,
+						},
+					},
 				},
 			});
 			res.status(200).json({
@@ -44,7 +49,7 @@ const postController = {
 		try {
 			console.log(req.user);
 			const userId = req.user.id;
-			const { postId, slug, title, description, tags, blog } = req.body;
+			const { postId, slug, title, description, tags, blog, likes } = req.body;
 			console.log(req.body);
 			if (!postId || !title || !blog) {
 				return res
@@ -61,6 +66,7 @@ const postController = {
 					name: title,
 					description: description,
 					mdFileName: fileName,
+					likes: likes,
 				},
 			});
 			const tagIds = await Promise.all(

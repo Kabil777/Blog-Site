@@ -35,7 +35,7 @@ function PostActionButtons({ position, article ,url}) {
 			direction="row"
 			justifyContent={position ? "flex-start" : "flex-end"}
 			alignItems="center"
-			gap="30px"
+			gap="10px"
 			width="50%"
 			
 		>
@@ -44,16 +44,15 @@ function PostActionButtons({ position, article ,url}) {
 
 				<IconButton onClick={Like} sx={{ 
 					gap:"5px",
-					border:"1px solid #e4e4e7",
+					width:"40px",
 					borderRadius:"4px",
-					width:"70px",
 					height:"35px",
-					p:"5px 3px",
-					borderColor: article.isLiked ? "#2155CD" : "#e4e4e7",
-					color: article.isLiked ? "#2155CD" : "black" }}>
-					<BiSolidLike size={21} />
+					color: article.isLiked ? "#2155CD" : "black" ,
+					
+					}}>
+					<BiSolidLike/>
 					<Typography sx={{ 
-					m: "0", paddingRight: "5px" }} alignSelf="flex-end">
+					m: "0", paddingRight: "5px" }} alignSelf="center">
 					{article?._count?.like || 0}
 				</Typography>
 				</IconButton>
@@ -61,24 +60,19 @@ function PostActionButtons({ position, article ,url}) {
 			<IconButton
 			sx={{
 				gap:"5px",
-					border:"1px solid #e4e4e7",
 					borderRadius:"4px",
-					width:"70px",
 					height:"35px",
-					p:"5px 3px",
-					color:"black"
+					color:"black",
+					
 			}}
 			>
 				<GoBookmarkFill size={20} />
 			</IconButton>
 			<IconButton  onClick={sharePost} sx={{
 				gap:"5px",
-				border:"1px solid #e4e4e7",
 				borderRadius:"4px",
-				width:"70px",
 				height:"35px",
-				p:"5px 3px",
-				color:"black"
+				color:"black",
 				}} >
 				<IoShareSocialSharp size={20} />
 			</IconButton>

@@ -212,11 +212,15 @@ function Navbar({ data }) {
 							//filter: "drop-shadow(0px 4px 8px rgba(0,0,0,0.32))",
 							border: "1px solid #e4e4e7",
 							mt: 1.5,
+							width: "300px",
 							"& .MuiList-root ": {
 								display: "flex",
 								flexDirection: "column",
 								padding: "10px",
 								gap: "3px",	
+								"& .MuiPaper-root": {
+								width: "100%",
+							},
 							},
 							"& .MuiAvatar-root": {
 								width: 45,
@@ -246,6 +250,7 @@ function Navbar({ data }) {
 				<MenuItem
 					sx={{
 						padding: "0",
+						width:"100%"
 						
 					}}
 				>
@@ -254,15 +259,18 @@ function Navbar({ data }) {
 							boxShadow: "none",
 							backgroundColor: "#E4E4E7",
 							padding: "0",
+							
 							"& .MuiCardHeader-root": {
 								padding: "8px",
+								width:"100%"
+								
 							},
 							"& .MuiCardHeader-action": {
 								display: "none",
 							},
 						}}
 					>
-						<Profile />
+						<Profile  />
 					</Card>
 				</MenuItem>
 

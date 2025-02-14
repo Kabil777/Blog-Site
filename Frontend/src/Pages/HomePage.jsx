@@ -50,12 +50,12 @@ function HomePage() {
 						)}
 					</Grid2>
 					<Grid2
-						md={8}
-						lg={8}
+						md={0}
+						lg={0}
 						xl={8}
 						size={{ xs: 0, md: 0, lg: 3.5, xl: 3 }}
 						container
-						overflow="none"
+						overflow="hidden"
 						sx={{ scrollbarWidth: "none" }}
 						height="100%"
 						spacing={4}

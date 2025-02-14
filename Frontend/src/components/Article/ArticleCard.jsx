@@ -17,11 +17,13 @@ function ArticleCard({ post }) {
 	const postNavigate = () => {
 		navigate(`/kabil/${post.slug}`);
 	};
+	const postUrl = `${window.location.origin}/kabil/${post.slug}`;
 	console.log("post", post);
 	return (
 		<ThemeProvider theme={ArticleTheme}>
-			<Card
+			<Card 
 				sx={{
+						
 					display: "flex",
 					gap: "12px",
 					flexDirection: "column",
@@ -30,7 +32,7 @@ function ArticleCard({ post }) {
 				}}
 			>
 				<Profile actionEnable={true} coverDetails={post} />
-				<Stack direction="column" sx={{ width: "100%" }}>
+				<Stack direction="column" sx={{ width: "100%",cursor: "pointer", }} onClick={postNavigate}>
 					<Stack
 						direction="row"
 						sx={{
@@ -40,7 +42,7 @@ function ArticleCard({ post }) {
 							alignItems: "center",
 						}}
 					>
-						<CardContent onClick={postNavigate} sx={{ width: "75%" }}>
+						<CardContent  sx={{ width: "75%" }}>
 							<Typography
 								variant="h1"
 								component="h4"
@@ -88,7 +90,7 @@ function ArticleCard({ post }) {
 
 				</Stack>
 					<CardActions sx={{ padding: "0px" }}>
-						<PostActionButtons position={true} article={post} />
+						<PostActionButtons position={true} article={post} url={postUrl} />
 					</CardActions>
 			</Card>
 		</ThemeProvider>

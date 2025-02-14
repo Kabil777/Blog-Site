@@ -10,7 +10,7 @@ import React, { useState } from "react";
 import { ButtonGroup } from "@mui/material";
 
 export default function BasicButtons() {
-	const [activeButton, setActiveButton] = useState(null);
+	const [activeButton, setActiveButton] = useState(0);
 
 	const handleClick = (index) => {
 		if (activeButton !== index) {
@@ -66,6 +66,9 @@ export default function BasicButtons() {
 						flexShrink: "0",
 						backgroundColor: activeButton === index ? "#2155CD" : "#EEF5FF",
 						color: activeButton === index ? "#EEF5FF" : "#2155CD",
+						"&:active": {
+							boxShadow: "none",
+						},
 					}}
 				>
 					{button.label}

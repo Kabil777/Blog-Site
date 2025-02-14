@@ -18,7 +18,6 @@ const ArticleTheme = createTheme({
 		MuiCardContent: {
 			styleOverrides: {
 				root: {
-					cursor: "pointer",
 					width: "75%",
 					padding: "0",
 				},

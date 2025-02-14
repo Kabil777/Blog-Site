@@ -36,6 +36,9 @@ const fetchArticles = createSlice({
 				(state.tags = action.payload.tags),
 				(state.postContent = action.payload.postContent);
 		},
+		updateLike: (state, actions) => {
+
+		}
 	},
 	extraReducers(builder) {
 		builder.addCase(ArticleGetter.pending, (state) => {
@@ -55,5 +58,5 @@ const fetchArticles = createSlice({
 	},
 });
 
-export const { setArticle } = fetchArticles.actions;
+export const { setArticle, updateLike } = fetchArticles.actions;
 export default fetchArticles.reducer;

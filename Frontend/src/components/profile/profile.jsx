@@ -23,6 +23,8 @@ function Profile({ coverDetails, userDetails, actionEnable, showButton }) {
 				<Avatar src={data ? data.profileCover : avatar} alt="bg"></Avatar>
 			}
 			title={data ? data.name : name}
+			subheader={data ? data.email : email}
+
 			action={
 				<>
 					{actionEnable && (
@@ -33,19 +35,27 @@ function Profile({ coverDetails, userDetails, actionEnable, showButton }) {
 					{showButton && <CompButton index={2} />}
 				</>
 			}
-			subheader={data ? data.email : email}
+			
 			sx={{
+				display: "flex",
+				gap: "10px",
 				justifyContent: "flex-start",
 				textAlign: "start",
 				alignItems: "center",
+				"& .MuiCardHeader-action": {
+					alignSelf:"center",
+				},
+				"& .MuiCardHeader-avatar": {
+					marginRight: "0",
+				}
 			}}
 			titleTypographyProps={{
-				fontSize: "1rem",
-				fontWeight: "bold",
+				fontSize: ".9rem",
+				fontWeight: "800",
 			}}
 			subheaderTypographyProps={{
-				fontSize: "0.9rem",
-				fontWeight: "normal",
+				fontSize: "0.8rem",
+				fontWeight: "600",
 				color: "text.secondary",
 			}}
 		/>

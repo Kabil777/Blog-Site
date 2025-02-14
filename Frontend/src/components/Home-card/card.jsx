@@ -19,13 +19,13 @@ export default function MediaCard() {
 				boxShadow: "none",
 				border: "0.0625rem solid #ccc",
 				width: "100%",
+				paddingBottom: "0.825rem",
 			}}
 		>
 			<CardMedia
 				sx={{
-					width: "100%",
 					height: "80%",
-					objectFit: "contain",
+					objectFit: "contain",	
 				}}
 				image={pythonImage}
 				title="Python Image"
@@ -33,9 +33,7 @@ export default function MediaCard() {
 			<CardContent
 				sx={{
 					flexGrow: 1,
-					paddingTop: 0,
-					paddingBottom: 0,
-					marginBottom: "0.625rem",
+					padding:"1rem 1rem 0 1rem",
 				}}
 			>
 				<Typography
@@ -43,11 +41,10 @@ export default function MediaCard() {
 					variant="h4"
 					component="div"
 					sx={{
-						paddingTop: "0.625rem",
 						fontWeight: "bold",
 						fontSize: "1.0625rem",
 						marginBottom: "0",
-						fontFamily: "'Roboto', sans-serif",
+						fontFamily: "inter",
 						textAlign: "left",
 					}}
 				>
@@ -57,9 +54,8 @@ export default function MediaCard() {
 					variant="body2"
 					sx={{
 						color: "black",
-						paddingTop: "0.4375rem",
-						fontWeight: "bold",
-						fontSize: "0.90rem",
+						fontWeight: "600",
+						fontSize: "0.75rem",
 						textAlign: "left",
 					}}
 				>
@@ -68,52 +64,52 @@ export default function MediaCard() {
 			</CardContent>
 			<CardActions
 				sx={{
-					paddingTop: "0.3125rem",
-					paddingBottom: 0,
-					display: "flex",
-					marginTop: "0.1875rem",
+					padding:"0rem 1rem",
 				}}
 			>
 				<Button
 					size="small"
-					startIcon={<FaPython style={{ fontSize: "0.875rem" }} />}
+					startIcon={<FaPython style={{ fontSize: "0.8rem" }} />}
 					sx={{
-						marginBottom: "0.0625rem",
-						width: "5.25rem",
-						height: "1.375rem",
-						fontSize: "0.6875rem",
-						backgroundColor: "#EEF5FF",
+						fontSize: "0.6rem",
+						borderRadius: "2px",
+						fontWeight: "800",
+						padding: "0.1875rem .65rem",
+						boxShadow: "none",
+						gap: "5px",
+						"&:hover": {
+							boxShadow: "none",
+						},
+						backgroundColor:  "#EEF5FF",
+						color:"#2155CD",
+						"& .MuiButton-startIcon": {
+							margin: "0",
+						}
 					}}
 				>
 					Python
 				</Button>
 				<Button
 					size="small"
-					startIcon={<AiOutlineKubernetes style={{ fontSize: "0.875rem" }} />}
+					startIcon={<AiOutlineKubernetes style={{ fontSize: "0.8rem" }} />}
 					sx={{
-						marginBottom: "0.0625rem",
-						width: "9.375rem",
-						height: "1.375rem",
-						fontSize: "0.6875rem",
-						backgroundColor: "#EEF5FF",
+						fontSize: "0.6rem",
+						borderRadius: "2px",
+						fontWeight: "800",
+						padding: "0.1875rem .65rem",
+						boxShadow: "none",
+						gap: "5px",
+						"&:hover": {
+							boxShadow: "none",
+						},
+						backgroundColor:  "#EEF5FF",
+						color:"#2155CD",
+						"& .MuiButton-startIcon": {
+							margin: "0",
+						}
 					}}
 				>
 					Data Structures
-				</Button>
-			</CardActions>
-			<CardActions sx={{ paddingTop: 0, marginTop: "1rem" }}>
-				<Button
-					size="medium"
-					startIcon={<IoMdAdd style={{ fontSize: "0.875rem" }} />}
-					sx={{
-						fontSize: "0.6875rem",
-						width: "5.25rem",
-						height: "1.5rem",
-						color: "#04BF8A",
-						backgroundColor: "#CAFDCA",
-					}}
-				>
-					Follow
 				</Button>
 			</CardActions>
 		</Card>

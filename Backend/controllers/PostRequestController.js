@@ -15,7 +15,7 @@ const PostRequestController = {
 					id: true,
 					name: true,
 					createdAt: true,
-					slug: false,
+					slug: true,
 					description: false,
 					mdFileName: false,
 					userId: true,
@@ -33,6 +33,11 @@ const PostRequestController = {
 							},
 						},
 					},
+					like: {
+						select: {
+							userId: true
+						}
+					},
 					_count: {
 						select: {
 							like: true,
@@ -40,6 +45,11 @@ const PostRequestController = {
 					},
 				},
 			});
+
+			const modifiedData = data.like.map((likes) => ({
+				isLiked: likes.userId = data.userId
+			}));
+			console.table(modifiedData)
 			if (!data) {
 				return res.status(404).json({ message: "Post not found" });
 			}
@@ -58,13 +68,13 @@ const PostRequestController = {
 				},
 			});
 			const fileContent = await postReader(data.id);
-			res.json({
+			return res.json({
 				userDetails: userData,
 				postDetails: data,
 				postContent: fileContent,
 			});
 		} catch (error) {
-			res.status(400).send(error.message);
+			return res.send(error.message);
 		}
 	},
 };

@@ -5,6 +5,7 @@ const prisma = new PrismaClient();
 const postController = {
 	getMethod: async (req, res) => {
 		try {
+			const userId = req.user.id;
 			const data = await prisma.post.findMany({
 				take: 5,
 				orderBy: { createdAt: "desc" },
@@ -33,16 +34,26 @@ const postController = {
 					},
 					_count: {
 						select: {
-							like: true,
+							like: true
 						},
 					},
+					like: {
+						select: {
+							userId: true
+						}
+					}
 				},
 			});
-			res.status(200).json({
-				data: data,
+			const modifiedData = data.map((post) => ({
+				...post,
+				isLiked: post.like.some((like) => like.userId === userId)
+
+			}));
+			return res.json({
+				data: modifiedData,
 			});
 		} catch (error) {
-			res.status(500).json({ error: error.message });
+			return res.status(401).json({ error: error.message });
 		}
 	},
 	postMethod: async (req, res) => {

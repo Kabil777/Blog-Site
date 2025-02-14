@@ -5,8 +5,8 @@ const FollowTheme = createTheme({
 		MuiCardHeader: {
 			styleOverrides: {
 				root: {
-					width: "85%",
-					padding: "16px 0",
+					width: "100%",
+					padding: "0",
 				},
 			},
 		},

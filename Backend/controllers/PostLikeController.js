@@ -3,8 +3,9 @@ const prisma = new PrismaClient();
 const PostLikeController = {
 	getMethod: async (req, res) => {
 		try {
+			console.log("user", req.user)
 			const { slug } = req.params;
-			const userId = req.user.id;
+			const userId = req.user?.userId;
 			const post = await prisma.post.findUnique({ where: { slug } });
 
 			if (!post) {
@@ -33,10 +34,12 @@ const PostLikeController = {
 				data: { likes: updatedLikes },
 			});
 
-			res.json({ likes: updatedPost.likes, likedByUser });
+			return res.json({ likes: updatedPost.likes, likedByUser });
 		} catch (error) {
 			console.error(error);
-			res.status(500).json({ error: error.message });
+			 if (!res.headersSent) {
+            return res.status(500).json({ error: error.message });
+        }
 		}
 	},
 };

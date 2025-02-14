@@ -2,6 +2,7 @@ import { AiOutlineEdit } from "react-icons/ai";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { IoNotifications } from "react-icons/io5";
 import { CiSearch } from "react-icons/ci";
+
 import {
 	AppBar,
 	Avatar,
@@ -26,14 +27,19 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 
 import { IoPersonAddSharp } from "react-icons/io5";
 import { IoMdSettings } from "react-icons/io";
-import { IoLogOutSharp } from "react-icons/io5";
+import { AiOutlineLogout } from "react-icons/ai";
 import Profile from "../profile/profile";
-function Navbar() {
+
+
+import { useSelector } from "react-redux";
+
+function Navbar({ data }) {
 	const navigate = useNavigate();
 	const [anchor, setAnchor] = useState(null);
 	const [ResourceOpen, setOpen] = useState(null);
 	const openResource = Boolean(ResourceOpen);
 	const open = Boolean(anchor);
+	const avatar = useSelector((state) => state.auth.profileCover);
 	const openReq = (event) => {
 		setAnchor(event.currentTarget);
 	};
@@ -160,7 +166,6 @@ function Navbar() {
 								<CiSearch />
 							</IconButton>
 						</Stack>
-
 						<Stack
 							direction="row"
 							alignItems="center"
@@ -184,15 +189,10 @@ function Navbar() {
 								aria-controls={open ? "menu" : undefined}
 								aria-expanded={open ? "true" : undefined}
 							>
-								<Avatar
-									sx={{
-										width: "100%",
-										height: "100%",
-										bgcolor: "#2155CD",
-									}}
-								>
-									K
-								</Avatar>
+								<Avatar 
+								sx={{
+								}}
+								 src={data ? data.profileCover : avatar} alt="bg"></Avatar>
 							</IconButton>
 						</Stack>
 					</Toolbar>
@@ -203,17 +203,27 @@ function Navbar() {
 				id="menu"
 				open={open}
 				onClose={closeReq}
-				sx={{ maxWidth: "400px", boxShadow: "none" }}
+				sx={{ minWidth: "300px", boxShadow: "none", }}
 				slotProps={{
 					paper: {
 						elevation: 0,
 						sx: {
 							overflow: "visible",
-							filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
+							//filter: "drop-shadow(0px 4px 8px rgba(0,0,0,0.32))",
+							border: "1px solid #e4e4e7",
 							mt: 1.5,
+							"& .MuiList-root ": {
+								display: "flex",
+								flexDirection: "column",
+								padding: "10px",
+								gap: "3px",	
+							},
 							"& .MuiAvatar-root": {
-								width: 50,
-								height: 50,
+								width: 45,
+								height: 45,
+							},
+							"& .MuiDivider-root": {
+								margin: "0 0",
 							},
 							"&::before": {
 								content: '""',
@@ -234,17 +244,19 @@ function Navbar() {
 				anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
 			>
 				<MenuItem
-					onClick={closeReq}
 					sx={{
-						padding: "5px",
+						padding: "0",
+						
 					}}
 				>
 					<Card
 						sx={{
 							boxShadow: "none",
-							backgroundColor: "#e4e4e7",
-							width: "300px",
-							height: "75px",
+							backgroundColor: "#E4E4E7",
+							padding: "0",
+							"& .MuiCardHeader-root": {
+								padding: "8px",
+							},
 							"& .MuiCardHeader-action": {
 								display: "none",
 							},
@@ -254,24 +266,24 @@ function Navbar() {
 					</Card>
 				</MenuItem>
 
-				<MenuItem onClick={closeReq}>
+				<MenuItem onClick={closeReq} sx={{ color: "#67676E" , fontSize:	"1rem" , padding:"10px",borderRadius:"4px"}} >
 					<ListItemIcon>
-						<IoPersonAddSharp fontSize="small" />
+						<IoPersonAddSharp fontSize="larger" />
 					</ListItemIcon>
 					Add another account
 				</MenuItem>
-				<MenuItem onClick={closeReq}>
+				<MenuItem onClick={closeReq} sx={{ color: "#67676E" , fontSize:	"1rem",padding:"10px",borderRadius:"4px"}} >
 					<ListItemIcon>
-						<IoMdSettings fontSize="small" />
+						<IoMdSettings fontSize="larger" />
 					</ListItemIcon>
 					Settings
 				</MenuItem>
-				<Divider />
-				<MenuItem onClick={closeReq}>
+				<Divider   />
+				<MenuItem onClick={closeReq} sx={{ color: "red" , fontSize:	"1rem",padding:"10px",borderRadius:"4px"}}>
 					<ListItemIcon>
-						<IoLogOutSharp fontSize="small" />
+						<AiOutlineLogout fontSize="1.5rem" color="red"/>
 					</ListItemIcon>
-					Logout
+					Log Out
 				</MenuItem>
 			</Menu>
 		</>

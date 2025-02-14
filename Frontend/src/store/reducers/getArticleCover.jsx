@@ -5,7 +5,7 @@ export const getPostCover = createAsyncThunk(
 	"home/posts",
 	async (_, { rejectWithValue }) => {
 		try {
-			const response = await axios.get("http://localhost:7000/post", { withCredentials: true })
+			const response = await axios.get("http://localhost:7000/post/", { withCredentials: true })
 			if (!response) {
 				throw new Error("Failed to fetch Post")
 			}
@@ -25,6 +25,14 @@ const getProfileCover = createSlice({
 	reducers: {
 		setContent: (state, actions) => {
 			state.Articles = actions.payload.Articles
+		},
+		updateLikePost: (state, actions) => {
+			console.log(actions)
+			const post = state.Articles.find((post) => post.slug === actions.payload.slug)
+			if (post) {
+				post._count.like = actions.payload.likes;
+				post.isLiked = actions.payload.likedByUser;
+			}
 		}
 	},
 	extraReducers(builder) {
@@ -43,5 +51,5 @@ const getProfileCover = createSlice({
 })
 
 
-export const { getProfileCoverData } = getProfileCover.actions;
+export const { getProfileCoverData, updateLikePost } = getProfileCover.actions;
 export default getProfileCover.reducer

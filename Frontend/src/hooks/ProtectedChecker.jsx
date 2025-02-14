@@ -10,20 +10,17 @@ function ProtectedChecker() {
 	const location = useLocation();
 	const dispatch = useDispatch();
 	useEffect(() => {
-		if (!(status == "success")) {
-			const fetchAuth = () => {
-				try {
-					dispatch(getInitialCredits());
-					console.log("Called");
-				} catch (error) {
-					console.error("Error during auth check:", error);
-				}
-			};
-			fetchAuth();
+		if (status === "idle") {
+			try {
+				dispatch(getInitialCredits());
+				console.log("Called");
+			} catch (error) {
+				console.error("Error during auth check:", error);
+			}
 		}
 	}, [dispatch, status]);
 
-	if (status == "loading") {
+	if (status === "idle" || status === "loading") {
 		return (
 			<Container
 				sx={{
@@ -46,3 +43,4 @@ function ProtectedChecker() {
 }
 
 export default ProtectedChecker;
+

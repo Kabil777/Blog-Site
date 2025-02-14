@@ -1,11 +1,10 @@
-import { Grid2 } from "@mui/material";
+import { Grid2, Typography } from "@mui/material";
 import ArticleCard from "../components/Article/ArticleCard";
 import MediaCard from "../components/Home-card/card";
 import MostFollowed from "../components/Follower/Follow";
 import BasicButtons from "../components/Button/Button";
-import Navbar from "../components/Navbar/Navbar";
 import Container from "@mui/material/Container";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPostCover } from "../store/reducers/getArticleCover";
 function HomePage() {
@@ -25,7 +24,7 @@ function HomePage() {
 					mt: "100px",
 				}}
 			>
-				<Grid2 container spacing={3} justifyContent="center">
+				<Grid2 container spacing={3} justifyContent="center" alignItems="flex-start">
 					<Grid2
 						container
 						md={8}
@@ -33,11 +32,22 @@ function HomePage() {
 						xl={8}
 						size={{ xs: 12, md: 12, lg: 8.5, xl: 7.5 }}
 						spacing={4}
+						sx={{ alignContent: "flex-start", justifyContent: "center" }}
 					>
 						<BasicButtons />
-						{coverData.map((post) => {
-							return <ArticleCard key={post.id} post={post} />;
-						})}
+						{coverData.length !== 0 ? (
+							<>
+								{coverData.map((post) => (
+									<ArticleCard key={post.id} post={post} />
+								))}
+							</>
+						) : (
+							<Typography
+								sx={{ alignSelf: "flex-start", justifySelf: "center" }}
+							>
+								No posts available
+							</Typography>
+						)}
 					</Grid2>
 					<Grid2
 						md={8}

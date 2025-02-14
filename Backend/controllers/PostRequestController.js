@@ -35,8 +35,8 @@ const PostRequestController = {
 					},
 					like: {
 						select: {
-							userId: true
-						}
+							userId: true,
+						},
 					},
 					_count: {
 						select: {
@@ -47,9 +47,9 @@ const PostRequestController = {
 			});
 
 			const modifiedData = data.like.map((likes) => ({
-				isLiked: likes.userId = data.userId
+				isLiked: likes.userId === data.userId,
 			}));
-			console.table(modifiedData)
+			console.table(modifiedData);
 			if (!data) {
 				return res.status(404).json({ message: "Post not found" });
 			}
@@ -74,6 +74,7 @@ const PostRequestController = {
 				postContent: fileContent,
 			});
 		} catch (error) {
+			console.log(error.message);
 			return res.send(error.message);
 		}
 	},

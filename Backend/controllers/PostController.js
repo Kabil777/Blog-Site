@@ -34,20 +34,19 @@ const postController = {
 					},
 					_count: {
 						select: {
-							like: true
+							like: true,
 						},
 					},
 					like: {
 						select: {
-							userId: true
-						}
-					}
+							userId: true,
+						},
+					},
 				},
 			});
 			const modifiedData = data.map((post) => ({
 				...post,
-				isLiked: post.like.some((like) => like.userId === userId)
-
+				isLiked: post.like.some((like) => like.userId === userId),
 			}));
 			return res.json({
 				data: modifiedData,
@@ -82,13 +81,10 @@ const postController = {
 			});
 			const tagIds = await Promise.all(
 				tags.map(async (tag) => {
-					const existingTag = await prisma.tags.findUnique({
+					const newTag = await prisma.tags.upsert({
 						where: { skill: tag },
-					});
-					if (existingTag) return existingTag.id;
-
-					const newTag = await prisma.tags.create({
-						data: { skill: tag, domain: "exampleDomain" },
+						update: {},
+						create: { skill: tag, domain: "exampleDomain" },
 					});
 					return newTag.id;
 				}),

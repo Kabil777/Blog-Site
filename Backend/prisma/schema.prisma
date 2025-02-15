@@ -59,7 +59,7 @@ model TagMapper {
 
 model Like {
         id        Int      @id @default(autoincrement())
-        userId    String   @unique
+        userId    String
         postId    String
         user      User     @relation(fields: [userId], references: [id])
         post      Post     @relation(fields: [postId], references: [id])

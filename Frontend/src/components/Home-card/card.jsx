@@ -6,7 +6,6 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import { FaPython } from "react-icons/fa";
 import { AiOutlineKubernetes } from "react-icons/ai";
-import { IoMdAdd } from "react-icons/io";
 import Typography from "@mui/material/Typography";
 
 export default function MediaCard() {
@@ -25,7 +24,7 @@ export default function MediaCard() {
 			<CardMedia
 				sx={{
 					height: "80%",
-					objectFit: "contain",	
+					objectFit: "contain",
 				}}
 				image={pythonImage}
 				title="Python Image"
@@ -33,7 +32,7 @@ export default function MediaCard() {
 			<CardContent
 				sx={{
 					flexGrow: 1,
-					padding:"1rem 1rem 0 1rem",
+					padding: "1rem 1rem 0 1rem",
 				}}
 			>
 				<Typography
@@ -64,7 +63,7 @@ export default function MediaCard() {
 			</CardContent>
 			<CardActions
 				sx={{
-					padding:"0rem 1rem",
+					padding: "0rem 1rem",
 				}}
 			>
 				<Button
@@ -80,8 +79,8 @@ export default function MediaCard() {
 						"&:hover": {
 							boxShadow: "none",
 						},
-						backgroundColor:  "#EEF5FF",
-						color:"#2155CD",
+						backgroundColor: "#EEF5FF",
+						color: "#2155CD",
 						"& .MuiButton-startIcon": {
 							margin: "0",
 						}
@@ -102,8 +101,8 @@ export default function MediaCard() {
 						"&:hover": {
 							boxShadow: "none",
 						},
-						backgroundColor:  "#EEF5FF",
-						color:"#2155CD",
+						backgroundColor: "#EEF5FF",
+						color: "#2155CD",
 						"& .MuiButton-startIcon": {
 							margin: "0",
 						}

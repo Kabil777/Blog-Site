@@ -19,6 +19,11 @@ const PostRequestController = {
 					description: false,
 					mdFileName: false,
 					userId: true,
+					user: {
+						select: {
+							name: true
+						}
+					},
 					tags: {
 						select: {
 							postId: false,
@@ -45,7 +50,9 @@ const PostRequestController = {
 					},
 				},
 			});
-
+			/* 			if (user !== data.user.name) {
+							return res.status(404).json("Page not found")
+						} */
 			const modifiedData = data.like.map((likes) => ({
 				isLiked: likes.userId === data.userId,
 			}));

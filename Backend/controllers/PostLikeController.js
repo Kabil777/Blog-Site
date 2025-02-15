@@ -6,7 +6,7 @@ const PostLikeController = {
 		try {
 			console.log("user", req.user);
 			const { slug } = req.params;
-			const userId = req.user?.id;
+			const userId = req.user.id;
 
 			if (!userId) {
 				return res.status(401).json({ error: "Unauthorized" });

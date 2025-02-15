@@ -43,6 +43,8 @@
 	padding: 10px 5px;
 	margin: 0;
 	background-color: #1a1b26;
+	overflow: scroll;
+	line-height:1 !important;
 }
 
 .reactMarkdown code {

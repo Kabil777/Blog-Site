@@ -57,6 +57,12 @@
 	background-color: #1a1b26;
 }
 
+.reactMarkdown pre {
+	& code {
+		line-height: 1 !important;
+	}
+}
+
 .reactMarkdown img {
 	width: 100%;
 }
@@ -77,7 +83,8 @@
 	}
 }
 
-.reactMarkdown ul {}
+.reactMarkdown ul {
+}
 
 .reactMarkdown li {
 	margin-bottom: 1rem;

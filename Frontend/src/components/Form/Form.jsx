@@ -28,36 +28,8 @@ function Form({ open, closeReq }) {
 	const [tag, tagSetter] = useState([]);
 	const [clickedChips, setClickedChips] = useState([]);
 	const [openSnackbar, setOpenSnackbar] = useState(false);
-	const [snackbarMessage, setSnackbarMessage] = useState("");
-	const [snackbarType, setSnackbarType] = useState("");
 
-	const handleTabChange = (_, newValue = null) => {
-		const titleInput = document.querySelector('input[name="title"]');
-		const descInput = document.querySelector('textarea[name="Desc"]');
-
-		if (!titleInput || !descInput) return;
-
-		const titleValue = titleInput.value.trim();
-		const descValue = descInput.value.trim();
-
-		if (titleValue.length < 30) {
-			setOpenSnackbar(true);
-			setSnackbarMessage(
-				"Invalid input: Title must be between 30 and 35 characters.",
-			);
-			setSnackbarType("failure");
-			return;
-		}
-
-		if (descValue.length < 5) {
-			setOpenSnackbar(true);
-			setSnackbarMessage(
-				"Invalid input: Description must be at least 5 characters.",
-			);
-			setSnackbarType("failure");
-			return;
-		}
-
+	const handleTabChange = (_, newValue = 1) => {
 		setActiveTab(
 			newValue !== null ? newValue : (prevTab) => Math.min(prevTab + 1, 1),
 		);
@@ -259,7 +231,7 @@ function Form({ open, closeReq }) {
 					) : (
 						<Button
 							type="button"
-							onClick={(e) => handleTabChange(e)}
+							onClick={() => handleTabChange()}
 							variant="contained"
 							sx={{
 								backgroundColor: "#2155cd",
@@ -274,11 +246,8 @@ function Form({ open, closeReq }) {
 				</DialogActions>
 			</Dialog>
 
-			{/* Snackbar component */}
 			<MultipleSnackbars
 				openSnackbar={openSnackbar}
-				snackbarMessage={snackbarMessage}
-				snackbarType={snackbarType}
 				handleCloseSnackbar={() => setOpenSnackbar(false)}
 			/>
 		</>

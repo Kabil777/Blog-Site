@@ -32,7 +32,7 @@ function Profile({ coverDetails, userDetails, actionEnable, showButton }) {
 							<HiOutlineDotsVertical />
 						</IconButton>
 					)}
-					{showButton && <CompButton index={2} />}
+					{showButton && <CompButton  index={2} />}
 				</>
 			}
 			

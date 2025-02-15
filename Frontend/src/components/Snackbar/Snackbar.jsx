@@ -32,8 +32,8 @@ export default function MultipleSnackbars({
           color: text,
           fontWeight: "bold",
           textAlign: "center",
-           maxWidth: "100px",  
-           maxHeight: "40px",  
+           maxWidth: "200px",  
+           height: "fit-content",  
         },
       }}
     />

@@ -103,31 +103,6 @@ function Navbar({ data }) {
 									Resources
 								</Typography>
 								<RiArrowDropDownLine style={{ marginTop: "5px" }} size={25} />
-								<Popover
-									anchorEl={ResourceOpen} // Ensure ResourceOpen is null or a DOM element
-									anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-									transformOrigin={{
-										vertical: "top",
-										horizontal: "center",
-									}}
-									id="mouse-over-popover"
-									open={openResource}
-									onClose={() => setOpen(null)}
-									PaperProps={{
-										onMouseEnter: () => setOpen(ResourceOpen),
-										onMouseLeave: () => setOpen(null),
-										sx: {
-											boxShadow: "none",
-										},
-									}}
-								>
-									<SwipeableDrawer
-										anchor="left"
-										open={open}
-										onClose={openReq} // Ensure this prop is passed
-										onOpen={closeReq} // Ensure this prop is passed
-									/>
-								</Popover>
 							</Stack>
 						</Stack>
 

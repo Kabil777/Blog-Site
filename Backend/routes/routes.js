@@ -12,5 +12,5 @@ router.route("/").get((req, res) => {
 router.use("/user", AuthenticateToken, userRouter);
 router.use("/post", AuthenticateToken, PostRouter);
 router.use("/auth/google", authRouterGoogle);
-router.use("/fetchPost",AuthenticateToken, fetchPostRouter);
+router.use("/fetchPost", fetchPostRouter);
 module.exports = { router };

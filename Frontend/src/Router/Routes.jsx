@@ -21,10 +21,7 @@ function Routes() {
 			path: "/post",
 			element: <PostPage />,
 		},
-		{
-			path: "/:user/:slug",
-			element: <PostPage />,
-		},
+		
 	];
 
 	return (

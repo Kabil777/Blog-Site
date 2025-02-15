@@ -6,9 +6,10 @@ const postController = {
 	getMethod: async (req, res) => {
 		try {
 			const userId = req.user.id;
+			const { sortByLikes } = req.query;
 			const data = await prisma.post.findMany({
-				take: 5,
-				orderBy: { createdAt: "desc" },
+				take: sortByLikes ? 3 : 5,
+				orderBy: sortByLikes ? { like: { _count: "desc" } } : { createdAt: "desc" },
 				select: {
 					createdAt: true,
 					id: true,

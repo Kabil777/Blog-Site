@@ -6,6 +6,8 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import CustomButton from "../Button/CustomButton";
 import ReUseButton from "../Button/ReUs-Button";
+import { Button } from "@mui/material";
+
 export default function MediaCard() {
 	return (
 		<Card
@@ -67,14 +69,13 @@ export default function MediaCard() {
 				sx={{
 					paddingTop: "0.3125rem",
 					paddingBottom: 0,
-					padding:'0 0 0 0.9rem',
+					padding: '0 0 0 0.9rem',
 					display: "flex",
 					marginTop: "0.1875rem",
 				}}
 			>
 				<Button
 					size="small"
-					startIcon={<FaPython style={{ fontSize: "0.875rem" }} />}
 					sx={{
 						marginBottom: "0.0625rem",
 						width: "5.25rem",
@@ -87,7 +88,6 @@ export default function MediaCard() {
 				</Button>
 				<Button
 					size="small"
-					startIcon={<AiOutlineKubernetes style={{ fontSize: "0.875rem" }} />}
 					sx={{
 						marginBottom: "0.0625rem",
 						width: "9.375rem",
@@ -104,7 +104,6 @@ export default function MediaCard() {
 				{/* Increased marginTop */}
 				<Button
 					size="medium"
-					startIcon={<IoMdAdd style={{ fontSize: "0.875rem" }} />}
 					sx={{
 						fontSize: "0.6875rem",
 						width: "5.25rem",

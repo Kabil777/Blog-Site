@@ -7,14 +7,22 @@ import Container from "@mui/material/Container";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPostCover } from "../store/reducers/getArticleCover";
+import {getSortedPosts} from "../store/reducers/getSortedbyLike";
 function HomePage() {
 	const coverData = useSelector((state) => state.cover.Articles);
+	const likeData = useSelector((state) => state.sortLike.MostLikedArticles);
+	const stat = useSelector((state) => state.sortLike.stat)
 	const status = useSelector((state) => state.cover.status);
 	const dispatch = useDispatch();
 
 	useEffect(() => {
 		if (status !== "success") dispatch(getPostCover());
-	}, [dispatch]);
+	}, [dispatch]
+	);
+	useEffect(() => {
+		if (stat !== "success") dispatch(getSortedPosts());
+	},[dispatch]
+	);
 	return (
 		<>
 			<Container
@@ -61,7 +69,21 @@ function HomePage() {
 						spacing={4}
 					>
 						<MostFollowed />
-						<MediaCard sx={{ width: "100%", height: "100%" }} />
+		                        	{likeData.length !== 0 ? (
+							<>
+								{likeData.map((post) => (
+									<ArticleCard key={post.id} post={post} />
+								))}
+							</>
+						) : (
+							<Typography
+								sx={{ alignSelf: "flex-start", justifySelf: "center" }}
+							>
+								No posts available
+							</Typography>
+						)}
+
+		                                <MediaCard sx={{ width: "100%", height: "100%" }} />
 						<MediaCard sx={{ width: "100%", height: "100%" }} />
 					</Grid2>
 				</Grid2>

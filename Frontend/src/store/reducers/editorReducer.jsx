@@ -6,6 +6,7 @@ export const PostSend = createAsyncThunk(
 	"/post/data",
 	async (postData, { rejectWithValue }) => {
 		try {
+			
 			const response = await axios.post(
 				"http://localhost:7000/post",
 				postData,
@@ -28,6 +29,7 @@ export const PostSend = createAsyncThunk(
 	},
 );
 const initialPost = {
+	status: "idle",
 	postId: "",
 	slug: "",
 	title: "",
@@ -70,7 +72,11 @@ export const postCreate = createSlice({
 	},
 	extraReducers: (builder) => {
 		builder
+		.addCase(PostSend.pending, (state) => {
+			state.status = "pending";
+		  })
 			.addCase(PostSend.fulfilled, (state, action) => {
+				state.status = "succeeded";
 				state.postId = "";
 				state.slug = "";
 				state.title = "";
@@ -78,6 +84,7 @@ export const postCreate = createSlice({
 				state.tags = [];
 			})
 			.addCase(PostSend.rejected, (state, action) => {
+				state.status = "failed";
 				console.log(action.error);
 			});
 	},

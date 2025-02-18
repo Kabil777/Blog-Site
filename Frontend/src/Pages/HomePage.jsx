@@ -60,7 +60,7 @@ function HomePage() {
 						height="100%"
 						spacing={4}
 					>
-						<MostFollowed />
+						<MostFollowed sx={{ width: "100%", height: "100%" }} />
 						<MediaCard sx={{ width: "100%", height: "100%" }} />
 						<MediaCard sx={{ width: "100%", height: "100%" }} />
 					</Grid2>

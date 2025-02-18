@@ -282,7 +282,6 @@ function Form({ open, closeReq }) {
                 </DialogActions>
             </Dialog>
 
-            {/* Snackbar component */}
             <MultipleSnackbars
                 openSnackbar={openSnackbar}
                 snackbarMessage={snackbarMessage}

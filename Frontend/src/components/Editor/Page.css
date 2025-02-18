@@ -7,6 +7,7 @@
 	flex-direction: column;
 	margin-bottom: 25px !important;
 	height: 90%;
+	margin-top: 80px;
 }
 
 .mdxeditor-toolbar {
@@ -50,4 +51,8 @@
 
 .cm-line>span {
 	font-family: "JetBrains Mono", monospace !important;
+}
+
+._toolbarRoot_uazmk_160 {
+    top: 80px !important;
 }

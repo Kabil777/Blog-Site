@@ -1,5 +1,14 @@
-import { useEffect, useState } from "react";
+### Write Your Content here....
+
+_
+
+```js
+contentEditable_uazmk_379import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { IconButton, Stack, Snackbar, Alert } from "@mui/material";
+import { FaFileUpload } from "react-icons/fa";
+import { setData, PostSend } from "../../store/reducers/editorReducer";
 import { TbSourceCode } from "react-icons/tb";
 import Form from "../Form/Form";
 import {
@@ -26,13 +35,8 @@ import {
     linkPlugin,
     linkDialogPlugin,
 } from "@mdxeditor/editor";
-import { setData, PostSend } from "../../store/reducers/editorReducer";
-
-import { FaFileUpload } from "react-icons/fa";
 import "./Page.css";
 import "@mdxeditor/editor/style.css";
-import { IconButton, Stack, Snackbar, Alert } from "@mui/material";
-import { useNavigate } from "react-router-dom";
 
 function Page() {
     const dispatch = useDispatch();
@@ -40,7 +44,7 @@ function Page() {
     const postData = useSelector((state) => state.post);
     const [isSourceMode, setIsSourceMode] = useState(false);
     const [open, changeOpenState] = useState(true);
-	const navigate = useNavigate()
+    const navigate = useNavigate();
     const closeReq = () => {
         changeOpenState(false);
     };
@@ -54,11 +58,19 @@ function Page() {
 
     const SetBlog = (content) => {
         content = content
-            .replace(/\\/g, "")
-            .replace(/&#x9;/g, "\t")
-            .replace(/&#x20;/g, " ");
+            .replace(//g, "")
+            .replace(/	/g, "t")
+            .replace(/ /g, " ");
         dispatch(setData(content));
         console.log(content);
+    };
+
+    const [openSnackbar, setOpenSnackbar] = useState(false);
+    const [snackbarMessage, setSnackbarMessage] = useState("");
+    const [snackbarType, setSnackbarType] = useState("");
+
+    const handleSnackbarClose = () => {
+        setOpenSnackbar(false);
     };
 
     const submitPost = async () => {
@@ -66,34 +78,24 @@ function Page() {
             await dispatch(PostSend(postData));
             setSnackbarMessage("Post submitted successfully!");
             setSnackbarType("success");
-			setTimeout(()=>{
-			navigate("/");
-			},3000)
         } catch (error) {
             setSnackbarMessage("Failed to submit post.");
             setSnackbarType("error");
-			setTimeout(()=>{
-				navigate("/");
-				},3000)
         } finally {
-            setSnackbarOpen(true);setTimeout(()=>{
-				navigate("/");
-				},3000)
+            setOpenSnackbar(true);
+            setTimeout(() => {
+                navigate("/");
+            }, 3000);
         }
     };
 
     const status = useSelector((state) => state.post.status);
-
-    const [openSnackbar, setOpenSnackbar] = useState(false);
-    const [snackbarMessage, setSnackbarMessage] = useState("");
-    const [snackbarType, setSnackbarType] = useState("");
 
     useEffect(() => {
         if (status === "success") {
             setSnackbarMessage("Post submitted successfully!");
             setSnackbarType("success");
             setOpenSnackbar(true);
-			
         } else if (status === "failure") {
             setSnackbarMessage("Failed to submit the post.");
             setSnackbarType("failure");
@@ -104,10 +106,6 @@ function Page() {
             setOpenSnackbar(true);
         }
     }, [status]);
-
-    const handleSnackbarClose = () => {
-        setOpenSnackbar(false);
-    };
 
     const languageMapping = {
         js: "JavaScript",
@@ -238,3 +236,6 @@ function Page() {
 }
 
 export default Page;
+
+
+```

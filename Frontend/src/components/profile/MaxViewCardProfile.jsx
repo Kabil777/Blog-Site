@@ -1,11 +1,17 @@
 import { Avatar, IconButton, CardHeader, ThemeProvider } from "@mui/material";
 import CompButton from "../Button/CompButton";
 import { useSelector } from "react-redux";
+import {RiUserFollowLine} from "react-icons/ri";
 import { HiOutlineDotsVertical } from "react-icons/hi";
-import { RiUserFollowLine } from "react-icons/ri";
 import profileTheme from "./profileTheme";
+function capitalizefirstLetter(word) {
+	return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+}
+function capitalizesentence(sentence) {
+	return sentence.split(" ").map(capitalizefirstLetter).join(" ");
+}
 
-function Profile({ coverDetails, userDetails, actionEnable, showButton }) {
+function MaxViewProfile({ coverDetails, userDetails, actionEnable, showButton }) {
 	const avatar = useSelector((state) => state.auth.profileCover);
 	const name = useSelector((state) => state.auth.name);
 	const email = useSelector((state) => state.auth.email);
@@ -22,18 +28,22 @@ function Profile({ coverDetails, userDetails, actionEnable, showButton }) {
 	return (
 		<CardHeader
 			avatar={
-				<Avatar src={data ? data.profileCover : avatar} alt="bg"></Avatar>
+				<Avatar src={data ? data.profileCover : avatar} alt="bg" sx={{
+					width: "22px",
+					height: "22px",
+				}}></Avatar>
 			}
-			title={data ? data.name : name}
-			subheader={data ? data.email : email}
-
+			title={capitalizesentence(data ? data.name : name)}
 			action={
 				<>
 					{actionEnable && (
-						<IconButton aria-label="Follow">
-						<RiUserFollowLine/>
+						<IconButton aria-label="Follow" sx={{
+							fontSize:"1.2rem",
+						}}>
+						        <RiUserFollowLine />
 						</IconButton>
 					)}
+					{showButton && <CompButton index={2} />}
 				</>
 			}
 
@@ -51,19 +61,12 @@ function Profile({ coverDetails, userDetails, actionEnable, showButton }) {
 				}
 			}}
 			titleTypographyProps={{
-				fontSize: ".9rem",
-				fontWeight: "800",
-				overflow: "hidden",
-				textOverflow: "ellipsis",
-			}}
-			subheaderTypographyProps={{
-				fontSize: "0.8rem",
-				fontWeight: "600",
-				color: "text.secondary",
+				fontSize: "0.9rem",
+				fontWeight: "normal",
 				overflow: "hidden",
 				textOverflow: "ellipsis",
 			}}
 		/>
 	);
 }
-export default Profile;
+export default MaxViewProfile;

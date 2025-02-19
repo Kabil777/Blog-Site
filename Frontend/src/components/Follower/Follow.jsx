@@ -14,7 +14,7 @@ export default function MostFollowed() {
 					justifyContent: "flex-start",
 					alignItems: "flex-start",
 					width: "100%",
-					fontSize:"12px",
+					fontSize: "12px",
 					border: "1px solid #e4e4e7",
 					padding: "20px",
 					gap: "20px",
@@ -30,10 +30,10 @@ export default function MostFollowed() {
 				>
 					Top Writers
 				</Typography>
-				<Stack direction="column" width="100%" alignItems="flex-start" sx={{gap:"20px"}}>
-					<Profile actionEnable={null} showButton={true} />
-					<Profile showButton={true} />
-					<Profile showButton={true} />
+				<Stack direction="column" alignItems="flex-start" sx={{ gap: "20px" }}>
+					<Profile actionEnable={true} showButton={true} />
+					<Profile actionEnable={true} showButton={true} />
+					<Profile actionEnable={true} showButton={true} />
 				</Stack>
 			</Box>
 		</ThemeProvider>

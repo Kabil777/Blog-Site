@@ -94,9 +94,9 @@ const postController = {
 			const tagsMapped = await prisma.tagMapper.createMany({
 				data: tagIds.map((tagId) => ({ postId: postId, tagId })),
 			});
-			res.status(201).json({ data: data, tags: tagsMapped });
+			return res.status(201).json({ data: data, tags: tagsMapped });
 		} catch (error) {
-			res.status(500).json({ error: error.message });
+			return res.status(500).json({ error: error.message });
 		}
 	},
 };

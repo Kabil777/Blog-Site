@@ -1,5 +1,6 @@
-import { Grid2, Typography } from "@mui/material";
+import { Box, Grid2, Typography } from "@mui/material";
 import ArticleCard from "../components/Article/ArticleCard";
+import MostViewedCard from "../components/Article/MostViewedCard";
 import MediaCard from "../components/Home-card/card";
 import MostFollowed from "../components/Follower/Follow";
 import BasicButtons from "../components/Button/Button";
@@ -7,7 +8,7 @@ import Container from "@mui/material/Container";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPostCover } from "../store/reducers/getArticleCover";
-import {getSortedPosts} from "../store/reducers/getSortedbyLike";
+import { getSortedPosts } from "../store/reducers/getSortedbyLike";
 function HomePage() {
 	const coverData = useSelector((state) => state.cover.Articles);
 	const likeData = useSelector((state) => state.sortLike.MostLikedArticles);
@@ -21,7 +22,7 @@ function HomePage() {
 	);
 	useEffect(() => {
 		if (stat !== "success") dispatch(getSortedPosts());
-	},[dispatch]
+	}, [dispatch]
 	);
 	return (
 		<>
@@ -68,22 +69,29 @@ function HomePage() {
 						height="100%"
 						spacing={4}
 					>
-						<MostFollowed />
-		                        	{likeData.length !== 0 ? (
-							<>
-								{likeData.map((post) => (
-									<ArticleCard key={post.id} post={post} />
-								))}
-							</>
-						) : (
-							<Typography
-								sx={{ alignSelf: "flex-start", justifySelf: "center" }}
-							>
-								No posts available
-							</Typography>
-						)}
-
-		                                <MediaCard sx={{ width: "100%", height: "100%" }} />
+						<MostFollowed sx={{ width: "100%", height: "100%" }} />
+						<Box sx={{
+							display: "flex", flexDirection: "column", border: "1px solid #e0e0e0", borderRadius: '5px', padding: "20px 20px 20px 20px", gap: "20px"
+						}}>
+							<Typography textAlign="left" variant="h5" sx={{
+								fontSize: "1.2rem",
+								fontWeight: "700"
+							}}>Top Picks</Typography>
+							{likeData.length !== 0 ? (
+								<>
+									{likeData.map((post) => (
+										<MostViewedCard key={post.id} post={post} />
+									))}
+								</>
+							) : (
+								<Typography
+									sx={{ alignSelf: "flex-start", justifySelf: "center" }}
+								>
+									No posts available
+								</Typography>
+							)}
+						</Box>
+						<MediaCard sx={{ width: "100%", height: "100%" }} />
 						<MediaCard sx={{ width: "100%", height: "100%" }} />
 					</Grid2>
 				</Grid2>

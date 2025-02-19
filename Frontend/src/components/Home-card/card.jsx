@@ -1,12 +1,13 @@
 import pythonImage from "../../assets/1_rSdN-ErriXyyU45XH96RMA 1.png";
+import javaImage from "../../assets/java-Photoroom(1).png";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
+import Button from "@mui/material/Button";
+import { FaPython } from "react-icons/fa";
+import { AiOutlineKubernetes } from "react-icons/ai";
 import Typography from "@mui/material/Typography";
-import CustomButton from "../Button/CustomButton";
-import ReUseButton from "../Button/ReUs-Button";
-import { Button } from "@mui/material";
 
 export default function MediaCard() {
 	return (
@@ -24,15 +25,15 @@ export default function MediaCard() {
 			<CardMedia
 				sx={{
 					height: "80%",
-					objectFit: "contain",	
+					objectFit: "contain",
 				}}
-				image={pythonImage}
+				image={javaImage}
 				title="Python Image"
 			/>
 			<CardContent
 				sx={{
 					flexGrow: 1,
-					padding:"1rem 1rem 0 1rem",
+					padding: "1rem 1rem 0 1rem",
 				}}
 			>
 				<Typography
@@ -63,7 +64,7 @@ export default function MediaCard() {
 			</CardContent>
 			<CardActions
 				sx={{
-					padding:"0rem 1rem",
+					padding: "0rem 1rem",
 				}}
 			>
 				<Button
@@ -79,8 +80,8 @@ export default function MediaCard() {
 						"&:hover": {
 							boxShadow: "none",
 						},
-						backgroundColor:  "#EEF5FF",
-						color:"#2155CD",
+						backgroundColor: "#EEF5FF",
+						color: "#2155CD",
 						"& .MuiButton-startIcon": {
 							margin: "0",
 						}
@@ -101,8 +102,8 @@ export default function MediaCard() {
 						"&:hover": {
 							boxShadow: "none",
 						},
-						backgroundColor:  "#EEF5FF",
-						color:"#2155CD",
+						backgroundColor: "#EEF5FF",
+						color: "#2155CD",
 						"& .MuiButton-startIcon": {
 							margin: "0",
 						}
@@ -114,3 +115,5 @@ export default function MediaCard() {
 		</Card>
 	);
 }
+
+

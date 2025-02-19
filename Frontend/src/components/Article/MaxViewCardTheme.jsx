@@ -1,6 +1,6 @@
 import { createTheme } from "@mui/material";
 
-const ArticleTheme = createTheme({
+const MaxViewCardTheme = createTheme({
 	components: {
 		MuiCard: {
 			styleOverrides: {
@@ -11,7 +11,6 @@ const ArticleTheme = createTheme({
 					border: "1px solid #e4e4e7",
 					boxShadow: "none",
 					fontSize: "14px",
-					justifyContent: "space-between",
 				},
 			},
 		},
@@ -19,24 +18,17 @@ const ArticleTheme = createTheme({
 			styleOverrides: {
 				root: {
 					width: "75%",
-					padding: "0",
-					paddingBottom: "0",
+					padding: 0,
+					"&:last-child": {
+						paddingBottom: 0,
+					},
 				},
 			},
 		},
 		MuiTypography: {
 			styleOverrides: {
-				p: {
-					fontSize: "1rem",
-					fontWeight: "400",
-					justifySelf: "flex-start",
-					padding: "0",
-					textAlign: "start",
-					marginTop: "8px",
-					color: "#6e6e67",
-				},
 				h1: {
-					fontSize: "1.5rem",
+					fontSize: "1.3rem",
 					justifySelf: "flex-start",
 					fontWeight: "700",
 					textAlign: "start",
@@ -50,17 +42,7 @@ const ArticleTheme = createTheme({
 				},
 			},
 		},
-		MuiIconButton: {
-			styleOverrides: {
-				root: {
-					gap: "50px",
-					width: "30px",
-					height: "30px",
-					padding: "0",
-				},
-			},
-		},
 	},
 });
 
-export default ArticleTheme;
+export default MaxViewCardTheme;

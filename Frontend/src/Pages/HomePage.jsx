@@ -28,9 +28,9 @@ function HomePage() {
 					<Grid2
 						container
 						md={8}
-						lg={8}
+						lg={7}
 						xl={8}
-						size={{ xs: 12, md: 12, lg: 8.5, xl: 7.5 }}
+						size={{ xs: 12, md: 11, lg: 7.5, xl: 6.5 }}
 						spacing={4}
 						sx={{ alignContent: "flex-start", justifyContent: "center" }}
 					>

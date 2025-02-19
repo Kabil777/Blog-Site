@@ -7,11 +7,12 @@ const ArticleTheme = createTheme({
 				root: {
 					width: "100%",
 					height: "fit-content",
-					maxHeight: "260px",
+					maxHeight: "250px",
 					border: "1px solid #e4e4e7",
 					boxShadow: "none",
 					fontSize: "14px",
 					justifyContent: "space-between",
+					borderRadius:"10px"
 				},
 			},
 		},
@@ -35,10 +36,11 @@ const ArticleTheme = createTheme({
 					color: "#6e6e67",
 				},
 				h1: {
-					fontSize: "1.5rem",
+					fontSize: "1.3rem",
 					justifySelf: "flex-start",
-					fontWeight: "700",
+					fontWeight: "750",
 					textAlign: "start",
+					fontFamily:"Lato"
 				},
 			},
 		},

@@ -1,7 +1,6 @@
 import { Avatar, IconButton, CardHeader } from "@mui/material";
 import CompButton from "../Button/CompButton";
 import { useSelector } from "react-redux";
-import { HiOutlineDotsVertical } from "react-icons/hi";
 
 function Profile({ coverDetails, userDetails, actionEnable, showButton }) {
 	const avatar = useSelector((state) => state.auth.profileCover);
@@ -27,15 +26,10 @@ function Profile({ coverDetails, userDetails, actionEnable, showButton }) {
 
 			action={
 				<>
-					{actionEnable && (
-						<IconButton aria-label="settings">
-							<HiOutlineDotsVertical />
-						</IconButton>
-					)}
-					{showButton && <CompButton  index={2} />}
+					{showButton && <CompButton index={2} />}
 				</>
 			}
-			
+
 			sx={{
 				display: "flex",
 				gap: "10px",
@@ -43,7 +37,7 @@ function Profile({ coverDetails, userDetails, actionEnable, showButton }) {
 				textAlign: "start",
 				alignItems: "center",
 				"& .MuiCardHeader-action": {
-					alignSelf:"center",
+					alignSelf: "center",
 				},
 				"& .MuiCardHeader-avatar": {
 					marginRight: "0",
@@ -51,11 +45,11 @@ function Profile({ coverDetails, userDetails, actionEnable, showButton }) {
 			}}
 			titleTypographyProps={{
 				fontSize: ".9rem",
-				fontWeight: "800",
+				fontWeight: "600",
 			}}
 			subheaderTypographyProps={{
-				fontSize: "0.8rem",
-				fontWeight: "600",
+				fontSize: "0.9rem",
+				fontWeight: "400",
 				color: "text.secondary",
 			}}
 		/>

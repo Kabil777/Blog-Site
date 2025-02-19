@@ -44,8 +44,8 @@ export default function BasicButtons() {
 				scrollbarWidth: "none",
 				gap: "20px",
 				'& .MuiButton-root': {
-   						borderRadius: '2px',
- 		},
+					borderRadius: '2px',
+				},
 			}}
 		>
 			{buttons.map((button, index) => (
@@ -55,7 +55,7 @@ export default function BasicButtons() {
 					startIcon={button.icon}
 					onClick={() => handleClick(index)}
 					sx={{
-						borderRadius: "0px",
+						borderRadius: "10px",
 						padding: "10px 15px",
 						fontWeight: "bold",
 						boxShadow: "none",

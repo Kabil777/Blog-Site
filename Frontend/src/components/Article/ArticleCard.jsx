@@ -21,9 +21,9 @@ function ArticleCard({ post }) {
 	console.log("post", post);
 	return (
 		<ThemeProvider theme={ArticleTheme}>
-			<Card 
+			<Card
 				sx={{
-						
+
 					display: "flex",
 					gap: "12px",
 					flexDirection: "column",
@@ -32,7 +32,7 @@ function ArticleCard({ post }) {
 				}}
 			>
 				<Profile actionEnable={true} coverDetails={post} />
-				<Stack direction="column" sx={{ width: "100%",cursor: "pointer", }} onClick={postNavigate}>
+				<Stack direction="column" sx={{ width: "100%", cursor: "pointer", }} onClick={postNavigate}>
 					<Stack
 						direction="row"
 						sx={{
@@ -42,11 +42,10 @@ function ArticleCard({ post }) {
 							alignItems: "center",
 						}}
 					>
-						<CardContent  sx={{ width: "75%" }}>
+						<CardContent sx={{ width: "70%" }}>
 							<Typography
 								variant="h1"
 								component="h4"
-								fontFamily="Inter"
 								lineHeight="1.5"
 								sx={{
 									display: "-webkit-box",
@@ -78,20 +77,20 @@ function ArticleCard({ post }) {
 							component="img"
 							src={netBg}
 							sx={{
-								height: "100px",
+								height: "105px",
 								borderRadius: "5%",
-								width: "20%",
+								width: "23%",
 								justifySelf: "center",
-								
+
 								backgroundColor: "#ffffff",
 							}}
 						/>
 					</Stack>
 
 				</Stack>
-					<CardActions sx={{ padding: "0px" }}>
-						<PostActionButtons position={true} article={post} url={postUrl} />
-					</CardActions>
+				<CardActions sx={{ padding: "0px" }}>
+					<PostActionButtons position={true} article={post} url={postUrl} />
+				</CardActions>
 			</Card>
 		</ThemeProvider>
 	);

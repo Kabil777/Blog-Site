@@ -87,6 +87,8 @@ const AppBarTheme = createTheme({
 					height: "40px",
 					width: "40px",
 					color: "#ffffff",
+					padding: "0px",
+					
 					backgroundColor: "#2155CD",
 					marginLeft: "15px",
 					"&:hover": {

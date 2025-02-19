@@ -10,7 +10,7 @@ import React, { useState } from "react";
 import { ButtonGroup } from "@mui/material";
 
 export default function BasicButtons() {
-	const [activeButton, setActiveButton] = useState(null);
+	const [activeButton, setActiveButton] = useState(0);
 
 	const handleClick = (index) => {
 		if (activeButton !== index) {
@@ -19,6 +19,7 @@ export default function BasicButtons() {
 	};
 
 	const buttons = [
+		{ label: "All" },
 		{ label: "Featured", icon: <FaFeatherAlt /> },
 		{ label: "Trending", icon: <IoMdTrendingUp /> },
 		{ label: "Python", icon: <IoLogoPython /> },
@@ -38,8 +39,13 @@ export default function BasicButtons() {
 				flexShrink: "0",
 				maxWidth: "100%",
 				display: "flex",
-				height: "40px",
+				borderRadius: "0px",
+				height: "35px",
 				scrollbarWidth: "none",
+				gap: "20px",
+				'& .MuiButton-root': {
+   						borderRadius: '2px',
+ 		},
 			}}
 		>
 			{buttons.map((button, index) => (
@@ -49,16 +55,20 @@ export default function BasicButtons() {
 					startIcon={button.icon}
 					onClick={() => handleClick(index)}
 					sx={{
+						borderRadius: "0px",
+						padding: "10px 15px",
 						fontWeight: "bold",
 						boxShadow: "none",
 						"&:hover": {
 							boxShadow: "none",
 						},
-						marginX: "20px",
 						height: "100%",
 						flexShrink: "0",
 						backgroundColor: activeButton === index ? "#2155CD" : "#EEF5FF",
 						color: activeButton === index ? "#EEF5FF" : "#2155CD",
+						"&:active": {
+							boxShadow: "none",
+						},
 					}}
 				>
 					{button.label}

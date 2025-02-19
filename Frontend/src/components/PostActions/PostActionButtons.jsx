@@ -1,12 +1,12 @@
 import { Stack, IconButton, Typography } from "@mui/material";
-import { FaRegBookmark } from "react-icons/fa";
+import { BiSolidLike } from "react-icons/bi";
 import { IoShareSocialSharp } from "react-icons/io5";
 import axios from "axios";
-import { BiSolidLike } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
-import { updateLikePost } from "../../store/reducers/getArticleCover"
+import { updateLikePost } from "../../store/reducers/getArticleCover";
+import { GoBookmarkFill } from "react-icons/go";
 
-function PostActionButtons({ position, article }) {
+function PostActionButtons({ position, article ,url}) {
 	console.log("article", article);
 	const postDetails = useSelector(state => state.article.postDetails)
 	console.log(postDetails)
@@ -20,28 +20,66 @@ function PostActionButtons({ position, article }) {
 		);
 		dispatch(updateLikePost({ ...response.data, slug: article.slug }))
 	};
+	const sharePost = () => {
+        if (navigator.share) {
+            navigator.share({
+                title: article.title,
+                text: article.description,
+                url: url,
+            })
+            .catch((error) => console.log('Error sharing', error));
+        }
+    };
 	return (
 		<Stack
 			direction="row"
 			justifyContent={position ? "flex-start" : "flex-end"}
 			alignItems="center"
-			gap="10px"
+			gap="30px"
 			width="50%"
-			paddingX="8px"
+			
 		>
 			<Stack direction="row" alignItems="flex-end" justifyContent="center">
-				<Typography sx={{ m: "0", paddingRight: "5px" }} alignSelf="flex-end">
+				
+
+				<IconButton onClick={Like} sx={{ 
+					gap:"5px",
+					border:"1px solid #e4e4e7",
+					borderRadius:"4px",
+					width:"70px",
+					height:"35px",
+					p:"5px 3px",
+					borderColor: article.isLiked ? "#2155CD" : "#e4e4e7",
+					color: article.isLiked ? "#2155CD" : "black" }}>
+					<BiSolidLike size={21} />
+					<Typography sx={{ 
+					m: "0", paddingRight: "5px" }} alignSelf="flex-end">
 					{article?._count?.like || 0}
 				</Typography>
-
-				<IconButton onClick={Like} sx={{ color: article.isLiked ? "black" : "none" }}>
-					<BiSolidLike size={23} />
 				</IconButton>
 			</Stack>
-			<IconButton>
-				<FaRegBookmark size={20} />
+			<IconButton
+			sx={{
+				gap:"5px",
+					border:"1px solid #e4e4e7",
+					borderRadius:"4px",
+					width:"70px",
+					height:"35px",
+					p:"5px 3px",
+					color:"black"
+			}}
+			>
+				<GoBookmarkFill size={20} />
 			</IconButton>
-			<IconButton>
+			<IconButton  onClick={sharePost} sx={{
+				gap:"5px",
+				border:"1px solid #e4e4e7",
+				borderRadius:"4px",
+				width:"70px",
+				height:"35px",
+				p:"5px 3px",
+				color:"black"
+				}} >
 				<IoShareSocialSharp size={20} />
 			</IconButton>
 		</Stack>

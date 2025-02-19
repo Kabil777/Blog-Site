@@ -1,5 +1,4 @@
 import Typography from "@mui/material/Typography";
-
 import Profile from "../profile/profile";
 import { Box, Stack } from "@mui/material";
 import FollowTheme from "./FollowTheme";
@@ -12,26 +11,26 @@ export default function MostFollowed() {
 				sx={{
 					display: "flex",
 					flexDirection: "column",
-					gap: "7%",
 					justifyContent: "flex-start",
 					alignItems: "flex-start",
 					width: "100%",
 					fontSize:"12px",
 					border: "1px solid #e4e4e7",
-					padding: "16px 20px",
-					height: "275px",
+					padding: "20px",
+					gap: "20px",
+					borderRadius: "4px",
 				}}
 			>
 				<Typography
 					sx={{
 						fontWeight: "bold",
-						fontSize: "1.2rem",
-						fontFamily: "'Source Sans 3',serif",
+						fontSize: "1rem",
+						fontFamily: "inter",
 					}}
 				>
 					Top Writers
 				</Typography>
-				<Stack direction="column" width="100%" alignItems="flex-start">
+				<Stack direction="column" width="100%" alignItems="flex-start" sx={{gap:"20px"}}>
 					<Profile actionEnable={null} showButton={true} />
 					<Profile showButton={true} />
 					<Profile showButton={true} />

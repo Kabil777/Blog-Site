@@ -1,42 +1,68 @@
-import { Grid2, Box } from "@mui/material";
+import { Grid2, Typography } from "@mui/material";
 import ArticleCard from "../components/Article/ArticleCard";
-import Navbar from "../components/Navbar/Navbar";
-import { Container } from "@mui/material";
+import MediaCard from "../components/Home-card/card";
+import MostFollowed from "../components/Follower/Follow";
+import BasicButtons from "../components/Button/Button";
+import Container from "@mui/material/Container";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getPostCover } from "../store/reducers/getArticleCover";
 function HomePage() {
+	const coverData = useSelector((state) => state.cover.Articles);
+	const status = useSelector((state) => state.cover.status);
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		if (status !== "success") dispatch(getPostCover());
+	}, [dispatch]);
 	return (
 		<>
-			<Navbar />
-
 			<Container
+				fixed
 				maxWidth="xl"
 				sx={{
-					width: "100%",
-					mt: "130px",
-					overflowY: "hidden",
+					mt: "100px",
 				}}
 			>
-				<Grid2 container spacing={6} alignItems="flex-start">
+				<Grid2 container spacing={3} justifyContent="center" alignItems="flex-start">
 					<Grid2
 						container
 						md={8}
-						lg={8}
+						lg={7}
 						xl={8}
-						size={{ xs: 12, md: 12, lg: 8.5, xl: 8.5 }}
-						spacing={6}
+						size={{ xs: 12, md: 11, lg: 7.5, xl: 6.5 }}
+						spacing={4}
+						sx={{ alignContent: "flex-start", justifyContent: "center" }}
 					>
-						<ArticleCard style={{ fontFamily: "Inter" }} />
-						<ArticleCard />
-						<ArticleCard />
-						<ArticleCard />
+						<BasicButtons />
+						{coverData.length !== 0 ? (
+							<>
+								{coverData.map((post) => (
+									<ArticleCard key={post.id} post={post} />
+								))}
+							</>
+						) : (
+							<Typography
+								sx={{ alignSelf: "flex-start", justifySelf: "center" }}
+							>
+								No posts available
+							</Typography>
+						)}
 					</Grid2>
 					<Grid2
-						md={8}
-						lg={8}
+						md={0}
+						lg={0}
 						xl={8}
-						size={{ xs: 0, md: 0, lg: 3.5, xl: 3.5 }}
-						sx={{ backgroundColor: "aqua", padding: "50px" }}
+						size={{ xs: 0, md: 0, lg: 3.5, xl: 3 }}
+						container
+						overflow="hidden"
+						sx={{ scrollbarWidth: "none" }}
+						height="100%"
+						spacing={4}
 					>
-						<Box sx={{ height: "100vh" }}></Box>
+						<MostFollowed sx={{ width: "100%", height: "100%" }} />
+						<MediaCard sx={{ width: "100%", height: "100%" }} />
+						<MediaCard sx={{ width: "100%", height: "100%" }} />
 					</Grid2>
 				</Grid2>
 			</Container>

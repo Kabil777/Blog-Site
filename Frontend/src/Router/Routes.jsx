@@ -1,17 +1,41 @@
-import { useRoutes } from "react-router-dom";
-import HomePage from "../Pages/HomePage";
+import { useLocation, useRoutes } from "react-router-dom";
 import publicRoutes from "./publicRoutes";
+import EditorPage from "../Pages/EditorPage";
+import ProtectedChecker from "../hooks/ProtectedChecker";
+import HomePage from "../Pages/HomePage";
+import PostPage from "../Pages/PostPage";
+import Navbar from "../components/Navbar/Navbar";
 
 function Routes() {
-	const Routes = useRoutes([
+	const protectRoutes = [
+		{
+			path: "/editor",
+			element: <EditorPage />,
+		},
+
 		{
 			path: "/",
 			element: <HomePage />,
 		},
-		...publicRoutes,
-	]);
+		{
+			path: "/post",
+			element: <PostPage />,
+		},
+		
+	];
 
-	return Routes;
+	return (
+		<>
+			{location.pathname !== "/login" && <Navbar />}
+			{useRoutes([
+				...publicRoutes,
+				{
+					element: <ProtectedChecker />,
+					children: protectRoutes,
+				},
+			])}
+		</>
+	);
 }
 
 export default Routes;

@@ -1,19 +1,20 @@
-import { RiArrowDropDownLine } from "react-icons/ri";
 import { AiOutlineEdit } from "react-icons/ai";
+import { RiArrowDropDownLine } from "react-icons/ri";
 import { IoNotifications } from "react-icons/io5";
 import { CiSearch } from "react-icons/ci";
+
 import {
 	AppBar,
 	Avatar,
-	Button,
 	Card,
 	Divider,
 	IconButton,
-	InputAdornment,
+	InputBase,
+	Popover,
 	Stack,
-	TextField,
 	Toolbar,
 	Typography,
+	SwipeableDrawer,
 } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 import AppBarTheme from "./NavbarTheme";
@@ -26,18 +27,24 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 
 import { IoPersonAddSharp } from "react-icons/io5";
 import { IoMdSettings } from "react-icons/io";
-import { IoLogOutSharp } from "react-icons/io5";
+import { AiOutlineLogout } from "react-icons/ai";
 import Profile from "../profile/profile";
-function Navbar() {
+
+
+import { useSelector } from "react-redux";
+
+function Navbar({ data }) {
 	const navigate = useNavigate();
 	const [anchor, setAnchor] = useState(null);
+	const [ResourceOpen, setOpen] = useState(null);
+	const openResource = Boolean(ResourceOpen);
 	const open = Boolean(anchor);
+	const avatar = useSelector((state) => state.auth.profileCover);
 	const openReq = (event) => {
 		setAnchor(event.currentTarget);
 	};
 	const closeReq = () => {
 		setAnchor(null);
-		console.log(open);
 	};
 	return (
 		<>
@@ -58,46 +65,82 @@ function Navbar() {
 								STACK SHARE
 							</Typography>
 							<Divider orientation="vertical" variant="middle" flexItem />
-							<Button
-								type="button"
-								variant="text"
-								disableRipple
+							<Typography
+								variant="button"
+								fontFamily="Inter"
+								fontSize="1.1rem"
+								fontWeight="400"
+								textTransform="none"
+								sx={{
+									color: "#67676e",
+									cursor: "pointer",
+								}}
+								paddingX="10px"
 								onClick={() => {
 									navigate("/");
 								}}
 							>
 								Home
-							</Button>
-							<Button
-								variant="text"
-								endIcon={<RiArrowDropDownLine size={25} />}
-								disableRipple
-								disableElevation
+							</Typography>
+							<Stack
+								direction="row"
+								alignItems="center"
+								justifyContent="center"
+								onMouseEnter={(event) => setOpen(event.currentTarget)}
+								onMouseLeave={() => setOpen(null)}
+								aria-owns={openResource ? "mouse-over-popover" : undefined}
+								aria-haspopup="true"
 							>
-								Resources
-							</Button>
+								<Typography
+									variant="button"
+									paddingX="10px"
+									fontFamily="Inter"
+									fontSize="1.1rem"
+									fontWeight="400"
+									textTransform="none"
+									color="#67676e"
+								>
+									Resources
+								</Typography>
+								<RiArrowDropDownLine style={{ marginTop: "5px" }} size={25} />
+							</Stack>
 						</Stack>
 
 						<Stack
 							direction="row"
 							alignItems="center"
-							justifyContent="flex-end"
-							sx={{ flexGrow: 2 }}
+							justifyContent="center"
+							height="70%"
+							width="20%"
+							m="0px 25px"
+							border="1.5px solid #e4e4e7"
+							borderRadius="1%"
+							p="0px 5px"
 						>
-							<TextField
-								sx={{ width: "60ch", marginRight: "70px" }}
-								variant="outlined"
-								placeholder="Find Articles..."
-								InputProps={{
-									startAdornment: (
-										<InputAdornment position="start">
-											<CiSearch size={25} />
-										</InputAdornment>
-									),
-								}}
+							<InputBase
+								sx={{ ml: 1, flex: 1 }}
+								placeholder="Search for Articles..."
+								inputProps={{ "aria-label": "Search for Articles" }}
 							/>
+							<IconButton
+								type="button"
+								aria-label="search"
+								sx={{
+									padding: "10px",
+									fontSize: "2em",
+									fontWeight: "600",
+									height: "40px",
+									width: "40px",
+									color: "#67676e",
+									backgroundColor: "#ffffff",
+									"&:hover": {
+										backgroundColor: "#ffffff",
+									},
+								}}
+							>
+								<CiSearch />
+							</IconButton>
 						</Stack>
-
 						<Stack
 							direction="row"
 							alignItems="center"
@@ -121,15 +164,10 @@ function Navbar() {
 								aria-controls={open ? "menu" : undefined}
 								aria-expanded={open ? "true" : undefined}
 							>
-								<Avatar
-									sx={{
-										width: "100%",
-										height: "100%",
-										bgcolor: "#2155CD",
-									}}
-								>
-									K
-								</Avatar>
+								<Avatar 
+								sx={{
+								}}
+								 src={data ? data.profileCover : avatar} alt="bg"></Avatar>
 							</IconButton>
 						</Stack>
 					</Toolbar>
@@ -140,17 +178,31 @@ function Navbar() {
 				id="menu"
 				open={open}
 				onClose={closeReq}
-				sx={{ maxWidth: "400px", boxShadow: "none" }}
+				sx={{ minWidth: "300px", boxShadow: "none", }}
 				slotProps={{
 					paper: {
 						elevation: 0,
 						sx: {
 							overflow: "visible",
-							filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
+							//filter: "drop-shadow(0px 4px 8px rgba(0,0,0,0.32))",
+							border: "1px solid #e4e4e7",
 							mt: 1.5,
+							width: "300px",
+							"& .MuiList-root ": {
+								display: "flex",
+								flexDirection: "column",
+								padding: "10px",
+								gap: "3px",	
+								"& .MuiPaper-root": {
+								width: "100%",
+							},
+							},
 							"& .MuiAvatar-root": {
-								width: 50,
-								height: 50,
+								width: 45,
+								height: 45,
+							},
+							"& .MuiDivider-root": {
+								margin: "0 0",
 							},
 							"&::before": {
 								content: '""',
@@ -171,44 +223,50 @@ function Navbar() {
 				anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
 			>
 				<MenuItem
-					onClick={closeReq}
 					sx={{
-						padding: "5px",
+						padding: "0",
+						width:"100%"
+						
 					}}
 				>
 					<Card
 						sx={{
 							boxShadow: "none",
-							backgroundColor: "#e4e4e7",
-							width: "300px",
-							height: "75px",
+							backgroundColor: "#E4E4E7",
+							padding: "0",
+							
+							"& .MuiCardHeader-root": {
+								padding: "8px",
+								width:"100%"
+								
+							},
 							"& .MuiCardHeader-action": {
 								display: "none",
 							},
 						}}
 					>
-						<Profile />
+						<Profile  />
 					</Card>
 				</MenuItem>
 
-				<MenuItem onClick={closeReq}>
+				<MenuItem onClick={closeReq} sx={{ color: "#67676E" , fontSize:	"1rem" , padding:"10px",borderRadius:"4px"}} >
 					<ListItemIcon>
-						<IoPersonAddSharp fontSize="small" />
+						<IoPersonAddSharp fontSize="larger" />
 					</ListItemIcon>
 					Add another account
 				</MenuItem>
-				<MenuItem onClick={closeReq}>
+				<MenuItem onClick={closeReq} sx={{ color: "#67676E" , fontSize:	"1rem",padding:"10px",borderRadius:"4px"}} >
 					<ListItemIcon>
-						<IoMdSettings fontSize="small" />
+						<IoMdSettings fontSize="larger" />
 					</ListItemIcon>
 					Settings
 				</MenuItem>
-				<Divider />
-				<MenuItem onClick={closeReq}>
+				<Divider   />
+				<MenuItem onClick={closeReq} sx={{ color: "red" , fontSize:	"1rem",padding:"10px",borderRadius:"4px"}}>
 					<ListItemIcon>
-						<IoLogOutSharp fontSize="small" />
+						<AiOutlineLogout fontSize="1.5rem" color="red"/>
 					</ListItemIcon>
-					Logout
+					Log Out
 				</MenuItem>
 			</Menu>
 		</>

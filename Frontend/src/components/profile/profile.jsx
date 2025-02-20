@@ -1,37 +1,58 @@
 import { Avatar, IconButton, CardHeader } from "@mui/material";
-import { CiMenuKebab } from "react-icons/ci";
+import CompButton from "../Button/CompButton";
+import { useSelector } from "react-redux";
 
-function Profile() {
+function Profile({ coverDetails, userDetails, actionEnable, showButton }) {
+	const avatar = useSelector((state) => state.auth.profileCover);
+	const name = useSelector((state) => state.auth.name);
+	const email = useSelector((state) => state.auth.email);
+	const getProfile = () => {
+		if (userDetails) {
+			return userDetails;
+		} else if (coverDetails) {
+			return coverDetails.user;
+		} else {
+			return false;
+		}
+	};
+	const data = getProfile();
 	return (
 		<CardHeader
 			avatar={
-				<Avatar sx={{ bgcolor: "#2155cd" }} aria-label="recipe">
-					K
-				</Avatar>
+				<Avatar src={data ? data.profileCover : avatar} alt="bg"></Avatar>
 			}
+			title={data ? data.name : name}
+			subheader={data ? data.email : email}
+
 			action={
-				<IconButton aria-label="settings">
-					<CiMenuKebab />
-				</IconButton>
+				<>
+					{showButton && <CompButton index={2} />}
+				</>
 			}
-			title="Kabil"
-			subheader="kabil.ec23@bitsathy.ac.in"
+
 			sx={{
+				display: "flex",
+				gap: "10px",
 				justifyContent: "flex-start",
 				textAlign: "start",
 				alignItems: "center",
+				"& .MuiCardHeader-action": {
+					alignSelf: "center",
+				},
+				"& .MuiCardHeader-avatar": {
+					marginRight: "0",
+				}
 			}}
 			titleTypographyProps={{
-				fontSize: "1.1rem",
-				fontWeight: "bold",
+				fontSize: ".9rem",
+				fontWeight: "600",
 			}}
 			subheaderTypographyProps={{
-				fontSize: "1rem",
-				fontWeight: "normal",
+				fontSize: "0.9rem",
+				fontWeight: "400",
 				color: "text.secondary",
 			}}
 		/>
 	);
 }
-
 export default Profile;

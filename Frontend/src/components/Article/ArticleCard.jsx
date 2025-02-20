@@ -1,68 +1,95 @@
-import { GrLike } from "react-icons/gr";
-import { FaRegBookmark } from "react-icons/fa";
-import { IoShareSocialSharp } from "react-icons/io5";
 import {
 	Stack,
 	Typography,
 	Card,
-	IconButton,
 	CardContent,
-	Box,
 	CardActions,
 } from "@mui/material";
 import Profile from "../profile/profile";
-import netBg from "../../assets/networks.png";
+import netBg from "../../assets/networks.jpg";
 import { ThemeProvider } from "@mui/material";
 import ArticleTheme from "./ArticleTheme";
+import PostActionButtons from "../PostActions/PostActionButtons";
+import { useNavigate } from "react-router-dom";
 
-function ArticleCard() {
+function ArticleCard({ post }) {
+	const navigate = useNavigate();
+	const postNavigate = () => {
+		navigate(`/kabil/${post.slug}`);
+	};
+	const postUrl = `${window.location.origin}/kabil/${post.slug}`;
+	console.log("post", post);
 	return (
 		<ThemeProvider theme={ArticleTheme}>
 			<Card
 				sx={{
+
 					display: "flex",
+					gap: "12px",
 					flexDirection: "column",
-					justifyContent: "space-between",
+					justifyContent: "space-evenly",
+					padding: "25px",
 				}}
 			>
-				<Profile action={true} />
-				<CardContent>
-					<Stack direction="row" sx={{ flexGrow: 1, width: "100%" }}>
+				<Profile actionEnable={true} coverDetails={post} />
+				<Stack direction="column" sx={{ width: "100%", cursor: "pointer", }} onClick={postNavigate}>
+					<Stack
+						direction="row"
+						sx={{
+							flexGrow: 1,
+							width: "100%",
+							justifyContent: "space-between",
+							alignItems: "center",
+						}}
+					>
+						<CardContent sx={{ width: "70%" }}>
+							<Typography
+								variant="h1"
+								component="h4"
+								lineHeight="1.5"
+								sx={{
+									display: "-webkit-box",
+									WebkitBoxOrient: "vertical",
+									WebkitLineClamp: 2,
+									overflow: "hidden",
+									textOverflow: "ellipsis",
+								}}
+							>
+								{post.name}
+							</Typography>
+							<Typography
+								variant="p"
+								component="p"
+								fontFamily="Inter"
+								lineHeight="1.5rem"
+								sx={{
+									display: "-webkit-box",
+									WebkitBoxOrient: "vertical",
+									WebkitLineClamp: 3,
+									overflow: "hidden",
+									textOverflow: "ellipsis",
+								}}
+							>
+								{post.description}
+							</Typography>
+						</CardContent>
 						<Stack
-							direction="column"
-							alignItems="flex-start"
-							sx={{ flexGrow: "1" }}
-						>
-							<Typography variant="h1" component="h4" fontFamily="Inter">
-								Announcement on Networking Documentation
-							</Typography>
-							<Typography variant="h6">
-								Some data center professionals rely on outdated network topology
-								diagrams and spreadsheets for their documentation, while Data
-								Center Infrastructure Management (DCIM) software ....
-							</Typography>
-						</Stack>
-						<Box
 							component="img"
 							src={netBg}
 							sx={{
-								height: "150px",
-								flexGrow: 1,
+								height: "105px",
+								borderRadius: "5%",
+								width: "23%",
+								justifySelf: "center",
+
 								backgroundColor: "#ffffff",
 							}}
 						/>
 					</Stack>
-				</CardContent>
-				<CardActions>
-					<IconButton>
-						<GrLike />
-					</IconButton>
-					<IconButton>
-						<FaRegBookmark />
-					</IconButton>
-					<IconButton>
-						<IoShareSocialSharp />
-					</IconButton>
+
+				</Stack>
+				<CardActions sx={{ padding: "0px" }}>
+					<PostActionButtons position={true} article={post} url={postUrl} />
 				</CardActions>
 			</Card>
 		</ThemeProvider>

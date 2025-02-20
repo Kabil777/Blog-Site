@@ -6,7 +6,10 @@ import { FaGolang } from "react-icons/fa6";
 import { SiCplusplus } from "react-icons/si";
 import { DiLinux } from "react-icons/di";
 import { FaGitAlt } from "react-icons/fa";
-
+import { TiHtml5 } from "react-icons/ti";
+import { DiMysql } from "react-icons/di";
+import { SiPhp } from "react-icons/si";
+import { FaC } from "react-icons/fa6";
 const chips = [
 	{
 		key: 1,
@@ -30,58 +33,68 @@ const chips = [
 	},
 	{
 		key: 5,
-		name: "Go",
-		icon: <FaGolang size="1.2em" />,
+		name: "C++",
+		icon: <SiCplusplus />,
 	},
 	{
 		key: 6,
-		name: "CPP",
-		icon: <SiCplusplus />,
+		name: "Linux",
+		icon: <DiLinux />,
 	},
 	{
 		key: 7,
-		name: "Linux",
-		icon: <DiLinux />,
+		name: "C",
+		icon: <FaC/>,
 	},
 	{
 		key: 8,
-		name: "Rust",
-		icon: <FaRust />,
-	},
-	{
-		key: 9,
-		name: "Js",
+		name: "Ruby",
 		icon: <FaJs />,
 	},
 	{
-		key: 10,
+		key: 9,
 		name: "Go",
 		icon: <FaGolang size="1.2em" />,
 	},
 	{
-		key: 11,
+		key: 10,
 		name: "CPP",
 		icon: <SiCplusplus />,
 	},
 	{
-		key: 12,
-		name: "Linux",
+		key: 11,
+		name: "Bash",
 		icon: <DiLinux />,
 	},
 	{
-		key: 13,
-		name: "Rust",
+		key: 12,
+		name: "Flutter",
 		icon: <FaRust />,
 	},
 	{
+		key: 13,
+		name: "HTML/CSS",
+		icon: <TiHtml5 />,
+	},
+	{
 		key: 14,
-		name: "Js",
-		icon: <FaJs />,
+		name: "Swift",
+		icon: <FaGolang size="1.2em" />,
 	},
 	{
 		key: 15,
-		name: "Go",
-		icon: <FaGolang size="1.2em" />,
+		name: "C#",
+		icon: <FaRust />,
+	},
+	{
+		key: 16,
+		name: "SQL",
+		icon: <DiMysql />,
+	},
+	{
+		key: 17,
+		name: "PHP",
+		icon: <SiPhp size="1.2em" />,
 	},
 ];
 export default chips;

@@ -1,191 +1,240 @@
 import { useEffect, useState } from "react";
-import MDEditor, { commands, executeCommand } from "@uiw/react-md-editor";
-import "@uiw/react-md-editor/markdown-editor.css"; // Required styles
-import "@uiw/react-markdown-preview/markdown.css"; // Required preview styles
-import "./Page.css";
-import { BsStars, BsTable } from "react-icons/bs";
-import { RxDividerVertical } from "react-icons/rx";
-import { MdOutlineTextFields } from "react-icons/md";
-import { FaBold, FaItalic, FaLink } from "react-icons/fa";
-import { LuCode, LuCodeXml } from "react-icons/lu";
-import { VscChecklist } from "react-icons/vsc";
-import { AiOutlineUnorderedList } from "react-icons/ai";
-import { IoIosImages } from "react-icons/io";
-import { MdModeEditOutline } from "react-icons/md";
-import { HiViewfinderCircle } from "react-icons/hi2";
-import { MdOutlineViewCarousel } from "react-icons/md";
-
-import { setData } from "../../store/reducers/editorReducer";
 import { useDispatch, useSelector } from "react-redux";
-import { Button } from "@mui/material";
+import { TbSourceCode } from "react-icons/tb";
 import Form from "../Form/Form";
+import {
+    MDXEditor,
+    BoldItalicUnderlineToggles,
+    InsertCodeBlock,
+    codeMirrorPlugin,
+    ChangeCodeMirrorLanguage,
+    CodeToggle,
+    codeBlockPlugin,
+    toolbarPlugin,
+    listsPlugin,
+    quotePlugin,
+    ConditionalContents,
+    ListsToggle,
+    BlockTypeSelect,
+    InsertImage,
+    CreateLink,
+    InsertThematicBreak,
+    InsertTable,
+    thematicBreakPlugin,
+    tablePlugin,
+    headingsPlugin,
+    linkPlugin,
+    linkDialogPlugin,
+} from "@mdxeditor/editor";
+import { setData, PostSend } from "../../store/reducers/editorReducer";
+
+import { FaFileUpload } from "react-icons/fa";
+import "./Page.css";
+import "@mdxeditor/editor/style.css";
+import { IconButton, Stack, Snackbar, Alert } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 function Page() {
-	const blog = useSelector((state) => state.post.blog);
-	const [data, set] = useState(blog);
-	const [open, changeOpenState] = useState(true);
-	const closeReq = () => {
-		changeOpenState(false);
-	};
-	const openReq = () => {
-		changeOpenState(true);
-		console.log(open);
-	};
-	const dispatch = useDispatch();
-	const iconSize = 20;
-	const iconSizeHigh = 26;
-	const iconStyle = { cursor: "pointer", padding: "2px" };
-	const dividerStyle = {
-		color: "#e4e4e7",
-		padding: "0",
-		margin: "0",
-		cursor: "initial",
-	};
-	useEffect(() => {
-		openReq;
-	});
-	const customCommands = [
-		{
-			...commands.hr,
-			name: "Stars",
-			icon: (
-				<BsStars
-					size={28}
-					style={{ paddingLeft: "15px", margin: "0" }}
-					className="last"
-				/>
-			),
-			execute: () => console.log("Stars clicked!"),
-		},
-		{
-			...commands.hr,
-			name: "Divider1",
-			icon: (
-				<RxDividerVertical size={35} style={dividerStyle} className="last" />
-			),
-			execute: () => null,
-		},
-		{
-			...commands.title,
-			icon: <MdOutlineTextFields size={iconSize} style={iconStyle} />,
-		},
-		{
-			...commands.bold,
-			icon: <FaBold size={iconSize} style={iconStyle} />,
-		},
-		{
-			...commands.italic,
-			icon: <FaItalic size={iconSize} style={iconStyle} />,
-		},
-		{
-			...commands.hr,
-			name: "Divider2",
-			icon: (
-				<RxDividerVertical size={35} style={dividerStyle} className="last" />
-			),
-			execute: () => null,
-		},
-		{
-			...commands.code,
-			icon: <LuCode size={iconSize} style={iconStyle} />,
-		},
-		{
-			...commands.codeBlock,
-			icon: <LuCodeXml size={26} style={iconStyle} />,
-		},
-		{
-			...commands.hr,
-			name: "Divider3",
-			icon: (
-				<RxDividerVertical size={35} style={dividerStyle} className="last" />
-			),
-			execute: () => null,
-		},
+    const dispatch = useDispatch();
+    const markdownContent = useSelector((state) => state.post.blog);
+    const postData = useSelector((state) => state.post);
+    const [isSourceMode, setIsSourceMode] = useState(false);
+    const [open, changeOpenState] = useState(true);
+	const navigate = useNavigate()
+    const closeReq = () => {
+        changeOpenState(false);
+    };
+    const openReq = () => {
+        changeOpenState(true);
+    };
 
-		{
-			...commands.image,
-			icon: <IoIosImages size={iconSize} style={iconStyle} />,
-		},
-		{
-			...commands.link,
-			icon: <FaLink size={iconSize} style={iconStyle} />,
-		},
-		{
-			...commands.table,
-			name: "Table",
-			icon: <BsTable size={iconSize} style={iconStyle} />,
-		},
+    useEffect(() => {
+        openReq();
+    }, []);
 
-		{
-			...commands.hr,
-			name: "Divider4",
-			icon: <RxDividerVertical size={35} style={dividerStyle} />,
-			execute: () => null,
-		},
-		{
-			...commands.checkedListCommand,
-			icon: <VscChecklist size={iconSizeHigh} style={iconStyle} />,
-		},
-		{
-			...commands.unorderedListCommand,
-			icon: <AiOutlineUnorderedList size={iconSizeHigh} style={iconStyle} />,
-		},
-	];
+    const SetBlog = (content) => {
+        content = content
+            .replace(/\\/g, "")
+            .replace(/&#x9;/g, "\t")
+            .replace(/&#x20;/g, " ");
+        dispatch(setData(content));
+        console.log(content);
+    };
 
-	const extraCommands = [
-		{
-			...commands.codeLive,
-			icon: (
-				<MdOutlineViewCarousel size={32} style={iconStyle} className="last" />
-			),
-		},
-		{
-			...commands.codeEdit,
-			icon: <MdModeEditOutline size={24} style={iconStyle} />,
-		},
-		{
-			...commands.codePreview,
-			icon: <HiViewfinderCircle size={24} style={iconStyle} />,
-		},
-		{
-			...commands.bold,
-			icon: (
-				<Button
-					sx={{
-						fontFamily: "Inter",
-						fontSize: "1.1em",
-						fontWeight: "600",
-						height: "40px",
-						width: "75px",
-						color: "#ffffff",
-						backgroundColor: "#2155CD",
-						margin: " 0 15px 35px 15px",
-						"&:hover": {
-							backgroundColor: "#2155CD",
-						},
-					}}
-				>
-					SUBMIT
-				</Button>
-			),
-			execute: () => {
-				dispatch(setData(data));
-			},
-		},
-	];
-	return (
-		<>
-			<MDEditor
-				height={800}
-				toolbars={toolbar}
-				value={data}
-				onChange={(e) => set(e)}
-				commands={customCommands}
-				extraCommands={extraCommands}
-			></MDEditor>
-			<Form open={open} closeReq={closeReq} />
-		</>
-	);
+    const submitPost = async () => {
+        try {
+            await dispatch(PostSend(postData));
+            setSnackbarMessage("Post submitted successfully!");
+            setSnackbarType("success");
+			setTimeout(()=>{
+			navigate("/");
+			},3000)
+        } catch (error) {
+            setSnackbarMessage("Failed to submit post.");
+            setSnackbarType("error");
+			setTimeout(()=>{
+				navigate("/");
+				},3000)
+        } finally {
+            setSnackbarOpen(true);setTimeout(()=>{
+				navigate("/");
+				},3000)
+        }
+    };
+
+    const status = useSelector((state) => state.post.status);
+
+    const [openSnackbar, setOpenSnackbar] = useState(false);
+    const [snackbarMessage, setSnackbarMessage] = useState("");
+    const [snackbarType, setSnackbarType] = useState("");
+
+    useEffect(() => {
+        if (status === "success") {
+            setSnackbarMessage("Post submitted successfully!");
+            setSnackbarType("success");
+            setOpenSnackbar(true);
+			
+        } else if (status === "failure") {
+            setSnackbarMessage("Failed to submit the post.");
+            setSnackbarType("failure");
+            setOpenSnackbar(true);
+        } else if (status === "pending") {
+            setSnackbarMessage("Submitting your post...");
+            setSnackbarType("info");
+            setOpenSnackbar(true);
+        }
+    }, [status]);
+
+    const handleSnackbarClose = () => {
+        setOpenSnackbar(false);
+    };
+
+    const languageMapping = {
+        js: "JavaScript",
+        ts: "TypeScript",
+        css: "CSS",
+        html: "HTML",
+        json: "JSON",
+        md: "Markdown",
+        python: "Python",
+        java: "Java",
+        cpp: "C++",
+        c: "C",
+        go: "Go",
+        rust: "Rust",
+    };
+
+    const getSupportedLanguages = () => {
+        return Object.entries(languageMapping).reduce((acc, [key, value]) => {
+            acc[key] = value;
+            return acc;
+        }, {});
+    };
+
+    const ToolbarDivider = () => (
+        <div
+            style={{
+                width: "1px",
+                height: "20px",
+                backgroundColor: "#ccc",
+                margin: "0 8px",
+            }}
+        />
+    );
+
+    return (
+        <>
+            <MDXEditor
+                style={{ marginTop: "20px", padding: "0", position: "fixed" }}
+                markdown={markdownContent}
+                readOnly={false}
+                onChange={SetBlog}
+                plugins={[
+                    codeBlockPlugin({
+                        defaultCodeBlockLanguage: "js",
+                    }),
+                    listsPlugin(),
+                    quotePlugin(),
+                    headingsPlugin(),
+                    thematicBreakPlugin(),
+                    tablePlugin(),
+                    linkPlugin(),
+                    linkDialogPlugin(),
+                    codeMirrorPlugin({ codeBlockLanguages: getSupportedLanguages() }),
+                    toolbarPlugin({
+                        toolbarClassName: "my-classname",
+                        toolbarContents: () => (
+                            <>
+                                {" "}
+                                <ConditionalContents
+                                    options={[
+                                        {
+                                            when: (editor) => editor?.editorType === "codeblock",
+                                            contents: () => <ChangeCodeMirrorLanguage />,
+                                        },
+                                        {
+                                            fallback: () => {
+                                                <InsertCodeBlock />;
+                                            },
+                                        },
+                                    ]}
+                                />
+                                <Stack
+                                    direction="row"
+                                    alignItems="center"
+                                    justifyContent="flex-start"
+                                    width="50%"
+                                >
+                                    <BoldItalicUnderlineToggles />
+                                    <ToolbarDivider />
+                                    <CodeToggle />
+                                    <InsertCodeBlock />
+                                    <ToolbarDivider />
+                                    <ListsToggle />
+                                    <ToolbarDivider />
+                                    <BlockTypeSelect />
+                                    <ToolbarDivider />
+                                    <InsertImage />
+                                    <CreateLink />
+                                    <ToolbarDivider />
+                                    <InsertTable />
+                                    <InsertThematicBreak />
+                                    <IconButton
+                                        onClick={() => {
+                                            console.log(isSourceMode);
+                                            setIsSourceMode(!isSourceMode);
+                                        }}
+                                    >
+                                        <TbSourceCode />
+                                    </IconButton>
+                                </Stack>
+                                <Stack
+                                    direction="row"
+                                    alignItems="center"
+                                    justifyContent="flex-end"
+                                    width="50%"
+                                >
+                                    <IconButton color="#2155cd" onClick={submitPost}>
+                                        <FaFileUpload size={20} color="#2155cd" />
+                                    </IconButton>
+                                </Stack>
+                            </>
+                        ),
+                    }),
+                ]}
+            />
+            <Form open={open} closeReq={closeReq} />
+            <Snackbar
+                open={openSnackbar}
+                autoHideDuration={6000}
+                onClose={handleSnackbarClose}
+            >
+                <Alert onClose={handleSnackbarClose} severity={snackbarType} sx={{ width: '100%' }}>
+                    {snackbarMessage}
+                </Alert>
+            </Snackbar>
+        </>
+    );
 }
 
 export default Page;

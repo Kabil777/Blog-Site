@@ -1,13 +1,13 @@
-import Login from "../components/Login/login";
-import EditorPage from "../Pages/EditorPage";
+import LoginStack from "../components/Login/loginStackShare";
+import PostPage from "../Pages/PostPage";
 const publicRoutes = [
 	{
-		path: "/editor",
-		element: <EditorPage />,
+		path: "/login",
+		element: <LoginStack />,
 	},
 	{
-		path: "/login",
-		element: <Login />,
+		path: "/:user/:slug",
+		element: <PostPage />,
 	},
 ];
 

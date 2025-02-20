@@ -6,3 +6,79 @@ datasource db {
         provider = "mysql"
         url      = env("DATABASE_URL")
 }
+
+model User {
+        id           String     @id @default(uuid())
+        Google_id    String     @unique
+        name         String     @unique
+        email        String     @unique
+        profileCover String
+        createdAt    DateTime   @default(now())
+        posts        Post[]     @relation("post")
+        like         Like[]
+        follower     follow[]   @relation("follower")
+        following    follow[]   @relation("following")
+        bookmark     Bookmark[] @relation("bookmarkUser")
+}
+
+model Post {
+        id          String      @id @unique
+        slug        String      @unique
+        name        String
+        description String      @db.LongText
+        mdFileName  String
+        userId      String
+        createdAt   DateTime    @default(now())
+        user        User        @relation("post", fields: [userId], references: [id])
+        tags        TagMapper[]
+        likes       Int
+        like        Like[]
+        bookmark    Bookmark[]  @relation("bookmarkPost")
+
+        @@index([userId], map: "Post_userId_fkey")
+}
+
+model Tags {
+        id        Int         @id @default(autoincrement())
+        domain    String
+        skill     String      @unique
+        createdAt DateTime    @default(now())
+        post      TagMapper[]
+}
+
+model TagMapper {
+        id     Int    @id @default(autoincrement())
+        postId String
+        tagId  Int
+        post   Post   @relation(fields: [postId], references: [id])
+        tag    Tags   @relation(fields: [tagId], references: [id])
+
+        @@index([postId], map: "TagMapper_postId_fkey")
+        @@index([tagId], map: "TagMapper_tagId_fkey")
+}
+
+model Like {
+        id        Int      @id @default(autoincrement())
+        userId    String
+        postId    String
+        user      User     @relation(fields: [userId], references: [id])
+        post      Post     @relation(fields: [postId], references: [id])
+        createdAt DateTime @default(now())
+}
+
+model follow {
+        id          String   @id @default(uuid())
+        followerId  String   @unique
+        followingId String   @unique
+        createdAt   DateTime @default(now())
+        follower    User     @relation("follower", fields: [followerId], references: [id])
+        following   User     @relation("following", fields: [followingId], references: [id])
+}
+
+model Bookmark {
+        id     String @id @default(uuid())
+        userId String
+        postId String
+        user   User   @relation("bookmarkUser", fields: [userId], references: [id])
+        post   Post   @relation("bookmarkPost", fields: [postId], references: [id])
+}
